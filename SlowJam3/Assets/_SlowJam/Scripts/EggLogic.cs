@@ -66,8 +66,8 @@ public class EggLogic : MonoBehaviour {
                     nearest=player;
                 }
             }
-            ThrowStriaght();
-            //ThrowAt(nearest.transform.position);
+            //ThrowStriaght();
+            ThrowAt(nearest.transform.position);
             heldBy.state = PlayerController._state.Empty;
         }
     }

@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public class PlayerController : MonoBehaviour
 {
     float moveSpeed = 4.0f;
     public enum _state { Empty, Hold, QTE };
     public _state state = _state.Empty;
-    public static PlayerController[] players = new PlayerController[4];
-    public static int playerCount = 0;
+    public static IList<PlayerController> players = new List<PlayerController>();
+    public static int playerCount
+    {
+        get { return players.Count; }
+    }
     public static Vector3 playerCenter
     {
         get {
@@ -29,20 +32,21 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-	string upKey="w";
-	string downKey="s";
-	string leftKey="a";
-	string rightKey="d";
+	string upKey;
+	string downKey;
+	string leftKey;
+	string rightKey;
     void Awake()
     {
         if (playerCount >= 4)
         {
             Debug.LogError(gameObject.name + " Is trying to register as player (max players reached)");
+            Destroy(gameObject);
+            return;
         }
-        
-        players[playerCount] = this;
+
         RegisterKeys();
-        playerCount++;
+        players.Add(this);
     }
 	// Update is called once per frame
 	void Update () {
@@ -109,6 +113,12 @@ public class PlayerController : MonoBehaviour
                 downKey     = "k";
                 leftKey     = "j";
                 rightKey    = "l";
+                break;
+            case (3):
+                upKey       = "1";
+                downKey     = "2";
+                leftKey     = "3";
+                rightKey    = "4";
                 break;
             
         }
