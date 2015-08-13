@@ -28,6 +28,7 @@ Shader "Cg normal mapping" {
       _Color ("Diffuse Material Color", Color) = (1,1,1,1) 
       _SpecColor ("Specular Material Color", Color) = (1,1,1,1) 
       _Shininess ("Shininess", Float) = 10
+      _Offset ("Offset", Float) = 0
    }
    SubShader {
       Pass {      
@@ -49,6 +50,7 @@ Shader "Cg normal mapping" {
          uniform float4 _Color; 
          uniform float4 _SpecColor; 
          uniform float _Shininess;
+         uniform float _Offset;
  
          struct vertexInput {
             float4 vertex : POSITION;
@@ -67,7 +69,7 @@ Shader "Cg normal mapping" {
          };
          float GetCurve(float3 p)
 		 {
-			float o = p.y-(pow(p.z*0.1,2));
+			float o = p.y-(pow((p.z+_Offset)*0.1,2));
 			o+=p.y+=sin(p.z*0.5+p.x+_Time.x*30)*0.2f;
 			return o+sin(p.z*0.2+_Time.x*30)*0.5f ;
 		 }
@@ -109,6 +111,7 @@ Shader "Cg normal mapping" {
 			float3 tang =GetTangent(output.posWorld);
 			float3 binorm=GetBinormal(output.posWorld);
 			float3 norm = cross(tang,binorm);
+
             output.tangentWorld = normalize(
                mul(modelMatrix, float4(input.tangent.xyz, 0.0)).xyz);
             output.normalWorld = normalize(
@@ -122,6 +125,7 @@ Shader "Cg normal mapping" {
 				finalNormal.y*norm+
 				finalNormal.x*tang+
 				finalNormal.z*binorm);
+			output.normalWorld.x*=-1;
 
             output.tex = input.texcoord;
             output.pos = mul(UNITY_MATRIX_VP, output.posWorld);
