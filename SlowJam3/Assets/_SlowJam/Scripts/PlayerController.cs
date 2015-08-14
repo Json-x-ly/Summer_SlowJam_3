@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class PlayerController : MonoBehaviour
 {
     float moveSpeed = 4.0f;
+	private const float eggPenalty = 0.6f;
     public enum _state { Empty, Hold, QTE };
     public _state state = _state.Empty;
     public static IList<PlayerController> players = new List<PlayerController>();
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
             if (state == _state.Empty)
                 return moveSpeed * Time.deltaTime;
             else
-                return moveSpeed * Time.deltaTime * 0.6f;
+                return moveSpeed * Time.deltaTime * eggPenalty;
         }
 
     }
