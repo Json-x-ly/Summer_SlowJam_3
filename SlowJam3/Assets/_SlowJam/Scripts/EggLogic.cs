@@ -24,7 +24,21 @@ public class EggLogic : MonoBehaviour {
                 break;
             case(_state.Throwing):
             case(_state.Falling):
-                transform.position += delta * Time.deltaTime;
+				transform.position += delta * Time.deltaTime;
+				delta.y -= 11f * Time.deltaTime;
+				RaycastHit hitinfo;
+				Debug.DrawRay(transform.position, delta * Time.deltaTime * 3.0f, Color.red);
+				if(Physics.Raycast(new Ray(transform.position, delta * Time.deltaTime), out hitinfo)) {
+					/*if(hitinfo.collider.gameObject.layer == LayerMask.GetMask("Terrain")) {*/
+						state = _state.OnGround;	
+						transform.position = hitinfo.point; 
+						Debug.Log(hitinfo.point);
+						break;
+					//}
+				}
+				break;
+
+                /*transform.position += delta * Time.deltaTime;
                 delta.y -= 11f * Time.deltaTime;
                 if (delta.y < 0) state = _state.Falling;
                 if (transform.position.y < 0)
@@ -34,7 +48,7 @@ public class EggLogic : MonoBehaviour {
                     transform.position = temp;
                     state = _state.OnGround;
                 }
-                break;
+                break;*/
         }
 	}
     public void PickUp(PlayerController pc)
@@ -79,4 +93,6 @@ public class EggLogic : MonoBehaviour {
     {
         delta = Vector3.Normalize((dest - heldBy.transform.position) + Vector3.up) * 5;
     }
+	// Detect Ground Hit
+	// 
 }

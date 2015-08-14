@@ -119,28 +119,7 @@ public class PlayerController : MonoBehaviour
 		{
 			moveDir += Vector3.right;
 		}
-		if (TinderBoxAPI.ControlState(myPlayer, Controls.Up) && TinderBoxAPI.ControlState(myPlayer, Controls.Left))
-		{
-			moveDir += Vector3.forward - Vector3.right;
-		}
-		if (TinderBoxAPI.ControlState(myPlayer, Controls.Up) && TinderBoxAPI.ControlState(myPlayer, Controls.Right))
-		{
-			moveDir += Vector3.forward + Vector3.right;
-		}
-		if (TinderBoxAPI.ControlState(myPlayer, Controls.Down) && TinderBoxAPI.ControlState(myPlayer, Controls.Left))
-		{
-			moveDir -= Vector3.forward - Vector3.right;
-		}
-		if (TinderBoxAPI.ControlState(myPlayer, Controls.Down) && TinderBoxAPI.ControlState(myPlayer, Controls.Right))
-		{
-			moveDir -= Vector3.forward + Vector3.right;
-		}
-
 		moveDir = Vector3.zero;
-		/*if (TinderBoxAPI.ControlState(myPlayer, Controls.Right && Controls.Up))
-		{
-			moveDir += Vector3.right;
-		}*/
 		Debug.DrawRay(transform.position, moveDir*2,Color.red);
 		RaycastHit hit;
 		if (Physics.Raycast(new Ray(transform.position, moveDir), out hit, stepLength))
