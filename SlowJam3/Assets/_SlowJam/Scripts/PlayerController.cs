@@ -38,6 +38,11 @@ public class PlayerController : MonoBehaviour
 	string downKey;
 	string leftKey;
 	string rightKey;
+	string button1;
+	string button2;
+	string button3;
+	string button4;
+	string button5;
     void Awake()
     {
         if (playerCount >= 4)
@@ -56,6 +61,7 @@ public class PlayerController : MonoBehaviour
         {
             EggLogic.main.Throw();
         }
+		DetectButtons();
         Debug.DrawLine(transform.position, playerCenter);
         Vector3 moveDir = Move();
         if (moveDir.magnitude != 0)
@@ -103,24 +109,44 @@ public class PlayerController : MonoBehaviour
                 downKey     = "s";
                 leftKey     = "a";
                 rightKey    = "d";
+				button1		= "z";
+				button2		= "x";
+				button3		= "c";
+				button4		= "v";
+				button5		= "b";
                 break;
             case (1):
                 upKey       = "up";
                 downKey     = "down";
                 leftKey     = "left";
                 rightKey    = "right";
+				button1		= "n";
+				button2		= "m";
+				button3		= ",";
+				button4		= ".";
+				button5		= "/";
                 break;
             case(2):
-                upKey       = "i";
-                downKey     = "k";
-                leftKey     = "j";
-                rightKey    = "l";
+                upKey       = "u";
+                downKey     = "j";
+                leftKey     = "h";
+                rightKey    = "k";
+				button1		= "i";
+				button2		= "o";
+				button3		= "p";
+				button4		= "[";
+				button5		= "]";
                 break;
             case (3):
-                upKey       = "1";
-                downKey     = "2";
-                leftKey     = "3";
+                upKey       = "2";
+                downKey     = "3";
+                leftKey     = "1";
                 rightKey    = "4";
+				button1		= "5";
+				button2		= "6";
+				button3		= "7";
+				button4		= "8";
+				button5		= "9";
                 break;
             
         }
@@ -131,4 +157,26 @@ public class PlayerController : MonoBehaviour
         if (egg != null) egg.PickUp(this);
         //Debug.Log("EGG GET!");
     }
+	void DetectButtons() {
+		// Blue Button on the TinderBox
+		if(Input.GetKeyDown(button1)) {
+
+		}
+		// Red Button on the TinderBox
+		if(Input.GetKeyDown(button2)) {
+
+		}
+		// Yellow Button on the TinderBox
+		if(Input.GetKeyDown(button3)) {
+
+		}
+		// Green Button on the TinderBox
+		if(Input.GetKeyDown(button4)) {
+
+		}
+		// White Button on the TinderBox
+		if(Input.GetKeyDown(button5)) {
+			EggLogic.main.Throw();
+		}
+	}
 }
