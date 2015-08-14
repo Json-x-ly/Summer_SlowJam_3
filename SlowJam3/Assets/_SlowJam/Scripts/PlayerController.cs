@@ -5,11 +5,12 @@ using TinderBox;
 public class PlayerController : MonoBehaviour
 {
     float moveSpeed = 4.0f;
+	Players myPlayer;
 	private const float eggPenalty = 0.6f;
     public enum _state { Empty, Hold, QTE };
     public _state state = _state.Empty;
     public static IList<PlayerController> players = new List<PlayerController>();
-    public static int playerCount
+	public static int playerCount
     {
         get { return players.Count; }
     }
@@ -51,8 +52,8 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
-        RegisterKeys();
+        //RegisterKeys();
+		SetTinderBoxInputs (playerCount);
         players.Add(this);
     }
 	// Update is called once per frame
@@ -100,9 +101,57 @@ public class PlayerController : MonoBehaviour
         }
         return moveDir;
     }
-    void RegisterKeys()
+	Vector3 TinderBoxMove() {
+		Vector3 moveDir = Vector3.zero;
+		if (TinderBoxAPI.ControlState(myPlayer, Controls.Up))
+		{
+			moveDir += Vector3.forward;
+		}
+		if (TinderBoxAPI.ControlState(myPlayer, Controls.Down))
+		{
+			moveDir -= Vector3.forward;
+		}
+		if (TinderBoxAPI.ControlState(myPlayer, Controls.Left))
+		{
+			moveDir -= Vector3.right;
+		}
+		if (TinderBoxAPI.ControlState(myPlayer, Controls.Right))
+		{
+			moveDir += Vector3.right;
+		}
+		if (TinderBoxAPI.ControlState(myPlayer, Controls.Up) && TinderBoxAPI.ControlState(myPlayer, Controls.Left))
+		{
+			moveDir += Vector3.forward - Vector3.right;
+		}
+		if (TinderBoxAPI.ControlState(myPlayer, Controls.Up) && TinderBoxAPI.ControlState(myPlayer, Controls.Right))
+		{
+			moveDir += Vector3.forward + Vector3.right;
+		}
+		if (TinderBoxAPI.ControlState(myPlayer, Controls.Down) && TinderBoxAPI.ControlState(myPlayer, Controls.Left))
+		{
+			moveDir -= Vector3.forward - Vector3.right;
+		}
+		if (TinderBoxAPI.ControlState(myPlayer, Controls.Down) && TinderBoxAPI.ControlState(myPlayer, Controls.Right))
+		{
+			moveDir -= Vector3.forward + Vector3.right;
+		}
+
+		moveDir = Vector3.zero;
+		/*if (TinderBoxAPI.ControlState(myPlayer, Controls.Right && Controls.Up))
+		{
+			moveDir += Vector3.right;
+		}*/
+		Debug.DrawRay(transform.position, moveDir*2,Color.red);
+		RaycastHit hit;
+		if (Physics.Raycast(new Ray(transform.position, moveDir), out hit, stepLength))
+		{
+			moveDir = Vector3.zero;
+		}
+		return moveDir;
+	}
+	void RegisterKeys(int currentPlayerCount)
     {
-        switch (playerCount)
+		switch (currentPlayerCount)
         {
             case (0):
                 upKey       = "w";
@@ -148,7 +197,6 @@ public class PlayerController : MonoBehaviour
 				button4		= "8";
 				button5		= "9";
                 break;
-            
         }
     }
     void OnTriggerEnter(Collider other)
@@ -178,5 +226,28 @@ public class PlayerController : MonoBehaviour
 		if(Input.GetKeyDown(button5)) {
 			EggLogic.main.Throw();
 		}
+	}
+	// Set the myPlayer variable to the 
+	// position on the TinderBox so we
+	// can coordinate input detection.
+	public void SetTinderBoxInputs(int currentPlayerCount) {
+		switch (playerCount) {
+			case 0: 
+				myPlayer = Players.Player1;
+				break;
+			case 1:
+				myPlayer = Players.Player2;
+				break;
+			case 2:
+				myPlayer = Players.Player3;
+				break;
+			case 3:
+				myPlayer = Players.Player4;
+				break;
+			default:
+			Debug.Log("Error in SetTinderBoxInputs.  Too many players, or invalid value.");
+				break;
+		}
+		RegisterKeys (currentPlayerCount);
 	}
 }
