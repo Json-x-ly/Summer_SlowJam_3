@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EggLogic : MonoBehaviour {
     public static EggLogic main;
+	public float gravity = 5.0f;
     public enum _state { Throwing,Falling, OnGround, Held };
     public _state state = _state.OnGround;
     public Vector3 delta;
@@ -25,16 +26,18 @@ public class EggLogic : MonoBehaviour {
             case(_state.Throwing):
             case(_state.Falling):
 				transform.position += delta * Time.deltaTime;
-				delta.y -= 11f * Time.deltaTime;
+				delta.y -= gravity * Time.deltaTime;
 				RaycastHit hitinfo;
-				Debug.DrawRay(transform.position, delta * Time.deltaTime * 3.0f, Color.red);
+				Debug.DrawRay(transform.position, delta * Time.deltaTime, Color.red);
 				if(Physics.Raycast(new Ray(transform.position, delta * Time.deltaTime), out hitinfo)) {
+					if(hitinfo.distance < 1.0f){
 					/*if(hitinfo.collider.gameObject.layer == LayerMask.GetMask("Terrain")) {*/
 						state = _state.OnGround;	
 						transform.position = hitinfo.point; 
 						Debug.Log(hitinfo.point);
 						break;
 					//}
+					}
 				}
 				break;
 
