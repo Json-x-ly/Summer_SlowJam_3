@@ -182,7 +182,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 15, z: 0}
+  m_LocalPosition: {x: 2.98000002, y: 13.5307388, z: -.920000017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 400006}
@@ -3163,7 +3163,7 @@ ParticleSystem:
   startDelay: 0
   speed: 1
   randomSeed: 0
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 1
@@ -3239,10 +3239,10 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4285380095
+          rgba: 4290117652
         key1:
           serializedVersion: 2
-          rgba: 4288595199
+          rgba: 8585504
         key2:
           serializedVersion: 2
           rgba: 0
@@ -3269,8 +3269,8 @@ ParticleSystem:
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 0
-        atime1: 45875
+        atime0: 31804
+        atime1: 65535
         atime2: 65535
         atime3: 0
         atime4: 0
@@ -3278,7 +3278,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 3
+        m_NumAlphaKeys: 2
       minGradient:
         key0:
           serializedVersion: 2
@@ -3523,13 +3523,13 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4290576383
+          rgba: 4288612515
         key1:
           serializedVersion: 2
-          rgba: 4278235647
+          rgba: 4288282712
         key2:
           serializedVersion: 2
-          rgba: 10633
+          rgba: 6291546
         key3:
           serializedVersion: 2
           rgba: 96
@@ -3546,7 +3546,7 @@ ParticleSystem:
           serializedVersion: 2
           rgba: 0
         ctime0: 0
-        ctime1: 15035
+        ctime1: 41634
         ctime2: 65535
         ctime3: 65535
         ctime4: 0
@@ -3554,7 +3554,7 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 39321
+        atime1: 47995
         atime2: 65535
         atime3: 0
         atime4: 0
