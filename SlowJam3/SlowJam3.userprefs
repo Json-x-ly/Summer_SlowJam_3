@@ -1,8 +1,15 @@
 ﻿<Properties>
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\QTEScript.cs">
     <Files>
       <File FileName="Assets\QTEScript.cs" Line="6" Column="2" />
+=======
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_SlowJam\Scripts\EggLogic.cs">
+    <Files>
+      <File FileName="Assets\_SlowJam\Scripts\EggLogic.cs" Line="31" Column="5" />
+>>>>>>> master
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
