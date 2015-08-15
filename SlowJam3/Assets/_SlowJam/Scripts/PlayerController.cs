@@ -7,13 +7,14 @@ public class PlayerController : MonoBehaviour
     float moveSpeed = 4.0f;
 	Players myPlayer;
 	private const float eggPenalty = 0.6f;
-    public enum _state { Empty, Hold, QTE };
-    public _state state = _state.Empty;
+    public enum _state { Empty, Hold, QTE ,NotInPlay};
+    public _state state = _state.NotInPlay;
     public static IList<PlayerController> players = new List<PlayerController>();
 	public static int playerCount
     {
         get { return players.Count; }
     }
+    public int myNumber = -1;
     public static Vector3 playerCenter
     {
         get {
@@ -46,18 +47,30 @@ public class PlayerController : MonoBehaviour
 	string button5;
     void Awake()
     {
-        if (playerCount >= 4)
+        myNumber = PlayerManager.InitPlayerRegistration(this);
+        if (myNumber == -1)
         {
-            Debug.LogError(gameObject.name + " Is trying to register as player (max players reached)");
             Destroy(gameObject);
             return;
         }
-        //RegisterKeys();
-		SetTinderBoxInputs (playerCount);
+        if (playerCount >= 4)
+        {
+            Debug.LogError(gameObject.name + " Is trying to register as player (max players reached)");
+        }
+		SetTinderBoxInputs (myNumber);
+    }
+    public void PrepForGame()
+    {
+        state = _state.Empty;
         players.Add(this);
     }
-	// Update is called once per frame
+    public void UnloadPostGame()
+    {
+        state = _state.NotInPlay;
+        players.Remove(this);
+    }
 	void Update () {
+        if (state == _state.NotInPlay) return;
         if (Input.GetKeyDown("space"))
         {
             EggLogic.main.Throw();
@@ -210,7 +223,7 @@ public class PlayerController : MonoBehaviour
 	// position on the TinderBox so we
 	// can coordinate input detection.
 	public void SetTinderBoxInputs(int currentPlayerCount) {
-		switch (playerCount) {
+		switch (myNumber) {
 			case 0: 
 				myPlayer = Players.Player1;
 				break;

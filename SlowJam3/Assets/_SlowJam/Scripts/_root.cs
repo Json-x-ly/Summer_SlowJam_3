@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class _root : MonoBehaviour {
-    public enum _state { SplashScreen, Ready, Player, Lose };
+    public bool toggle;
+    public enum _state { SplashScreen, Ready, Playing, Lose };
     private static _state __state = _state.SplashScreen;
     public static _state state
     {
@@ -26,6 +27,9 @@ public class _root : MonoBehaviour {
             case(_state.Ready):
                 SpawnReadyCards();
                 break;
+            case(_state.Playing):
+                PlayerManager.PrepPlayers();
+                break;
         }
         switch (old)
         {
@@ -39,11 +43,18 @@ public class _root : MonoBehaviour {
                 break;
         }
     }
-	// Use this for initialization
 	void Awake () {
         //TinderBox.TinderBoxAPI.IsReady();
         state = _state.Ready;
 	}
+    void Update()
+    {
+        if (toggle)
+        {
+            toggle = false;
+            state = _state.Playing;
+        }
+    }
     static readonly Vector3 rcStartPos = new Vector3(-5, 5, 1);
     static readonly Vector3 rcSize = new Vector3(3, 5, 1);
     const float rcStepLength = 3+1.0f / 3.0f;

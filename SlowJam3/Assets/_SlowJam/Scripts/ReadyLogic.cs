@@ -32,10 +32,12 @@ public class ReadyLogic : MonoBehaviour {
         if (isReady)
         {
             targetPos.y = readyPos;
+            PlayerManager.SetPlayerToActive(player);
         }
         else
         {
             targetPos.y = idlePos;
+            PlayerManager.RemovedPlayerFromActive(player);
         }
     }
     public void SetPlayerNumber(int player){
@@ -45,7 +47,6 @@ public class ReadyLogic : MonoBehaviour {
     }
     public void RemoveReadyCard()
     {
-        Debug.Log("removed ready card");
         Destroy(gameObject);
     }
 }
