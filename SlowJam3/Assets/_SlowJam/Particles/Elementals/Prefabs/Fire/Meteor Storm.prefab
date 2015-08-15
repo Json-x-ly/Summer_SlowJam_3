@@ -2271,10 +2271,10 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4285380095
+          rgba: 4287898887
         key1:
           serializedVersion: 2
-          rgba: 4288595199
+          rgba: 4288872609
         key2:
           serializedVersion: 2
           rgba: 0
@@ -2294,7 +2294,7 @@ ParticleSystem:
           serializedVersion: 2
           rgba: 0
         ctime0: 0
-        ctime1: 65535
+        ctime1: 58982
         ctime2: 0
         ctime3: 0
         ctime4: 0
@@ -2302,7 +2302,7 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 45489
+        atime1: 35273
         atime2: 65535
         atime3: 0
         atime4: 0
@@ -2359,8 +2359,8 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 2528566527
-      minMaxState: 0
+        rgba: 2528247999
+      minMaxState: 1
     startSize:
       scalar: 3
       maxCurve:
@@ -8357,7 +8357,35 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startColor.maxColor.rgba
+      value: 2528247999
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startColor.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startColor.maxGradient.key0.rgba
+      value: 4287898887
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startColor.maxGradient.key1.rgba
+      value: 4288872609
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startColor.maxGradient.ctime1
+      value: 58982
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startColor.maxGradient.ctime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InitialModule.startColor.maxGradient.atime1
+      value: 35273
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 100008}
