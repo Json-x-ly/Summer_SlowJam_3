@@ -285,10 +285,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1426151883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4ee7ba794b92c84fb4d1e54dd8ad125, type: 3}
+  m_Script: {fileID: 11500000, guid: aed005cbc590ae146939de45d7ad05ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1418604824}
+  endCave: {fileID: 180262, guid: 60eb9f8d2ad52c24f9011ef3bc55a761, type: 2}
+  gameLength: 200
 --- !u!1 &1661563526
 GameObject:
   m_ObjectHideFlags: 0
