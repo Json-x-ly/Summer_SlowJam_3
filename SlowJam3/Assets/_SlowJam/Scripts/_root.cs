@@ -49,6 +49,10 @@ public class _root : MonoBehaviour {
 	}
     void Update()
     {
+        if (Input.GetKeyDown("return"))
+        {
+            state = _state.Playing;
+        }
         if (toggle)
         {
             toggle = false;
@@ -67,6 +71,7 @@ public class _root : MonoBehaviour {
             go.name = "ReadyPlayer " + x;
             go.transform.position = rcStartPos + Vector3.right * cabPos * rcStepLength;
             go.transform.localScale = rcSize;
+            go.layer = LayerMask.NameToLayer("UI");
             ReadyLogic script = go.AddComponent<ReadyLogic>();
             script.SetPlayerNumber(x);
         }
