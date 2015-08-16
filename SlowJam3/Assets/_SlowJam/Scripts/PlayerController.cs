@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
 	string button5;
     void Awake()
     {
-
+		gameObject.layer = LayerMask.NameToLayer ("Player"); 	
 
         myNumber = PlayerManager.InitPlayerRegistration(this);
         if (myNumber == -1)
@@ -123,10 +123,10 @@ public class PlayerController : MonoBehaviour
         {
             EggLogic.main.Throw();
         }
-		//DetectButtons();
+		DetectButtons();
         Debug.DrawLine(transform.position, playerCenter);
-        //Vector3 moveDir = Move();
-        Vector3 moveDir = TinderBoxMove();
+        Vector3 moveDir = Move();
+        //Vector3 moveDir = TinderBoxMove();
         if (moveDir.magnitude != 0)
         {
             moveDir.Normalize();
@@ -134,7 +134,8 @@ public class PlayerController : MonoBehaviour
             Quaternion faceDir = Quaternion.Euler(0, Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, faceDir, Time.deltaTime*10);
         }
-        NewButtons();
+        //NewButtons();
+		//DetectButtons ();
 	}
     Vector3 Move()
     {
@@ -245,13 +246,13 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Player hit trigger");
+        /*Debug.Log("Player hit trigger");
         EggLogic egg = other.gameObject.GetComponent<EggLogic>();
         if (egg != null) 
         { 
             egg.PickUp(this);
             catchExpireTime = Time.time + 0.3f;
-        }
+        }*/
 
 		QTEScript QTE = other.gameObject.GetComponent<QTEScript>();
 		if (QTE != null)

@@ -1,8 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_SlowJam\Scripts\QTEScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_SlowJam\Scripts\PlayerController.cs">
     <Files>
-      <File FileName="Assets\_SlowJam\Scripts\QTEScript.cs" Line="26" Column="3" />
+      <File FileName="Assets\_SlowJam\Scripts\PlayerController.cs" Line="136" Column="10" />
+      <File FileName="Assets\_SlowJam\Scripts\EggLogic.cs" Line="67" Column="92" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

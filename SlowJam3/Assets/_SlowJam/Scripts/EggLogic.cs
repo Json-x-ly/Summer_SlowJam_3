@@ -42,31 +42,34 @@ public class EggLogic : MonoBehaviour {
 				break;
         }
 	}
-	void OnCollisionEnter(Collision collision) {
-		if (state == _state.Falling) {
-			if (collision.gameObject.layer == LayerMask.NameToLayer ("Player")) {
-				heldBy = collision.gameObject.GetComponentInParent<PlayerController> ();
-				this.transform.position = heldBy.eggNode.transform.position;
-				state = _state.Held;
+	void OnTriggerEnter(Collider collider) {
+		if (state == _state.Falling || state == _state.Throwing) {
+			if (collider.gameObject.layer == LayerMask.NameToLayer ("Player")) {
+				/*heldBy = collider.gameObject.GetComponent<PlayerController> ();
+				transform.position = heldBy.eggNode.transform.position;
+				state = _state.Held;*/
 				Debug.Log ("Player should be holding the egg...");
+				PickUp(collider.gameObject.GetComponent<PlayerController>());
 			}
 		}
 		if (state == _state.OnGround) {
-			if (collision.gameObject.layer == LayerMask.NameToLayer ("Player")) {
-				heldBy = collision.gameObject.GetComponentInParent<PlayerController> ();
-				this.transform.position = heldBy.eggNode.transform.position;
-				state = _state.Held;
+			if (collider.gameObject.layer == LayerMask.NameToLayer ("Player")) {
+				/*heldBy = collider.gameObject.GetComponent<PlayerController> ();
+				transform.position = heldBy.eggNode.transform.position;
+				state = _state.Held;*/
 				Debug.Log ("Player should be holding the egg...");
+				PickUp(collider.gameObject.GetComponent<PlayerController>());
 			}
 		}
 	}
     public void PickUp(PlayerController pc)
     {
-        if (state == _state.OnGround || state == _state.Falling)
+        if (state == _state.OnGround || state == _state.Falling || state == _state.Throwing)
         {
             heldBy = pc;
             state = _state.Held;
             pc.state = PlayerController._state.Hold;
+			//transform.position = heldBy.eggNode.transform.position;
         }
     }
     public void Reset()

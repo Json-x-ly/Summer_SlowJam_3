@@ -28,6 +28,7 @@ public class SectionController : MonoBehaviour {
                 uvs[i] = new Vector2(0.5f, 0.5f);
             }
             mf.mesh.uv = uvs;
+			mf.gameObject.layer = LayerMask.NameToLayer("Terrain");
 		}
 
 		Length = GetComponentInChildren<MeshFilter>().mesh.bounds.size.z;
