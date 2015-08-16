@@ -21,9 +21,16 @@ public class SectionController : MonoBehaviour {
 		foreach(MeshRenderer mr in GetComponentsInChildren<MeshRenderer>()) {
 			mr.material.color = c;
 		}
-
-		Length = GetComponentInChildren<MeshFilter>().mesh.bounds.size.z;
-		Length *= transform.Find("Mesh").localScale.z;
+	
+		//this will be cleaner once we get rid of the place holder tiles
+		Transform t = transform.FindChild ("Mesh").FindChild("tileMesh");
+		if (t != null) {
+			Length += t.GetComponent<MeshFilter> ().mesh.bounds.size.z;
+			Length *= t.localScale.z;
+		} else {
+			Length = GetComponentInChildren<MeshFilter> ().mesh.bounds.size.z;
+			Length *= transform.FindChild("Mesh").localScale.z;
+		}
 		Length *= transform.localScale.z;
 	}
 
@@ -32,6 +39,7 @@ public class SectionController : MonoBehaviour {
 	}
 
 	void Update () {
+		/*maybe we'll use this one day
 		frustumPlanes = GeometryUtility.CalculateFrustumPlanes (Camera.main);
 		isVisible = false;
 		foreach(MeshCollider mc in GetComponentsInChildren<MeshCollider>()) {
@@ -40,6 +48,7 @@ public class SectionController : MonoBehaviour {
 				break;
 			}
 		}
+		*/
 	}
 
 	public bool IsVisible {

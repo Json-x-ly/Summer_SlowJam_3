@@ -8,6 +8,9 @@ public class EggLogic : MonoBehaviour {
     public _state state = _state.OnGround;
     public Vector3 delta;
     public PlayerController heldBy;
+
+	private Vector3 velocity;
+
     void Awake()
     {
         main = this;
@@ -25,6 +28,7 @@ public class EggLogic : MonoBehaviour {
                 break;
             case(_state.Throwing):
             case(_state.Falling):
+				velocity.y -= gravity * Time.deltaTime;
 				transform.position += delta * Time.deltaTime;
 				delta.y -= gravity * Time.deltaTime;
 				RaycastHit hitinfo;

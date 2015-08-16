@@ -290,7 +290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1418604824}
   endCave: {fileID: 180262, guid: 60eb9f8d2ad52c24f9011ef3bc55a761, type: 2}
-  gameLength: 200
+  gameLength: 400
 --- !u!1 &1661563526
 GameObject:
   m_ObjectHideFlags: 0

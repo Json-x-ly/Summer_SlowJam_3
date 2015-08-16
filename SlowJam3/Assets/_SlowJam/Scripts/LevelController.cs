@@ -11,11 +11,19 @@ public class LevelController : MonoBehaviour {
 	private ArrayList currentPath = new ArrayList();
 	private SortedList<float, GameObject> dynamicSections;
 	private GameObject[] staticSections;
-	private GameObject endSection;
 	private bool levelDone = false;
 	private float currentLength = 0;
 	private float speed = 30f;
 	private int sectionsSinceDynamic = 0; //how many  sections have been spawned that weren't dynamic
+
+	public void resetLevel() {
+		currentPath.Clear();
+		levelDone = false;
+		currentLength = 0;
+		sectionsSinceDynamic = 0;
+		player.transform.position = Vector3.zero;
+		spawnInitialSections();
+	}
 
 	void Awake() {
 		player = GameObject.Find("Player");
@@ -30,10 +38,12 @@ public class LevelController : MonoBehaviour {
 		}
 
 		staticSections = Resources.LoadAll ("Sections/Static", typeof(GameObject)).Cast<GameObject>().ToArray();
+		spawnInitialSections();
+	}
 
-		float length = 0f;
+	private void spawnInitialSections() {
 		for (int i = 0; i < 15; i++) {
-			GameObject section = GetSectionForDifficulty(CalculateDifficulty(length));
+			GameObject section = GetSectionForDifficulty(CalculateDifficulty(currentLength));
 			Vector3 pos = Vector3.zero;
 			if(i > 0) {
 				GameObject last = currentPath[i-1] as GameObject;
@@ -54,11 +64,12 @@ public class LevelController : MonoBehaviour {
 		pos.z += speed * Time.deltaTime;
 		player.transform.position = pos;
 
-		if (currentPath.Count == 0) //game's over
-			return;
+		if (currentPath.Count == 0) {//game's over
+			resetLevel ();
+		}
 
 		GameObject firstSection = (GameObject) currentPath [0];
-		if(!firstSection.GetComponent<SectionController>().IsVisible) {
+		if(Camera.main.transform.position.z - 15 > firstSection.transform.position.z) {
 			currentPath.RemoveAt(0);
 			Destroy(firstSection);
 			if (levelDone)
@@ -104,7 +115,7 @@ public class LevelController : MonoBehaviour {
 		if (max > 1f)
 			max = 1f;
 		float difficulty = Random.Range(min, max);
-		//Debug.Log ("diff: " + difficulty + ", perc: " + perc + ", range: " + range);
+		Debug.Log ("diff: " + difficulty + ", perc: " + perc + ", range: " + range);
 		return difficulty;
 	}
 
