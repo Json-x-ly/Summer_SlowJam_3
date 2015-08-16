@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(LogicVisualSpace))]
 public class _root : MonoBehaviour {
     public bool toggle;
+    static GameObject go;
     public enum _state { SplashScreen, Ready, Playing, Lose };
     private static _state __state = _state.SplashScreen;
-    static GameObject go;
     public static _state state
     {
         get
@@ -49,7 +50,6 @@ public class _root : MonoBehaviour {
     {
         go = this.gameObject;
         state = _state.Ready;
-        //TinderBox.TinderBoxAPI.IsReady();
 	}
     void Update()
     {
@@ -70,7 +70,7 @@ public class _root : MonoBehaviour {
     {
         for (int x = 0; x < 4; x++)
         {
-            int cabPos = LookUp.PlayerPosition(x);
+            int cabPos = LookUp.PlayerCabinetPosition(x);
             GameObject go = GameObject.CreatePrimitive(PrimitiveType.Quad);
             go.name = "ReadyPlayer " + x;
             go.transform.position = rcStartPos + Vector3.right * cabPos * rcStepLength;

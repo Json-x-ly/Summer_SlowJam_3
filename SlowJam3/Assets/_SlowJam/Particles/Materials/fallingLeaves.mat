@@ -145,7 +145,7 @@ Material:
       data:
         first:
           name: _InvFade
-        second: 1
+        second: 1.04999995
       data:
         first:
           name: _Stencil
