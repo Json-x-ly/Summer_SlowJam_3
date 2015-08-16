@@ -10,6 +10,13 @@ public class PlayerController : MonoBehaviour
     public enum _state { Empty, Hold, QTE ,NotInPlay};
     public _state state = _state.NotInPlay;
     public static IList<PlayerController> players = new List<PlayerController>();
+    private PlayerEggNode myEggNode;
+    public PlayerEggNode eggNode
+    {
+        get { return myEggNode; }
+
+        set { myEggNode = value; }
+    }
 	public static int playerCount
     {
         get { return players.Count; }
@@ -58,6 +65,8 @@ public class PlayerController : MonoBehaviour
             Debug.LogError(gameObject.name + " Is trying to register as player (max players reached)");
         }
 		SetTinderBoxInputs (myNumber);
+
+        this.GetComponentInChildren<MeshRenderer>().material = Resources.Load("Solid" + LookUp.PlayerColorName(myNumber)) as Material;
     }
     public void PrepForGame()
     {
@@ -68,6 +77,10 @@ public class PlayerController : MonoBehaviour
     {
         state = _state.NotInPlay;
         players.Remove(this);
+        if (playerCount == 0 && _root.state == _root._state.Playing)
+        {
+            _root.state = _root._state.Lose;
+        }
     }
 	void Update () {
         if (state == _state.NotInPlay) return;
@@ -77,7 +90,8 @@ public class PlayerController : MonoBehaviour
         }
 		DetectButtons();
         Debug.DrawLine(transform.position, playerCenter);
-		Vector3 moveDir = TinderBoxMove();
+        //Vector3 moveDir = Move();
+        Vector3 moveDir = TinderBoxMove();
         if (moveDir.magnitude != 0)
         {
             moveDir.Normalize();
@@ -215,29 +229,52 @@ public class PlayerController : MonoBehaviour
 			Debug.Log("QTE Trigger exited");
 		}
 	}
-	
-	void DetectButtons() {
-		// Blue Button on the TinderBox
-		if(Input.GetKeyDown(button1)) {
+    void NewButtons()
+    {
 
-		}
-		// Red Button on the TinderBox
-		if(Input.GetKeyDown(button2)) {
+    }
+    void DetectButtons()
+    {
+        Debug.Log("Running DetectButtons");
+        //if (this.state == _state.Hold) {
+        Debug.Log("A player is holding the ball in DetectButtons()");
+        // Blue Button on the TinderBox
+        if (Input.GetKeyDown(button1))
+        {
+            Debug.Log("Should be throwing the egg..");
+            int temp = LookUp.PlayerCabinetPosition(0);
+            Vector3 position = PlayerManager.registerdPlayers[temp].transform.position;
+            if (position == this.transform.position)
+            {
+                EggLogic.main.Throw();
+            }
+            EggLogic.main.ThrowToPlayer(position);
+        }
+        // Red Button on the TinderBox
+        if (Input.GetKeyDown(button2))
+        {
+            Debug.Log("Should be throwing the egg..");
+            int temp = LookUp.PlayerCabinetPosition(1);
+            Vector3 position = PlayerManager.registerdPlayers[temp].transform.position;
+            EggLogic.main.ThrowToPlayer(position);
+        }
+        // Yellow Button on the TinderBox
+        if (Input.GetKeyDown(button3))
+        {
 
-		}
-		// Yellow Button on the TinderBox
-		if(Input.GetKeyDown(button3)) {
+        }
+        // Green Button on the TinderBox
+        if (Input.GetKeyDown(button4))
+        {
 
-		}
-		// Green Button on the TinderBox
-		if(Input.GetKeyDown(button4)) {
-
-		}
-		// White Button on the TinderBox
-		if(Input.GetKeyDown(button5)) {
-			EggLogic.main.Throw();
-		}
-	}
+        }
+        // White Button on the TinderBox
+        if (Input.GetKeyDown(button5))
+        {
+            EggLogic.main.Throw();
+        }
+        //}
+    }
 	// Set the myPlayer variable to the 
 	// position on the TinderBox so we
 	// can coordinate input detection.

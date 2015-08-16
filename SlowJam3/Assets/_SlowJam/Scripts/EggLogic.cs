@@ -14,8 +14,8 @@ public class EggLogic : MonoBehaviour {
     void Awake()
     {
         main = this;
-		shadowBigObject = (GameObject)Instantiate (shadowBigPrefab, Vector3.zero, Quaternion.identity);
-		Destroy (shadowBigObject.GetComponent<BoxCollider> ());
+		//shadowBigObject = (GameObject)Instantiate (shadowBigPrefab, Vector3.zero, Quaternion.identity);
+		//Destroy (shadowBigObject.GetComponent<BoxCollider> ());
 
     }
 	void Start () {

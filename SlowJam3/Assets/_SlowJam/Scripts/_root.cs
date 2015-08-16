@@ -2,6 +2,8 @@
 using System.Collections;
 
 [RequireComponent(typeof(LogicVisualSpace))]
+[RequireComponent(typeof(KillZ))]
+
 public class _root : MonoBehaviour {
     public bool toggle;
     static GameObject go;
