@@ -18,7 +18,7 @@ public class LevelController : MonoBehaviour {
 	private int sectionsSinceDynamic = 0; //how many sections have been spawned that weren't dynamic
 
 	void Awake() {
-		player = GameObject.Find("Player");
+		//player = GameObject.Find("Player");
 	}
 
 	void Start () {
@@ -50,9 +50,12 @@ public class LevelController : MonoBehaviour {
 	}
 
 	void Update () {
-		Vector3 pos = player.transform.position;
-		pos.z += speed * Time.deltaTime;
-		player.transform.position = pos;
+        if (_root.state == _root._state.Playing)
+        {
+            Vector3 pos = player.transform.position;
+            pos.z += speed * Time.deltaTime*0.05f;
+            player.transform.position = pos;
+        }
 
 		if (currentPath.Count == 0) //game's over
 			return;

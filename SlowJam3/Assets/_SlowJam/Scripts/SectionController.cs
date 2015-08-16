@@ -18,12 +18,20 @@ public class SectionController : MonoBehaviour {
 		if (max > 1f)
 			max = 1f;
 		c = new Color(Random.Range(min, max), Random.Range(min, max), Random.Range(min, max));
-		foreach(MeshRenderer mr in GetComponentsInChildren<MeshRenderer>()) {
-			mr.material.color = c;
+        //Changed from rendering color to setting UV space;
+		foreach(MeshFilter mf in GetComponentsInChildren<MeshFilter>()) {
+			//mr.material.color = c;
+
+            Vector2[] uvs = new Vector2[mf.mesh.vertices.Length];
+            for (int i = 0; i < uvs.Length; i++)
+            {
+                uvs[i] = new Vector2(0.5f, 0.5f);
+            }
+            mf.mesh.uv = uvs;
 		}
 
 		Length = GetComponentInChildren<MeshFilter>().mesh.bounds.size.z;
-		Length *= transform.Find("Mesh").localScale.z;
+		//Length *= transform.Find("Mesh").localScale.z;
 		Length *= transform.localScale.z;
 	}
 

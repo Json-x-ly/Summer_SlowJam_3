@@ -25,6 +25,7 @@
 Shader "World" {
    Properties {
       _BumpMap ("Normal Map", 2D) = "bump" {}
+      _ColorAtlas ("ColorAtlas", 2D) = "white" {}
       _Color ("Diffuse Material Color", Color) = (1,1,1,1) 
       _SpecColor ("Specular Material Color", Color) = (1,1,1,1) 
       _Shininess ("Shininess", Float) = 10
@@ -47,6 +48,7 @@ Shader "World" {
  
          // User-specified properties
          uniform sampler2D _BumpMap;	
+         uniform sampler2D _ColorAtlas;	
          uniform float4 _BumpMap_ST;
          uniform float4 _Color; 
          uniform float4 _SpecColor; 
@@ -175,12 +177,12 @@ Shader "World" {
                attenuation = 1.0 / distance; // linear attenuation 
                lightDirection = normalize(vertexToLightSource);
             }
- 
+			float3 clr = tex2D(_ColorAtlas,input.tex.xy);
             float3 ambientLighting = 
-               UNITY_LIGHTMODEL_AMBIENT.rgb * _Color.rgb;
+               UNITY_LIGHTMODEL_AMBIENT.rgb * clr;
  
             float3 diffuseReflection = 
-               attenuation * _LightColor0.rgb * _Color.rgb
+               attenuation * _LightColor0.rgb * clr
                * max(0.0, dot(normalDirection, lightDirection));
  
             float3 specularReflection;

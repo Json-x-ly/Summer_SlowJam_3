@@ -8,12 +8,14 @@ public class EggLogic : MonoBehaviour {
     public _state state = _state.OnGround;
     public Vector3 delta;
     public PlayerController heldBy;
-	public GameObject shadowBigPrefab;
-	private GameObject shadowBigObject;
+    private Vector3 spawnPos;
+	//public GameObject shadowBigPrefab;
+	//private GameObject shadowBigObject;
 	private const float MAX_SHADOW = 5.0f;
     void Awake()
     {
         main = this;
+        spawnPos = transform.position;
 		//shadowBigObject = (GameObject)Instantiate (shadowBigPrefab, Vector3.zero, Quaternion.identity);
 		//Destroy (shadowBigObject.GetComponent<BoxCollider> ());
 
@@ -28,8 +30,8 @@ public class EggLogic : MonoBehaviour {
         switch (state)
         {
             case(_state.Held):
-                //transform.position = heldBy.transform.position + Vector3.up;
-				transform.position = heldBy.eggNode.transform.position;
+                transform.position = heldBy.transform.position + Vector3.up;
+				//transform.position = heldBy.eggNode.transform.position;
                 break;
             case(_state.Throwing):
 			case(_state.Falling):
@@ -66,6 +68,11 @@ public class EggLogic : MonoBehaviour {
             state = _state.Held;
             pc.state = PlayerController._state.Hold;
         }
+    }
+    public void Reset()
+    {
+        transform.position = spawnPos;
+        state = _state.OnGround;
     }
     public void Throw()
     {
@@ -116,12 +123,11 @@ public class EggLogic : MonoBehaviour {
 		if (Physics.Raycast (new Ray (transform.position, Vector3.down), out hitinfo)) {
 			if(hitinfo.collider.gameObject.layer == LayerMask.NameToLayer("Terrain")) {
 				Vector3 newVector = hitinfo.point;
-				shadowBigObject.transform.position = newVector;// - new Vector3(0.0f, 1f, 0.0f);
+				//shadowBigObject.transform.position = newVector;// - new Vector3(0.0f, 1f, 0.0f);
 				float scalar = (this.transform.position - hitinfo.point).magnitude / MAX_SHADOW;
 				if(scalar > 1.0f) scalar = 1.0f;
-				Debug.Log(scalar);
-				shadowBigObject.transform.localScale = new Vector3(scalar, scalar, scalar);
-				Debug.Log(shadowBigObject.transform.localScale);
+				//shadowBigObject.transform.localScale = new Vector3(scalar, scalar, scalar);
+				//Debug.Log(shadowBigObject.transform.localScale);
 			}
 		}
 	}

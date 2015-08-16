@@ -17,5 +17,10 @@ public class KillZ : MonoBehaviour {
                 pc.UnloadPostGame();
             }
         }
+        if (EggLogic.main.transform.position.z < transform.position.z)
+        {
+            _root.state = _root._state.Lose;
+            EggLogic.main.Reset();
+        }
 	}
 }

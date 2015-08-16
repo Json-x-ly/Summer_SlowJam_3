@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public enum _state { Empty, Hold, QTE ,NotInPlay};
     public _state state = _state.NotInPlay;
     public static IList<PlayerController> players = new List<PlayerController>();
+    private float catchExpireTime = float.MinValue;
     private PlayerEggNode myEggNode;
     public PlayerEggNode eggNode
     {
@@ -54,6 +55,8 @@ public class PlayerController : MonoBehaviour
 	string button5;
     void Awake()
     {
+
+
         myNumber = PlayerManager.InitPlayerRegistration(this);
         if (myNumber == -1)
         {
@@ -66,12 +69,42 @@ public class PlayerController : MonoBehaviour
         }
 		SetTinderBoxInputs (myNumber);
 
-        this.GetComponentInChildren<MeshRenderer>().material = Resources.Load("Solid" + LookUp.PlayerColorName(myNumber)) as Material;
+        //this.GetComponentInChildren<MeshRenderer>().material = Resources.Load("Solid" + LookUp.PlayerColorName(myNumber)) as Material;
+        
+    }
+    void Start()
+    {
+
+        Mesh mesh = GetComponent<MeshFilter>().mesh;
+        Vector2[] uvs = new Vector2[mesh.vertices.Length];
+        Vector2 pos = new Vector2(0.5f, 0.5f);
+        switch (myNumber)
+        {
+            case (0):
+                pos = new Vector2(0.2f, 0.8f);
+                break;
+            case (1):
+                pos = new Vector2(0.8f, 0.8f);
+                break;
+            case (2):
+                pos = new Vector2(0.8f, 0.2f);
+                break;
+            case (3):
+                pos = new Vector2(0.2f, 0.2f);
+                break;
+        }
+        for (int i = 0; i < uvs.Length; i++)
+        {
+            uvs[i] = pos;
+        }
+        mesh.uv = uvs;
     }
     public void PrepForGame()
     {
         state = _state.Empty;
         players.Add(this);
+        //TODO center this properly when can math.
+        transform.position = new Vector3(-5+(1.0f/(PlayerManager.playerCount))*(playerCount)*10, 0.5f, 10);
     }
     public void UnloadPostGame()
     {
@@ -81,6 +114,7 @@ public class PlayerController : MonoBehaviour
         {
             _root.state = _root._state.Lose;
         }
+        transform.position = new Vector3(0, 0, -9000);
     }
 	void Update () {
         if (state == _state.NotInPlay) return;
@@ -88,7 +122,7 @@ public class PlayerController : MonoBehaviour
         {
             EggLogic.main.Throw();
         }
-		DetectButtons();
+		//DetectButtons();
         Debug.DrawLine(transform.position, playerCenter);
         //Vector3 moveDir = Move();
         Vector3 moveDir = TinderBoxMove();
@@ -99,6 +133,7 @@ public class PlayerController : MonoBehaviour
             Quaternion faceDir = Quaternion.Euler(0, Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, faceDir, Time.deltaTime*10);
         }
+        NewButtons();
 	}
     Vector3 Move()
     {
@@ -209,8 +244,13 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Player hit trigger");
         EggLogic egg = other.gameObject.GetComponent<EggLogic>();
-        if (egg != null) egg.PickUp(this);
+        if (egg != null) 
+        { 
+            egg.PickUp(this);
+            catchExpireTime = Time.time + 0.3f;
+        }
 
 		QTEScript QTE = other.gameObject.GetComponent<QTEScript>();
 		if (QTE != null)
@@ -231,13 +271,48 @@ public class PlayerController : MonoBehaviour
 	}
     void NewButtons()
     {
-
+        if (state == _state.Empty && TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button5))
+        {
+            if (Time.time < catchExpireTime)
+            {
+                if (EggLogic.main.state != EggLogic._state.Held)
+                {
+                    EggLogic.main.PickUp(this);
+                }
+            }
+        }
+        if (state != _state.Hold) return;
+        if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button1))
+        {
+            int target = LookUp.PlayerLogicPosition(0);
+            Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
+            Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
+            EggLogic.main.ThrowToPlayer(pos);
+        }
+        if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button2))
+        {
+            int target = LookUp.PlayerLogicPosition(1);
+            Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
+            Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
+            EggLogic.main.ThrowToPlayer(pos);
+        }
+        if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button3))
+        {
+            int target = LookUp.PlayerLogicPosition(2);
+            Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
+            Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
+            EggLogic.main.ThrowToPlayer(pos);
+        }
+        if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button4))
+        {
+            int target = LookUp.PlayerLogicPosition(3);
+            Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
+            Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
+            EggLogic.main.ThrowToPlayer(pos);
+        }
     }
     void DetectButtons()
     {
-        Debug.Log("Running DetectButtons");
-        //if (this.state == _state.Hold) {
-        Debug.Log("A player is holding the ball in DetectButtons()");
         // Blue Button on the TinderBox
         if (Input.GetKeyDown(button1))
         {

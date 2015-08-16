@@ -77,5 +77,14 @@ public class PlayerManager{
             }
         }
     }
+    public static void CleanUpAllPlayers()
+    {
+
+        for (int x = PlayerController.playerCount; x--> 0; )
+        {
+            PlayerController.players[x].UnloadPostGame();
+        }
+        activePlayers = 0;
+    }
 
 }
