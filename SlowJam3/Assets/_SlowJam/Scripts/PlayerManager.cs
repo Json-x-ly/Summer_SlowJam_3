@@ -6,7 +6,7 @@ public class PlayerManager{
     const int PLAYER2 = 2;
     const int PLAYER3 = 4;
     const int PLAYER4 = 8;
-    private static PlayerController[] registerdPlayers = new PlayerController[4];
+    public static PlayerController[] registerdPlayers = new PlayerController[4];
     private static int _playerCount;
     public static int playerCount
     {
