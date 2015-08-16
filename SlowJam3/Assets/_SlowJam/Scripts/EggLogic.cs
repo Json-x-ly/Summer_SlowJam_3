@@ -34,40 +34,19 @@ public class EggLogic : MonoBehaviour {
                 transform.position = heldBy.transform.position + Vector3.up;
                 break;
             case(_state.Throwing):
-            case(_state.Falling):
-				/*RaycastHit hitinfo;
-				Debug.DrawRay (transform.position, Vector3.down * 10.0f, Color.red);
-				if (Physics.Raycast (new Ray (transform.position, Vector3.down), out hitinfo)) {
-					//GameObject newSquare = (GameObject)SphereCollider.Instantiate(shadowBig, hitinfo.point, Quaternion.identity);
-					Vector3 newVector = hitinfo.point;// - new Vector3(0.0f, 0.25f, 0.0f);
-					shadowBigObject.transform.position = newVector;// - new Vector3(0.0f, 0.25f, 0.0f);
-					float scalar = (this.transform.position - hitinfo.point).magnitude / MAX_SHADOW;
-					if(scalar > 1.0f) scalar = 1.0f;
-					Debug.Log(scalar);
-					shadowBigObject.transform.localScale *= (scalar);
-					Debug.Log(shadowBigObject.transform.localScale);
-					//shadowSmallObject.transform.position = newVector;
-					//shadowSmallObject.transform.localScale = (delta * Time.fixedTime).normalized;
-					//shadowSmallObject.transform.localScale.x.Equals(0.5f * delta.normalized.x * Time.deltaTime);
-					//shadowSmallObject.transform.localScale.y.Equals(0.5f * delta.normalized.y * Time.deltaTime);
-					//shadowSmallObject.transform.localScale.z.Equals(0.5f * delta.normalized.z * Time.deltaTime);
-					//shadowSmallObject.transform.localScale.Set(delta.magnitude * Time.deltaTime, delta.magnitude * Time.deltaTime, delta.magnitude * Time.deltaTime);
-				}*/
+			case(_state.Falling):
 				DrawFallingShadow();
-				////
-				transform.position += delta * Time.deltaTime;
+				DetectGroundHit();
+				/*transform.position += delta * Time.deltaTime;
 				delta.y -= gravity * Time.deltaTime;
 				RaycastHit fallingHitinfo;
-				//Debug.DrawRay(transform.position, delta * Time.deltaTime, Color.red);
-				//if(Physics.Raycast(new Ray(transform.position, delta * Time.deltaTime), out hitinfo)) {
 				if(Physics.Raycast(new Ray(transform.position, Vector3.down), out fallingHitinfo)) {
 					if(fallingHitinfo.distance < 0.1f){
 						state = _state.OnGround;	
 						transform.position = fallingHitinfo.point; 
-						//Debug.Log(fallingHitinfo.point);
 						break;
 					}
-				}
+				}*/
 				break;
         }
 	}
@@ -117,21 +96,28 @@ public class EggLogic : MonoBehaviour {
 		RaycastHit hitinfo;
 		Debug.DrawRay (transform.position, Vector3.down * 10.0f, Color.red);
 		if (Physics.Raycast (new Ray (transform.position, Vector3.down), out hitinfo)) {
-			//GameObject newSquare = (GameObject)SphereCollider.Instantiate(shadowBig, hitinfo.point, Quaternion.identity);
-			Vector3 newVector = hitinfo.point;// - new Vector3(0.0f, 0.25f, 0.0f);
-			shadowBigObject.transform.position = newVector;// - new Vector3(0.0f, 0.25f, 0.0f);
-			float scalar = (this.transform.position - hitinfo.point).magnitude / MAX_SHADOW;
-			if(scalar > 1.0f) scalar = 1.0f;
-			Debug.Log(scalar);
-			shadowBigObject.transform.localScale = new Vector3(scalar, scalar, scalar);
-			Debug.Log(shadowBigObject.transform.localScale);
-
-			//shadowSmallObject.transform.position = newVector;
-			//shadowSmallObject.transform.localScale = (delta * Time.fixedTime).normalized;
-			//shadowSmallObject.transform.localScale.x.Equals(0.5f * delta.normalized.x * Time.deltaTime);
-			//shadowSmallObject.transform.localScale.y.Equals(0.5f * delta.normalized.y * Time.deltaTime);
-			//shadowSmallObject.transform.localScale.z.Equals(0.5f * delta.normalized.z * Time.deltaTime);
-			//shadowSmallObject.transform.localScale.Set(delta.magnitude * Time.deltaTime, delta.magnitude * Time.deltaTime, delta.magnitude * Time.deltaTime);
+			Vector3 newVector = hitinfo.point;
+			shadowBigObject.transform.position = newVector;// - new Vector3(0.0f, 1f, 0.0f);
+			if(hitinfo.collider.gameObject.layer == LayerMask.NameToLayer("Terrain")) {
+				float scalar = (this.transform.position - hitinfo.point).magnitude / MAX_SHADOW;
+				if(scalar > 1.0f) scalar = 1.0f;
+				Debug.Log(scalar);
+				shadowBigObject.transform.localScale = new Vector3(scalar, scalar, scalar);
+				Debug.Log(shadowBigObject.transform.localScale);
+			}
+		}
+	}
+	private void DetectGroundHit() {
+		DrawFallingShadow();
+		transform.position += delta * Time.deltaTime;
+		delta.y -= gravity * Time.deltaTime;
+		RaycastHit fallingHitinfo;
+		if(Physics.Raycast(new Ray(transform.position, Vector3.down), out fallingHitinfo)) {
+			if(fallingHitinfo.distance < 0.2f){
+				state = _state.OnGround;	
+				transform.position = fallingHitinfo.point; 
+				return;
+			}
 		}
 	}
 }
