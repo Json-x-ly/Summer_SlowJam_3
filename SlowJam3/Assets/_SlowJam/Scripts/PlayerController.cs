@@ -110,7 +110,8 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(new Ray(transform.position, moveDir), out hit, stepLength))
         {
-            moveDir = Vector3.zero;
+			if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Terrain"))
+            	moveDir = Vector3.zero;
         }
         return moveDir;
     }
@@ -191,12 +192,30 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
+
     void OnTriggerEnter(Collider other)
     {
         EggLogic egg = other.gameObject.GetComponent<EggLogic>();
         if (egg != null) egg.PickUp(this);
-        //Debug.Log("EGG GET!");
+
+		QTEScript QTE = other.gameObject.GetComponent<QTEScript>();
+		if (QTE != null)
+		{
+			QTE.PlayerEnter(myPlayer);
+			Debug.Log("QTE Trigger entered");
+		}
     }
+
+	void OnTriggerExit(Collider other)
+	{
+		QTEScript QTE = other.gameObject.GetComponent<QTEScript>();
+		if (QTE != null)
+		{
+			QTE.PlayerExit(myPlayer);
+			Debug.Log("QTE Trigger exited");
+		}
+	}
+	
 	void DetectButtons() {
 		// Blue Button on the TinderBox
 		if(Input.GetKeyDown(button1)) {

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System;
-
+using System.Collections;
+using System.Collections.Generic;
+using TinderBox;
 public  class QTEScript : MonoBehaviour 
 {
 	private bool isActive;
@@ -14,9 +15,11 @@ public  class QTEScript : MonoBehaviour
 		}
 		set
 		{
-			addProgress(value);
+			AddProgress(value);
 		} 
 	}
+
+	private Action onComplete;
 
 	public enum QTE
 	{
@@ -24,28 +27,43 @@ public  class QTEScript : MonoBehaviour
 	}
 
 	public QTE QTEType;
+	private List<Players> playerList;
 
-	void update() 
+
+	void Start()
+	{
+		playerList = new List<Players>();
+	}
+
+	void Update()
 	{
 		if (!isActive)
 			return;
-		Debug.Log("Something Happened");
+
+
 	}
 
-	public void triggerEvent(Action OnComplete)
+	public void PlayerEnter (Players playerID) 
 	{
-		bool givenReturnFunc = true;
-		if (OnComplete == null)
-			givenReturnFunc = false;
-		switch (QTEType) {
-		default:
-			break;
-		case QTE.test:
-			isActive = true;
-			break;
+		if (playerList.Count > 0) {
+			foreach (Players ID in playerList) {
+				if (ID.CompareTo (playerID) == 0)
+					continue;
+				return;
+			}
 		}
+		playerList.Add (playerID);
+		isActive = true;
 	}
-	private void addProgress(float amt)
+
+	public void PlayerExit (Players playerID)
+	{
+		playerList.Remove(playerID);
+		if (playerList.Count == 0)
+			isActive = false;
+	}
+
+	private void AddProgress(float amt)
 	{
 		if (amt >= 1.0f)
 			amt = 1.0f;
