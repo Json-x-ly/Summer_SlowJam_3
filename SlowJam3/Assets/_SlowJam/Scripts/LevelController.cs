@@ -15,7 +15,7 @@ public class LevelController : MonoBehaviour {
 	private bool levelDone = false;
 	private float currentLength = 0;
 	private float speed = 30f;
-	private int sectionsSinceDynamic = 0; //how many sections have been spawned that weren't dynamic
+	private int sectionsSinceDynamic = 0; //how many  sections have been spawned that weren't dynamic
 
 	void Awake() {
 		player = GameObject.Find("Player");
