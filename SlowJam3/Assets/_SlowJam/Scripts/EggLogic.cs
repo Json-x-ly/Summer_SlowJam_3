@@ -123,7 +123,7 @@ public class EggLogic : MonoBehaviour {
 			float scalar = (this.transform.position - hitinfo.point).magnitude / MAX_SHADOW;
 			if(scalar > 1.0f) scalar = 1.0f;
 			Debug.Log(scalar);
-			shadowBigObject.transform.localScale *= (scalar);
+			shadowBigObject.transform.localScale = new Vector3(scalar, scalar, scalar);
 			Debug.Log(shadowBigObject.transform.localScale);
 
 			//shadowSmallObject.transform.position = newVector;
