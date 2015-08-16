@@ -11,13 +11,19 @@ public class SectionController : MonoBehaviour {
 
 	void Awake () {
 		Color c;
-		c = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+		float min = difficulty - .1f;
+		float max = difficulty + .1f;
+		if (min < 0f)
+			min = 0f;
+		if (max > 1f)
+			max = 1f;
+		c = new Color(Random.Range(min, max), Random.Range(min, max), Random.Range(min, max));
 		foreach(MeshRenderer mr in GetComponentsInChildren<MeshRenderer>()) {
 			mr.material.color = c;
 		}
 
 		Length = GetComponentInChildren<MeshFilter>().mesh.bounds.size.z;
-		Length *= transform.Find("ground").localScale.z;
+		Length *= transform.Find("Mesh").localScale.z;
 		Length *= transform.localScale.z;
 	}
 
@@ -28,8 +34,8 @@ public class SectionController : MonoBehaviour {
 	void Update () {
 		frustumPlanes = GeometryUtility.CalculateFrustumPlanes (Camera.main);
 		isVisible = false;
-		foreach(BoxCollider bc in GetComponentsInChildren<BoxCollider>()) {
-			if(GeometryUtility.TestPlanesAABB(frustumPlanes, bc.bounds)) {
+		foreach(MeshCollider mc in GetComponentsInChildren<MeshCollider>()) {
+			if(GeometryUtility.TestPlanesAABB(frustumPlanes, mc.bounds)) {
 				isVisible = true;
 				break;
 			}
