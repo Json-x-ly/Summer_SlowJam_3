@@ -96,6 +96,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 136617637}
   - 114: {fileID: 136617636}
+  - 136: {fileID: 136617638}
   m_Layer: 0
   m_Name: QTE Test Bed
   m_TagString: Untagged
@@ -114,6 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7d760ddd9320742844bb63a6e4dcd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
 --- !u!4 &136617637
 Transform:
   m_ObjectHideFlags: 0
@@ -126,6 +128,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!136 &136617638
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 136617635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: .5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1070172436
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,16 +6,17 @@ public  class QTEScript : MonoBehaviour
 {
 	private bool isActive;
 	private float _progress;
-	public float progress{ 
+	public float progress
+	{ 
 		get
 		{
 			return _progress;
-		} 
+		}
 		set
 		{
 			addProgress(value);
 		} 
-	};
+	}
 
 	public enum QTE
 	{
@@ -28,11 +29,15 @@ public  class QTEScript : MonoBehaviour
 	{
 		if (!isActive)
 			return;
+		Debug.Log("Something Happened");
 	}
 
 	public void triggerEvent(Action OnComplete)
 	{
-		switch (Type) {
+		bool givenReturnFunc = true;
+		if (OnComplete == null)
+			givenReturnFunc = false;
+		switch (QTEType) {
 		default:
 			break;
 		case QTE.test:
