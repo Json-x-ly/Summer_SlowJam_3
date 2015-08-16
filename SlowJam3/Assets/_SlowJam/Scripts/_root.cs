@@ -5,6 +5,7 @@ public class _root : MonoBehaviour {
     public bool toggle;
     public enum _state { SplashScreen, Ready, Playing, Lose };
     private static _state __state = _state.SplashScreen;
+    static GameObject go;
     public static _state state
     {
         get
@@ -26,6 +27,7 @@ public class _root : MonoBehaviour {
         {
             case(_state.Ready):
                 SpawnReadyCards();
+                go.AddComponent<ReadyManager>();
                 break;
             case(_state.Playing):
                 PlayerManager.PrepPlayers();
@@ -39,13 +41,15 @@ public class _root : MonoBehaviour {
                 {
                     script.RemoveReadyCard();
                 }
-
+                Destroy(go.GetComponent<ReadyManager>());
                 break;
         }
     }
-	void Awake () {
-        //TinderBox.TinderBoxAPI.IsReady();
+    void Awake()
+    {
+        go = this.gameObject;
         state = _state.Ready;
+        //TinderBox.TinderBoxAPI.IsReady();
 	}
     void Update()
     {
