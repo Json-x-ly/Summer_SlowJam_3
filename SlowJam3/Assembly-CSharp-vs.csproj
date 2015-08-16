@@ -52,6 +52,7 @@
      <Compile Include="Assets\_SlowJam\Scripts\EggLogic.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\LookUp.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\_SlowJam\Scripts\PlayerEggNode.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\PlayerManager.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\ReadyLogic.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\ReadyManager.cs" />

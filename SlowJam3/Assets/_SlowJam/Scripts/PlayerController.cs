@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using TinderBox;
@@ -10,6 +10,12 @@ public class PlayerController : MonoBehaviour
     public enum _state { Empty, Hold, QTE ,NotInPlay};
     public _state state = _state.NotInPlay;
     public static IList<PlayerController> players = new List<PlayerController>();
+	private PlayerEggNode myEggNode;
+	public PlayerEggNode eggNode {
+		get{ return myEggNode;}
+
+		set { myEggNode = value;}
+	}
 	public static int playerCount
     {
         get { return players.Count; }
@@ -58,6 +64,7 @@ public class PlayerController : MonoBehaviour
             Debug.LogError(gameObject.name + " Is trying to register as player (max players reached)");
         }
 		SetTinderBoxInputs (myNumber);
+		myEggNode = this.GetComponentInChildren<PlayerEggNode> ();
     }
     public void PrepForGame()
     {
@@ -132,7 +139,7 @@ public class PlayerController : MonoBehaviour
 		{
 			moveDir += Vector3.right;
 		}
-		moveDir = Vector3.zero;
+		//moveDir = Vector3.zero;
 		Debug.DrawRay(transform.position, moveDir*2,Color.red);
 		RaycastHit hit;
 		if (Physics.Raycast(new Ray(transform.position, moveDir), out hit, stepLength))
