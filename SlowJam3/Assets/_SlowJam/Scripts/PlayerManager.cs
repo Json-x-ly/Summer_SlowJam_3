@@ -12,7 +12,7 @@ public class PlayerManager{
     {
         get { return _playerCount; }
     }
-    private static int activePlayer = 0;
+    public static int activePlayers = 0;
 
     /// <summary>
     /// Set a player to be in the game
@@ -20,7 +20,7 @@ public class PlayerManager{
     /// <param name="number"></param>
     public static void SetPlayerToActive(int number)
     {
-        activePlayer = activePlayer | (1 << number);
+        activePlayers = activePlayers | (1 << number);
         UpdatePlayerCount();
     }
     /// <summary>
@@ -29,7 +29,7 @@ public class PlayerManager{
     /// <param name="number"></param>
     public static void RemovedPlayerFromActive(int number)
     {
-        activePlayer = ~(~activePlayer | (1 << number));
+        activePlayers = ~(~activePlayers | (1 << number));
         UpdatePlayerCount();
     }
     /// <summary>
@@ -39,7 +39,7 @@ public class PlayerManager{
     /// <returns></returns>
     public static bool IsPlayerActive(int number)
     {
-        return (activePlayer & (1 << number))>0;
+        return (activePlayers & (1 << number))>0;
     }
     private static void UpdatePlayerCount(){
         int temp = 0;
@@ -51,7 +51,7 @@ public class PlayerManager{
             }
         }
         _playerCount=temp;
-        Debug.Log(playerCount + ", " + activePlayer);
+        Debug.Log(playerCount + ", " + activePlayers);
     }
     public static int InitPlayerRegistration(PlayerController pc)
     {

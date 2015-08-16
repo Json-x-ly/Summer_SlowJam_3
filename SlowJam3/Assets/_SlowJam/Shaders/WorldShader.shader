@@ -22,7 +22,7 @@
         }
     }
 } */ 
-Shader "Cg normal mapping" {
+Shader "World" {
    Properties {
       _BumpMap ("Normal Map", 2D) = "bump" {}
       _Color ("Diffuse Material Color", Color) = (1,1,1,1) 
@@ -70,8 +70,9 @@ Shader "Cg normal mapping" {
          float GetCurve(float3 p)
 		 {
 			float o = p.y-(pow((p.z+_Offset)*0.1,2));
-			o+=p.y+=sin(p.z*0.5+p.x+_Time.x*30)*0.2f;
-			return o+sin(p.z*0.2+_Time.x*30)*0.5f ;
+			o+=+sin(p.z*0.1+p.x*0.1+_Time.x*30)*1;
+			//o+=sin(p.z*0.3+_Time.x*30)*0.2 ;
+			return o;
 		 }
 		 float3 GetTangent(float3 p){
 			float3 a,b;
