@@ -12,9 +12,23 @@ public class LookUp : MonoBehaviour {
     /// </summary>
     /// <param name="playerNumber"></param>
     /// <returns></returns>
-    public static int PlayerPosition(int playerNumber)
+    public static int PlayerCabinetPosition(int playerNumber)
     {
         return _positions[playerNumber];
+    }
+    /// <summary>
+    /// Gets the Player number from Cabnet position
+    /// </summary>
+    /// <param name="playerNumber"></param>
+    /// <returns></returns>
+    public static int PlayerLogicPosition(int playerNumber)
+    {
+        foreach (int pos in _positions)
+        {
+            if (_positions[pos] == playerNumber)
+                return pos;
+        }
+        return -1;
     }
     /// <summary>
     /// Gets the Color assigned to that player

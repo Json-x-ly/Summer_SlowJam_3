@@ -1,0 +1,36 @@
+﻿Merge branch 'master' into Quick-Time-Events
+
+Conflicts:
+	SlowJam3/Assets/_SlowJam/Meshes/Materials.meta
+	SlowJam3/Assets/_SlowJam/Prefabs.meta
+	SlowJam3/SlowJam3.userprefs
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch Quick-Time-Events
+# Your branch is up-to-date with 'origin/Quick-Time-Events'.
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	new file:   SlowJam3/Assets/Materials.meta
+#	new file:   SlowJam3/Assets/Resources/Sections/Dynamic.meta
+#	new file:   SlowJam3/Assets/Resources/Sections/Static.meta
+#	modified:   SlowJam3/Assets/_SlowJam/Materials.meta
+#	modified:   SlowJam3/Assets/_SlowJam/Meshes/Materials.meta
+#	modified:   SlowJam3/Assets/_SlowJam/Prefabs.meta
+#	new file:   SlowJam3/Assets/_SlowJam/Scripts/LevelController.cs
+#	renamed:    SlowJam3/Assets/_SlowJam/Scripts/SectionManagerBehaviour.cs.meta -> SlowJam3/Assets/_SlowJam/Scripts/LevelController.cs.meta
+#	modified:   SlowJam3/Assets/_SlowJam/Scripts/LookUp.cs
+#	modified:   SlowJam3/Assets/_SlowJam/Scripts/SectionController.cs
+#	deleted:    SlowJam3/Assets/_SlowJam/Scripts/SectionManagerBehaviour.cs
+#	modified:   SlowJam3/Assets/_SlowJam/Scripts/_root.cs
+#	new file:   SlowJam3/Assets/_SlowJam/Shaders/Materials.meta
+#
+
