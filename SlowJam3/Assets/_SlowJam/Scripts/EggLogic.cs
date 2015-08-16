@@ -33,6 +33,8 @@ public class EggLogic : MonoBehaviour {
                 break;
             case(_state.Throwing):
 			case(_state.Falling):
+				//delta.y -= gravity;
+				//transform.position += delta;
 				DrawFallingShadow();
 				DetectGroundHit();
 				break;
@@ -90,6 +92,16 @@ public class EggLogic : MonoBehaviour {
             heldBy.state = PlayerController._state.Empty;
         }
     }
+	public void ThrowToPlayer(Vector3 receivingPlayer) {
+		Debug.Log ("Throwing to a player");
+		if (state == _state.Held) {
+			state = _state.Throwing;
+			//Vector3 distance = receivingPlayer - this.transform.position;
+			ThrowAt(receivingPlayer);
+			//delta = Vector3.Normalize ((distance) + Vector3.up) * 5.0f;
+			heldBy = null;
+		}
+	}
     private void ThrowStriaght()
     {
         delta = (heldBy.transform.forward + Vector3.up) * 5;
@@ -114,7 +126,7 @@ public class EggLogic : MonoBehaviour {
 		}
 	}
 	private void DetectGroundHit() {
-		DrawFallingShadow();
+		//DrawFallingShadow();
 		transform.position += delta * Time.deltaTime;
 		delta.y -= gravity * Time.deltaTime;
 		RaycastHit fallingHitinfo;

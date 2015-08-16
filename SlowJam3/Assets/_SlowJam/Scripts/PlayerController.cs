@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
         }
 		SetTinderBoxInputs (myNumber);
 		myEggNode = this.GetComponentInChildren<PlayerEggNode> ();
+		this.GetComponentInChildren<MeshRenderer> ().material = Resources.Load ("Solid" + LookUp.PlayerColorName(myNumber)) as Material;
     }
     public void PrepForGame()
     {
@@ -78,13 +79,15 @@ public class PlayerController : MonoBehaviour
     }
 	void Update () {
         if (state == _state.NotInPlay) return;
+		Debug.Log ("This line is getting hit!!!!");
         if (Input.GetKeyDown("space"))
         {
             EggLogic.main.Throw();
         }
 		DetectButtons();
         Debug.DrawLine(transform.position, playerCenter);
-        Vector3 moveDir = Move();
+        //Vector3 moveDir = Move();
+		Vector3 moveDir = TinderBoxMove ();
         if (moveDir.magnitude != 0)
         {
             moveDir.Normalize();
@@ -94,8 +97,7 @@ public class PlayerController : MonoBehaviour
         }
 	}
     Vector3 Move()
-    {
-
+	{
         Vector3 moveDir = Vector3.zero;
         if (Input.GetKey(upKey))
         {
@@ -205,26 +207,39 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("EGG GET!");
     }
 	void DetectButtons() {
-		// Blue Button on the TinderBox
-		if(Input.GetKeyDown(button1)) {
+		Debug.Log ("Running DetectButtons");
+		//if (this.state == _state.Hold) {
+			Debug.Log ("A player is holding the ball in DetectButtons()");
+			// Blue Button on the TinderBox
+			if (Input.GetKeyDown (button1)) {
+				Debug.Log("Should be throwing the egg..");
+				int temp = LookUp.PlayerCabinetPosition(0);
+				Vector3 position = PlayerManager.registerdPlayers[temp].transform.position;
+				if (position == this.transform.position) {
+					EggLogic.main.Throw();
+				}
+				EggLogic.main.ThrowToPlayer (position);
+			}
+			// Red Button on the TinderBox
+			if (Input.GetKeyDown (button2)) {
+				Debug.Log("Should be throwing the egg..");
+				int temp = LookUp.PlayerCabinetPosition(1);
+				Vector3 position = PlayerManager.registerdPlayers[temp].transform.position;
+				EggLogic.main.ThrowToPlayer (position);
+			}
+			// Yellow Button on the TinderBox
+			if (Input.GetKeyDown (button3)) {
 
-		}
-		// Red Button on the TinderBox
-		if(Input.GetKeyDown(button2)) {
+			}
+			// Green Button on the TinderBox
+			if (Input.GetKeyDown (button4)) {
 
-		}
-		// Yellow Button on the TinderBox
-		if(Input.GetKeyDown(button3)) {
-
-		}
-		// Green Button on the TinderBox
-		if(Input.GetKeyDown(button4)) {
-
-		}
-		// White Button on the TinderBox
-		if(Input.GetKeyDown(button5)) {
-			EggLogic.main.Throw();
-		}
+			}
+			// White Button on the TinderBox
+			if (Input.GetKeyDown (button5)) {
+				EggLogic.main.Throw ();
+			}
+		//}
 	}
 	// Set the myPlayer variable to the 
 	// position on the TinderBox so we
