@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 456698}
-  - 114: {fileID: 11466606}
+  - 114: {fileID: 11474358}
   m_Layer: 0
   m_Name: GameObject 1
   m_TagString: Untagged
@@ -374,7 +374,7 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &11466606
+--- !u!114 &11474358
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
