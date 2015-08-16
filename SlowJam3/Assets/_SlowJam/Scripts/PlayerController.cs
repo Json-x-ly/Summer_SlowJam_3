@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogError(gameObject.name + " Is trying to register as player (max players reached)");
         }
-		SetTinderBoxInputs (myNumber);
+		//SetTinderBoxInputs (myNumber);
 
         //this.GetComponentInChildren<MeshRenderer>().material = Resources.Load("Solid" + LookUp.PlayerColorName(myNumber)) as Material;
         
@@ -119,14 +119,15 @@ public class PlayerController : MonoBehaviour
     }
 	void Update () {
         if (state == _state.NotInPlay) return;
-        if (Input.GetKeyDown("space"))
+        /*if (Input.GetKeyDown("space"))
         {
             EggLogic.main.Throw();
-        }
-		DetectButtons();
+        }*/
         Debug.DrawLine(transform.position, playerCenter);
-        Vector3 moveDir = Move();
-        //Vector3 moveDir = TinderBoxMove();
+		//DetectButtons();
+		//Vector3 moveDir = Move();
+		NewButtons();
+        Vector3 moveDir = TinderBoxMove();
         if (moveDir.magnitude != 0)
         {
             moveDir.Normalize();
@@ -134,12 +135,9 @@ public class PlayerController : MonoBehaviour
             Quaternion faceDir = Quaternion.Euler(0, Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, faceDir, Time.deltaTime*10);
         }
-        //NewButtons();
-		//DetectButtons ();
 	}
     Vector3 Move()
     {
-
         Vector3 moveDir = Vector3.zero;
         if (Input.GetKey(upKey))
         {
@@ -242,6 +240,8 @@ public class PlayerController : MonoBehaviour
 				button5		= "9";
                 break;
         }
+
+		Debug.Log ("Player " + myPlayer + ": " + upKey + " " + downKey + " " + leftKey + " " + rightKey + " " + button1 + " " + button2 + " " + button3 + " " + button4 + " " + button5 + "!!");
     }
 
     void OnTriggerEnter(Collider other)
@@ -323,36 +323,31 @@ public class PlayerController : MonoBehaviour
         }
     }
     void DetectButtons()
-    {
+	{	
+		Debug.Log ("Player " + myPlayer + ": " + upKey + " " + downKey + " " + leftKey + " " + rightKey + " " + button1 + " " + button2 + " " + button3 + " " + button4 + " " + button5 + "!!");
         // Blue Button on the TinderBox
         if (Input.GetKeyDown(button1))
         {
-            Debug.Log("Should be throwing the egg..");
-            int temp = LookUp.PlayerCabinetPosition(0);
-            Vector3 position = PlayerManager.registerdPlayers[temp].transform.position;
-            if (position == this.transform.position)
-            {
-                EggLogic.main.Throw();
-            }
-            EggLogic.main.ThrowToPlayer(position);
+			if(EggLogic.main.heldBy == this) return;
+			DoThrow(0);
         }
         // Red Button on the TinderBox
         if (Input.GetKeyDown(button2))
         {
-            Debug.Log("Should be throwing the egg..");
-            int temp = LookUp.PlayerCabinetPosition(1);
-            Vector3 position = PlayerManager.registerdPlayers[temp].transform.position;
-            EggLogic.main.ThrowToPlayer(position);
+			if(EggLogic.main.heldBy == this) return;
+			DoThrow (1);
         }
         // Yellow Button on the TinderBox
         if (Input.GetKeyDown(button3))
         {
-
+			if(EggLogic.main.heldBy == this) return;
+			DoThrow (2);
         }
         // Green Button on the TinderBox
         if (Input.GetKeyDown(button4))
         {
-
+			if(EggLogic.main.heldBy == this) return;
+			DoThrow (3);
         }
         // White Button on the TinderBox
         if (Input.GetKeyDown(button5))
@@ -361,11 +356,22 @@ public class PlayerController : MonoBehaviour
         }
         //}
     }
+	private void DoThrow (int playerIndex) {
+		Debug.Log("Should be throwing the egg..");
+		//int temp = LookUp.PlayerCabinetPosition(playerIndex);
+		Vector3 position = PlayerManager.registerdPlayers[LookUp.PlayerCabinetPosition(playerIndex)].transform.position;
+		if (myNumber == playerIndex)
+		{
+			Debug.Log ("Throwing To Self");
+			EggLogic.main.Throw();
+		}
+		EggLogic.main.ThrowToPlayer(position);
+	}
 	// Set the myPlayer variable to the 
 	// position on the TinderBox so we
 	// can coordinate input detection.
-	public void SetTinderBoxInputs(int currentPlayerCount) {
-		switch (myNumber) {
+	public void SetTinderBoxInputs(int playerNumber) {
+		switch (playerNumber) {
 			case 0: 
 				myPlayer = Players.Player1;
 				break;
@@ -382,6 +388,6 @@ public class PlayerController : MonoBehaviour
 			Debug.Log("Error in SetTinderBoxInputs.  Too many players, or invalid value.");
 				break;
 		}
-		RegisterKeys (currentPlayerCount);
+		RegisterKeys (playerNumber);
 	}
 }

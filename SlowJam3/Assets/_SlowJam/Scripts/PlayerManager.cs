@@ -72,8 +72,9 @@ public class PlayerManager{
         {
             if (IsPlayerActive(x))
             {
-                Debug.Log("PLayer " + x + " is ready.");
+                Debug.Log("Player " + x + " is ready. At Position " + LookUp.PlayerCabinetPosition(x));
                 registerdPlayers[x].PrepForGame();
+				registerdPlayers[x].SetTinderBoxInputs(LookUp.PlayerCabinetPosition(x));
             }
         }
     }
@@ -86,5 +87,4 @@ public class PlayerManager{
         }
         activePlayers = 0;
     }
-
 }

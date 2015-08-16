@@ -26,17 +26,13 @@ public class EggLogic : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
         switch (state)
         {
             case(_state.Held):
                 transform.position = heldBy.transform.position + Vector3.up;
-				//transform.position = heldBy.eggNode.transform.position;
                 break;
             case(_state.Throwing):
 			case(_state.Falling):
-				//delta.y -= gravity;
-				//transform.position += delta;
 				DrawFallingShadow();
 				DetectGroundHit();
 				break;
@@ -45,18 +41,12 @@ public class EggLogic : MonoBehaviour {
 	void OnTriggerEnter(Collider collider) {
 		if (state == _state.Falling || state == _state.Throwing) {
 			if (collider.gameObject.layer == LayerMask.NameToLayer ("Player")) {
-				/*heldBy = collider.gameObject.GetComponent<PlayerController> ();
-				transform.position = heldBy.eggNode.transform.position;
-				state = _state.Held;*/
 				Debug.Log ("Player should be holding the egg...");
 				PickUp(collider.gameObject.GetComponent<PlayerController>());
 			}
 		}
 		if (state == _state.OnGround) {
 			if (collider.gameObject.layer == LayerMask.NameToLayer ("Player")) {
-				/*heldBy = collider.gameObject.GetComponent<PlayerController> ();
-				transform.position = heldBy.eggNode.transform.position;
-				state = _state.Held;*/
 				Debug.Log ("Player should be holding the egg...");
 				PickUp(collider.gameObject.GetComponent<PlayerController>());
 			}
@@ -135,7 +125,6 @@ public class EggLogic : MonoBehaviour {
 		}
 	}
 	private void DetectGroundHit() {
-		//DrawFallingShadow();
 		transform.position += delta * Time.deltaTime;
 		delta.y -= gravity * Time.deltaTime;
 		RaycastHit fallingHitinfo;
