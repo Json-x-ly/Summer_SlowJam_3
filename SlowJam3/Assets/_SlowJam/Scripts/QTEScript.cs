@@ -18,6 +18,20 @@ public  class QTEScript : MonoBehaviour
 			AddProgress(value);
 		} 
 	}
+
+	private Controls _buttonQTE;
+	public Controls buttonQTE
+	{
+		get
+		{
+			return _buttonQTE;
+		}
+		set
+		{
+			_buttonQTE = value;
+		}
+	}
+
 	private SpriteRenderer buttonRenderer;
 
 	private Action onComplete;
@@ -55,7 +69,7 @@ public  class QTEScript : MonoBehaviour
 
 		foreach (Players ID in playerList) 
 		{
-			bool input = TinderBoxAPI.ControlDown(ID, Controls.Button1);
+			bool input = TinderBoxAPI.ControlDown(ID, buttonQTE);
 			if(input)
 			{
 				Debug.Log("HIT IT!");
