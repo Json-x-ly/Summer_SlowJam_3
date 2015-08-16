@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(LogicVisualSpace))]
 public class _root : MonoBehaviour {
     public bool toggle;
+    static GameObject go;
     public enum _state { SplashScreen, Ready, Playing, Lose };
     private static _state __state = _state.SplashScreen;
-    static GameObject go;
     public static _state state
     {
         get
