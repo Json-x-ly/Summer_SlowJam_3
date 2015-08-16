@@ -110,6 +110,7 @@ public class PlayerController : MonoBehaviour
     {
         state = _state.NotInPlay;
         players.Remove(this);
+        PlayerManager.RemovedPlayerFromActive(myNumber);
         if (playerCount == 0 && _root.state == _root._state.Playing)
         {
             _root.state = _root._state.Lose;
@@ -285,30 +286,39 @@ public class PlayerController : MonoBehaviour
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button1))
         {
             int target = LookUp.PlayerLogicPosition(0);
-            Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
-            Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
-            EggLogic.main.ThrowToPlayer(pos);
+            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay) { 
+                Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
+                Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
+                EggLogic.main.ThrowToPlayer(pos);
+            }
+
         }
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button2))
         {
             int target = LookUp.PlayerLogicPosition(1);
-            Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
-            Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
-            EggLogic.main.ThrowToPlayer(pos);
+            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay) { 
+                Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
+                Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
+                EggLogic.main.ThrowToPlayer(pos);
+            }
         }
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button3))
         {
             int target = LookUp.PlayerLogicPosition(2);
-            Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
-            Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
-            EggLogic.main.ThrowToPlayer(pos);
+            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay) { 
+                Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
+                Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
+                EggLogic.main.ThrowToPlayer(pos);
+            }
         }
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button4))
         {
             int target = LookUp.PlayerLogicPosition(3);
-            Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
-            Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
-            EggLogic.main.ThrowToPlayer(pos);
+            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay){
+                Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
+                Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
+                EggLogic.main.ThrowToPlayer(pos);
+            }
         }
     }
     void DetectButtons()
