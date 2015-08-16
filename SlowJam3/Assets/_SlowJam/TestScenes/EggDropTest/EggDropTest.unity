@@ -243,7 +243,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 981666864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.95937824, y: 8.22999954, z: 4.94052076}
+  m_LocalPosition: {x: 2.95937824, y: 11.1999998, z: 4.94052076}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 85082631}
@@ -264,6 +264,7 @@ MonoBehaviour:
   state: 1
   delta: {x: 0, y: 0, z: 0}
   heldBy: {fileID: 0}
+  shadowBigPrefab: {fileID: 166952, guid: 43facc223ae1cdd45a93dece334d3db3, type: 2}
 --- !u!1 &1165291645
 GameObject:
   m_ObjectHideFlags: 0

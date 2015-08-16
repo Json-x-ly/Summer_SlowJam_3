@@ -50,7 +50,14 @@
      <Compile Include="Assets\TinderBox\TinderBoxObject.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\CameraController.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\EggLogic.cs" />
+     <Compile Include="Assets\_SlowJam\Scripts\LookUp.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\_SlowJam\Scripts\PlayerManager.cs" />
+     <Compile Include="Assets\_SlowJam\Scripts\ReadyLogic.cs" />
+     <Compile Include="Assets\_SlowJam\Scripts\ReadyManager.cs" />
+     <Compile Include="Assets\_SlowJam\Scripts\SectionController.cs" />
+     <Compile Include="Assets\_SlowJam\Scripts\SectionManagerBehaviour.cs" />
+     <Compile Include="Assets\_SlowJam\Scripts\_root.cs" />
      <None Include="Assets\_SlowJam\Shaders\WorldShader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
