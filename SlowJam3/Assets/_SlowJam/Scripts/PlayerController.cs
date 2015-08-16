@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         }
 		DetectButtons();
         Debug.DrawLine(transform.position, playerCenter);
-        Vector3 moveDir = Move();
+		Vector3 moveDir = TinderBoxMove();
         if (moveDir.magnitude != 0)
         {
             moveDir.Normalize();
@@ -110,34 +110,35 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(new Ray(transform.position, moveDir), out hit, stepLength))
         {
-            moveDir = Vector3.zero;
+			if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Terrain"))
+            	moveDir = Vector3.zero;
         }
         return moveDir;
     }
 	Vector3 TinderBoxMove() {
 		Vector3 moveDir = Vector3.zero;
-		if (TinderBoxAPI.ControlState(myPlayer, Controls.Up))
+		if (TinderBoxAPI.ControlState(myPlayer, TinderBox.Controls.Up))
 		{
 			moveDir += Vector3.forward;
 		}
-		if (TinderBoxAPI.ControlState(myPlayer, Controls.Down))
+		if (TinderBoxAPI.ControlState(myPlayer, TinderBox.Controls.Down))
 		{
 			moveDir -= Vector3.forward;
 		}
-		if (TinderBoxAPI.ControlState(myPlayer, Controls.Left))
+		if (TinderBoxAPI.ControlState(myPlayer, TinderBox.Controls.Left))
 		{
 			moveDir -= Vector3.right;
 		}
-		if (TinderBoxAPI.ControlState(myPlayer, Controls.Right))
+		if (TinderBoxAPI.ControlState(myPlayer, TinderBox.Controls.Right))
 		{
 			moveDir += Vector3.right;
 		}
-		moveDir = Vector3.zero;
 		Debug.DrawRay(transform.position, moveDir*2,Color.red);
 		RaycastHit hit;
 		if (Physics.Raycast(new Ray(transform.position, moveDir), out hit, stepLength))
 		{
-			moveDir = Vector3.zero;
+			if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Terrain"))
+				moveDir = Vector3.zero;
 		}
 		return moveDir;
 	}
@@ -191,12 +192,30 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
+
     void OnTriggerEnter(Collider other)
     {
         EggLogic egg = other.gameObject.GetComponent<EggLogic>();
         if (egg != null) egg.PickUp(this);
-        //Debug.Log("EGG GET!");
+
+		QTEScript QTE = other.gameObject.GetComponent<QTEScript>();
+		if (QTE != null)
+		{
+			QTE.PlayerEnter(myPlayer);
+			Debug.Log("QTE Trigger entered");
+		}
     }
+
+	void OnTriggerExit(Collider other)
+	{
+		QTEScript QTE = other.gameObject.GetComponent<QTEScript>();
+		if (QTE != null)
+		{
+			QTE.PlayerExit(myPlayer);
+			Debug.Log("QTE Trigger exited");
+		}
+	}
+	
 	void DetectButtons() {
 		// Blue Button on the TinderBox
 		if(Input.GetKeyDown(button1)) {
