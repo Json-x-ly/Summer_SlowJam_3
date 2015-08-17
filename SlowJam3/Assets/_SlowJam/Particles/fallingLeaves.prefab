@@ -23,9 +23,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108660}
-  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -18.8799992, y: 22.3099995, z: 11.2700005}
-  m_LocalScale: {x: 19.423027, y: 19.4230289, z: 1.67874205}
+  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalPosition: {x: 11.8999996, y: 20.6000004, z: -19.0400009}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -203,7 +203,7 @@ ParticleSystem:
         rgba: 4294967295
       maxColor:
         serializedVersion: 2
-        rgba: 4294967295
+        rgba: 4284743500
       minMaxState: 0
     startSize:
       scalar: .5
@@ -277,9 +277,9 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 2
     enabled: 1
-    type: 5
+    type: 9
     radius: 1
-    angle: 25
+    angle: 45
     length: 5
     boxX: 1
     boxY: 1
@@ -371,7 +371,7 @@ ParticleSystem:
   RotationModule:
     enabled: 1
     curve:
-      scalar: 15.707963
+      scalar: 4.71238899
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -706,7 +706,7 @@ ParticleSystem:
     inWorldSpace: 0
     randomizePerFrame: 0
   ExternalForcesModule:
-    enabled: 1
+    enabled: 0
     multiplier: 50
   ClampVelocityModule:
     enabled: 0
@@ -884,7 +884,7 @@ ParticleSystem:
   RotationBySpeedModule:
     enabled: 0
     curve:
-      scalar: .17453292
+      scalar: 6.28318501
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -916,7 +916,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
       minMaxState: 0
-    range: {x: 4.98999977, y: 500}
+    range: {x: .125, y: .5}
   ColorBySpeedModule:
     enabled: 0
     gradient:
@@ -1015,8 +1015,8 @@ ParticleSystem:
       minMaxState: 1
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
-    type: 0
+    enabled: 0
+    type: 1
     plane0: {fileID: 0}
     plane1: {fileID: 0}
     plane2: {fileID: 0}
@@ -1030,7 +1030,7 @@ ParticleSystem:
     particleRadius: .00999999978
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 4294967240
     quality: 0
     voxelSize: .5
     collisionMessages: 0
