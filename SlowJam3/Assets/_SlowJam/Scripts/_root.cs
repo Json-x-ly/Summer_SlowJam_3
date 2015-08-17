@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(LogicVisualSpace))]
+[RequireComponent(typeof(KillZ))]
+
 public class _root : MonoBehaviour {
     public bool toggle;
+    static GameObject go;
+    private static Vector3 spawnPos;
     public enum _state { SplashScreen, Ready, Playing, Lose };
     private static _state __state = _state.SplashScreen;
-    static GameObject go;
     public static _state state
     {
         get
@@ -28,9 +32,13 @@ public class _root : MonoBehaviour {
             case(_state.Ready):
                 SpawnReadyCards();
                 go.AddComponent<ReadyManager>();
+                go.transform.position = spawnPos;
                 break;
             case(_state.Playing):
                 PlayerManager.PrepPlayers();
+                break;
+            case(_state.Lose):
+                state=_state.Ready;
                 break;
         }
         switch (old)
@@ -43,13 +51,27 @@ public class _root : MonoBehaviour {
                 }
                 Destroy(go.GetComponent<ReadyManager>());
                 break;
+            case (_state.Playing):
+                PlayerManager.CleanUpAllPlayers();
+                break;
         }
     }
     void Awake()
     {
         go = this.gameObject;
+        spawnPos = transform.position;
         state = _state.Ready;
-        //TinderBox.TinderBoxAPI.IsReady();
+        MeshFilter[] meshes = GameObject.FindObjectsOfType(typeof(MeshFilter))as MeshFilter[];
+        Debug.Log("Meshes found: " + meshes.Length);
+        foreach (MeshFilter mesh in meshes)
+        {
+            Vector2[] uvs = new Vector2[mesh.mesh.vertices.Length];
+            for (int i = 0; i < uvs.Length; i++)
+            {
+                uvs[i] = new Vector2(0.5f,0.5f);
+            }
+            mesh.mesh.uv = uvs;
+        }
 	}
     void Update()
     {
@@ -70,7 +92,7 @@ public class _root : MonoBehaviour {
     {
         for (int x = 0; x < 4; x++)
         {
-            int cabPos = LookUp.PlayerPosition(x);
+            int cabPos = LookUp.PlayerCabinetPosition(x);
             GameObject go = GameObject.CreatePrimitive(PrimitiveType.Quad);
             go.name = "ReadyPlayer " + x;
             go.transform.position = rcStartPos + Vector3.right * cabPos * rcStepLength;

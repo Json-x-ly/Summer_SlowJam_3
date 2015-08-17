@@ -9,8 +9,8 @@
             float4 vert(float4 v:POSITION) : SV_POSITION {
                 float4 worldV = mul (_Object2World, v);
 				worldV.y-=pow(worldV.z*0.1,2);
-				worldV.y+=sin(worldV.z*0.5+_Time.x*50)*0.2f;
-				worldV.y+=sin(worldV.z*0.5+worldV.x+_Time.x*30)*0.2;
+				worldV.y+=sin(worldV.z*0.5+_MyTime*50)*0.2f;
+				worldV.y+=sin(worldV.z*0.5+worldV.x+_MyTime*30)*0.2;
 				return mul (UNITY_MATRIX_VP, worldV);
             }
 
@@ -25,10 +25,12 @@
 Shader "World" {
    Properties {
       _BumpMap ("Normal Map", 2D) = "bump" {}
+      _ColorAtlas ("ColorAtlas", 2D) = "white" {}
       _Color ("Diffuse Material Color", Color) = (1,1,1,1) 
       _SpecColor ("Specular Material Color", Color) = (1,1,1,1) 
       _Shininess ("Shininess", Float) = 10
       _Offset ("Offset", Float) = 0
+      _MyTime ("Time", Float) = 0
    }
    SubShader {
       Pass {      
@@ -46,11 +48,13 @@ Shader "World" {
  
          // User-specified properties
          uniform sampler2D _BumpMap;	
+         uniform sampler2D _ColorAtlas;	
          uniform float4 _BumpMap_ST;
          uniform float4 _Color; 
          uniform float4 _SpecColor; 
          uniform float _Shininess;
          uniform float _Offset;
+         uniform float _MyTime;
  
          struct vertexInput {
             float4 vertex : POSITION;
@@ -70,8 +74,8 @@ Shader "World" {
          float GetCurve(float3 p)
 		 {
 			float o = p.y-(pow((p.z+_Offset)*0.1,2));
-			o+=+sin(p.z*0.1+p.x*0.1+_Time.x*30)*1;
-			//o+=sin(p.z*0.3+_Time.x*30)*0.2 ;
+			o+=+sin(p.z*0.1+p.x*0.1+_MyTime)*1;
+			o+=sin(p.z*0.3+_MyTime)*0.2 ;
 			return o;
 		 }
 		 float3 GetTangent(float3 p){
@@ -173,12 +177,12 @@ Shader "World" {
                attenuation = 1.0 / distance; // linear attenuation 
                lightDirection = normalize(vertexToLightSource);
             }
- 
+			float3 clr = tex2D(_ColorAtlas,input.tex.xy);
             float3 ambientLighting = 
-               UNITY_LIGHTMODEL_AMBIENT.rgb * _Color.rgb;
+               UNITY_LIGHTMODEL_AMBIENT.rgb * clr;
  
             float3 diffuseReflection = 
-               attenuation * _LightColor0.rgb * _Color.rgb
+               attenuation * _LightColor0.rgb * clr
                * max(0.0, dot(normalDirection, lightDirection));
  
             float3 specularReflection;

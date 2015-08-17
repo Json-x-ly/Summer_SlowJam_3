@@ -6,7 +6,7 @@ public class PlayerManager{
     const int PLAYER2 = 2;
     const int PLAYER3 = 4;
     const int PLAYER4 = 8;
-    private static PlayerController[] registerdPlayers = new PlayerController[4];
+    public static PlayerController[] registerdPlayers = new PlayerController[4];
     private static int _playerCount;
     public static int playerCount
     {
@@ -72,10 +72,19 @@ public class PlayerManager{
         {
             if (IsPlayerActive(x))
             {
-                Debug.Log("PLayer " + x + " is ready.");
+                Debug.Log("Player " + x + " is ready. At Position " + LookUp.PlayerCabinetPosition(x));
                 registerdPlayers[x].PrepForGame();
+				registerdPlayers[x].SetTinderBoxInputs(LookUp.PlayerCabinetPosition(x));
             }
         }
     }
+    public static void CleanUpAllPlayers()
+    {
 
+        for (int x = PlayerController.playerCount; x--> 0; )
+        {
+            PlayerController.players[x].UnloadPostGame();
+        }
+        activePlayers = 0;
+    }
 }
