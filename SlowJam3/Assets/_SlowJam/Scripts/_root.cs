@@ -8,7 +8,8 @@ public class _root : MonoBehaviour {
     public bool toggle;
     static GameObject go;
     private static Vector3 spawnPos;
-    public enum _state { SplashScreen, Ready, Playing, Lose };
+    private static bool delayReady=false;
+    public enum _state { SplashScreen, Ready, Playing, Lose ,Win};
     private static _state __state = _state.SplashScreen;
     public static _state state
     {
@@ -30,15 +31,20 @@ public class _root : MonoBehaviour {
         switch (now)
         {
             case(_state.Ready):
+                LevelController.main.resetLevel();
                 SpawnReadyCards();
-                go.AddComponent<ReadyManager>();
+                if (go.GetComponent<ReadyManager>()==null)
+                    go.AddComponent<ReadyManager>();
                 go.transform.position = spawnPos;
                 break;
             case(_state.Playing):
                 PlayerManager.PrepPlayers();
                 break;
-            case(_state.Lose):
-                state=_state.Ready;
+            case (_state.Lose):
+                delayReady = true;
+                break;
+            case (_state.Win):
+                delayReady = true;
                 break;
         }
         switch (old)
@@ -60,7 +66,6 @@ public class _root : MonoBehaviour {
     {
         go = this.gameObject;
         spawnPos = transform.position;
-        state = _state.Ready;
         MeshFilter[] meshes = GameObject.FindObjectsOfType(typeof(MeshFilter))as MeshFilter[];
         Debug.Log("Meshes found: " + meshes.Length);
         foreach (MeshFilter mesh in meshes)
@@ -73,6 +78,11 @@ public class _root : MonoBehaviour {
             mesh.mesh.uv = uvs;
         }
 	}
+    void Start()
+    {
+
+        state = _state.Ready;
+    }
     void Update()
     {
         if (Input.GetKeyDown("return"))
@@ -83,6 +93,11 @@ public class _root : MonoBehaviour {
         {
             toggle = false;
             state = _state.Playing;
+        }
+        if (delayReady)
+        {
+            delayReady = false;
+            state = _state.Ready;
         }
     }
     static readonly Vector3 rcStartPos = new Vector3(-5, 5, 1);

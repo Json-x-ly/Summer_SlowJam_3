@@ -147,6 +147,48 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1001 &1016552983
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 424044, guid: 13a370b81684e1f44a57c77eae3b761e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 424044, guid: 13a370b81684e1f44a57c77eae3b761e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 424044, guid: 13a370b81684e1f44a57c77eae3b761e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 424044, guid: 13a370b81684e1f44a57c77eae3b761e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 424044, guid: 13a370b81684e1f44a57c77eae3b761e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 424044, guid: 13a370b81684e1f44a57c77eae3b761e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 424044, guid: 13a370b81684e1f44a57c77eae3b761e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 424044, guid: 13a370b81684e1f44a57c77eae3b761e, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 13a370b81684e1f44a57c77eae3b761e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1160053614
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,10 +327,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1426151883}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4ee7ba794b92c84fb4d1e54dd8ad125, type: 3}
+  m_Script: {fileID: 11500000, guid: aed005cbc590ae146939de45d7ad05ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1418604824}
+  endCave: {fileID: 180262, guid: 60eb9f8d2ad52c24f9011ef3bc55a761, type: 2}
+  gameLength: 400
 --- !u!1 &1661563526
 GameObject:
   m_ObjectHideFlags: 0
