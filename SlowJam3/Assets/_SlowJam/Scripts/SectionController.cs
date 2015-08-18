@@ -18,21 +18,19 @@ public class SectionController : MonoBehaviour {
 		if (max > 1f)
 			max = 1f;
 		c = new Color(Random.Range(min, max), Random.Range(min, max), Random.Range(min, max));
-        //Changed from rendering color to setting UV space;
-		foreach(MeshFilter mf in GetComponentsInChildren<MeshFilter>()) {
-			//mr.material.color = c;
-
-            Vector2[] uvs = new Vector2[mf.mesh.vertices.Length];
-            for (int i = 0; i < uvs.Length; i++)
-            {
-                uvs[i] = new Vector2(0.5f, 0.5f);
-            }
-            mf.mesh.uv = uvs;
-			mf.gameObject.layer = LayerMask.NameToLayer("Terrain");
+		foreach(MeshRenderer mr in GetComponentsInChildren<MeshRenderer>()) {
+			mr.material.color = c;
 		}
-
-		Length = GetComponentInChildren<MeshFilter>().mesh.bounds.size.z;
-		//Length *= transform.Find("Mesh").localScale.z;
+	
+		//this will be cleaner once we get rid of the place holder tiles
+		Transform t = transform.FindChild ("Mesh").FindChild("tileMesh");
+		if (t != null) {
+			Length += t.GetComponent<MeshFilter> ().mesh.bounds.size.z;
+			Length *= t.localScale.z;
+		} else {
+			Length = GetComponentInChildren<MeshFilter> ().mesh.bounds.size.z;
+			Length *= transform.FindChild("Mesh").localScale.z;
+		}
 		Length *= transform.localScale.z;
 	}
 
@@ -41,6 +39,7 @@ public class SectionController : MonoBehaviour {
 	}
 
 	void Update () {
+		/*maybe we'll use this one day
 		frustumPlanes = GeometryUtility.CalculateFrustumPlanes (Camera.main);
 		isVisible = false;
 		foreach(MeshCollider mc in GetComponentsInChildren<MeshCollider>()) {
@@ -49,6 +48,7 @@ public class SectionController : MonoBehaviour {
 				break;
 			}
 		}
+		*/
 	}
 
 	public bool IsVisible {
