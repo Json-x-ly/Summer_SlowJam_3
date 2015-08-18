@@ -17,9 +17,19 @@ public class SectionController : MonoBehaviour {
 			min = 0f;
 		if (max > 1f)
 			max = 1f;
-		c = new Color(Random.Range(min, max), Random.Range(min, max), Random.Range(min, max));
-		foreach(MeshRenderer mr in GetComponentsInChildren<MeshRenderer>()) {
-			mr.material.color = c;
+        c = new Color(Random.Range(min, max), Random.Range(min, max), Random.Range(min, max));
+        foreach (MeshRenderer mr in GetComponentsInChildren<MeshRenderer>())
+        {
+            mr.material = LogicVisualSpace.main.worldMat;
+        }
+		foreach(MeshFilter mf in GetComponentsInChildren<MeshFilter>()) {
+            
+            Vector2[] uvs = new Vector2[mf.mesh.vertices.Length];
+            for (int i = 0; i < uvs.Length; i++)
+            {
+                uvs[i] = new Vector2(0.5f, 0.5f);
+            }
+            mf.mesh.uv = uvs;
 		}
 	
 		//this will be cleaner once we get rid of the place holder tiles

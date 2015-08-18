@@ -38,13 +38,6 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _ColorAtlas
-        second:
-          m_Texture: {fileID: 2800000, guid: bf70f37ce4d13fb4d9303891d0b70376, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
           name: _ParallaxMap
         second:
           m_Texture: {fileID: 0}
@@ -87,9 +80,23 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
+          name: _ColorAtlas
+        second:
+          m_Texture: {fileID: 2800000, guid: bf70f37ce4d13fb4d9303891d0b70376, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
           name: _SpecGlossMap
         second:
           m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _ScreenTexture
+        second:
+          m_Texture: {fileID: 2800000, guid: 3d9640d881b8a1f41b2586c6676913fa, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -109,14 +116,6 @@ Material:
         first:
           name: _Shininess
         second: 10
-      data:
-        first:
-          name: _Offset
-        second: -55.5297241
-      data:
-        first:
-          name: _MyTime
-        second: 39.0102539
       data:
         first:
           name: _Parallax
@@ -153,6 +152,14 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _Offset
+        second: 0
+      data:
+        first:
+          name: _MyTime
+        second: 233.297882
     m_Colors:
       data:
         first:

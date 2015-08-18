@@ -6,6 +6,7 @@ using System.Linq;
 public class LevelController : MonoBehaviour {
 	public GameObject player;
 	public GameObject endCave;
+    public static LevelController main;
 	public float gameLength;
 
 	private ArrayList currentPath = new ArrayList();
@@ -13,7 +14,7 @@ public class LevelController : MonoBehaviour {
 	private GameObject[] staticSections;
 	private bool levelDone = false;
 	private float currentLength = 0;
-	private float speed = 30f;
+	public float speed = 30f;
 	private int sectionsSinceDynamic = 0; //how many  sections have been spawned that weren't dynamic
 
 	public void resetLevel() {
@@ -21,24 +22,22 @@ public class LevelController : MonoBehaviour {
 		levelDone = false;
 		currentLength = 0;
 		sectionsSinceDynamic = 0;
-		player.transform.position = Vector3.zero;
 		spawnInitialSections();
 	}
 
 	void Awake() {
 		//player = GameObject.Find("Player");
-	}
+        main = this;
+        GameObject[] loadedDynamicSections = Resources.LoadAll("Sections/Dynamic", typeof(GameObject)).Cast<GameObject>().ToArray();
+        dynamicSections = new SortedList<float, GameObject>(loadedDynamicSections.Length);
+        foreach (GameObject go in loadedDynamicSections)
+        {
+            float difficulty = go.GetComponent<SectionController>().difficulty;
+            dynamicSections.Add(difficulty, go);
+        }
 
-	void Start () {
-		GameObject[] loadedDynamicSections = Resources.LoadAll ("Sections/Dynamic", typeof(GameObject)).Cast<GameObject>().ToArray();
-		dynamicSections = new SortedList<float, GameObject>(loadedDynamicSections.Length);
-		foreach (GameObject go in loadedDynamicSections) {
-			float difficulty = go.GetComponent<SectionController>().difficulty;
-			dynamicSections.Add(difficulty, go);
-		}
-
-		staticSections = Resources.LoadAll ("Sections/Static", typeof(GameObject)).Cast<GameObject>().ToArray();
-		spawnInitialSections();
+        staticSections = Resources.LoadAll("Sections/Static", typeof(GameObject)).Cast<GameObject>().ToArray();
+        spawnInitialSections();
 	}
 
 	private void spawnInitialSections() {
@@ -63,12 +62,13 @@ public class LevelController : MonoBehaviour {
         if (_root.state == _root._state.Playing)
         {
             Vector3 pos = player.transform.position;
-            pos.z += speed * Time.deltaTime*0.05f;
+            pos.z += speed * Time.deltaTime;
             player.transform.position = pos;
         }
 
 		if (currentPath.Count == 0) {//game's over
-			resetLevel ();
+            _root.state = _root._state.Win;
+
 		}
 
 		GameObject firstSection = (GameObject) currentPath [0];
@@ -118,7 +118,7 @@ public class LevelController : MonoBehaviour {
 		if (max > 1f)
 			max = 1f;
 		float difficulty = Random.Range(min, max);
-		Debug.Log ("diff: " + difficulty + ", perc: " + perc + ", range: " + range);
+		//Debug.Log ("diff: " + difficulty + ", perc: " + perc + ", range: " + range);
 		return difficulty;
 	}
 
