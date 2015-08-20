@@ -41,6 +41,7 @@ public class _root : MonoBehaviour {
                 PlayerManager.PrepPlayers();
                 break;
             case (_state.Lose):
+                TinderBox.TinderBoxAPI.GameOver();
                 delayReady = true;
                 break;
             case (_state.Win):
@@ -77,6 +78,8 @@ public class _root : MonoBehaviour {
             }
             mesh.mesh.uv = uvs;
         }
+        
+        TinderBox.TinderBoxAPI.IsReady();
 	}
     void Start()
     {

@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     public PlayerEggNode eggNode
     {
         get { return myEggNode; }
-
         set { myEggNode = value; }
     }
 	public static int playerCount
@@ -42,7 +41,6 @@ public class PlayerController : MonoBehaviour
             else
                 return moveSpeed * Time.deltaTime * eggPenalty;
         }
-
     }
 	string upKey;
 	string downKey;
@@ -136,49 +134,49 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, faceDir, Time.deltaTime*10);
         }
 	}
-    Vector3 Move()
-    {
-        Vector3 moveDir = Vector3.zero;
-        if (Input.GetKey(upKey))
-        {
-            moveDir += Vector3.forward;
-        }
-        if (Input.GetKey(downKey))
-        {
-            moveDir -= Vector3.forward;
-        }
-        if (Input.GetKey(leftKey))
-        {
-            moveDir -= Vector3.right;
-        }
-        if (Input.GetKey(rightKey))
-        {
-            moveDir += Vector3.right;
-        }
-        Debug.DrawRay(transform.position, moveDir*2,Color.red);
-        RaycastHit hit;
-        if (Physics.Raycast(new Ray(transform.position, moveDir), out hit, stepLength))
-        {
-			if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Terrain"))
-            	moveDir = Vector3.zero;
-        }
-        return moveDir;
-    }
+    //Vector3 Move()
+    //{
+    //    Vector3 moveDir = Vector3.zero;
+    //    if (Input.GetKey(upKey))
+    //    {
+    //        moveDir += Vector3.forward;
+    //    }
+    //    if (Input.GetKey(downKey))
+    //    {
+    //        moveDir -= Vector3.forward;
+    //    }
+    //    if (Input.GetKey(leftKey))
+    //    {
+    //        moveDir -= Vector3.right;
+    //    }
+    //    if (Input.GetKey(rightKey))
+    //    {
+    //        moveDir += Vector3.right;
+    //    }
+    //    Debug.DrawRay(transform.position, moveDir*2,Color.red);
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(new Ray(transform.position, moveDir), out hit, stepLength))
+    //    {
+	//		if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Terrain"))
+    //        	moveDir = Vector3.zero;
+    //    }
+    //    return moveDir;
+    //}
 	Vector3 TinderBoxMove() {
 		Vector3 moveDir = Vector3.zero;
-		if (TinderBoxAPI.ControlState(myPlayer, TinderBox.Controls.Up))
+		if (TinderBoxAPI.ControlState(myNumber, TinderBox.Controls.Up))
 		{
 			moveDir += Vector3.forward;
 		}
-		if (TinderBoxAPI.ControlState(myPlayer, TinderBox.Controls.Down))
+		if (TinderBoxAPI.ControlState(myNumber, TinderBox.Controls.Down))
 		{
 			moveDir -= Vector3.forward;
 		}
-		if (TinderBoxAPI.ControlState(myPlayer, TinderBox.Controls.Left))
+		if (TinderBoxAPI.ControlState(myNumber, TinderBox.Controls.Left))
 		{
 			moveDir -= Vector3.right;
 		}
-		if (TinderBoxAPI.ControlState(myPlayer, TinderBox.Controls.Right))
+		if (TinderBoxAPI.ControlState(myNumber, TinderBox.Controls.Right))
 		{
 			moveDir += Vector3.right;
 		}
@@ -288,7 +286,7 @@ public class PlayerController : MonoBehaviour
         {
             int target = LookUp.PlayerLogicPosition(0);
             if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay) { 
-                Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
+                Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
             }
@@ -298,7 +296,7 @@ public class PlayerController : MonoBehaviour
         {
             int target = LookUp.PlayerLogicPosition(1);
             if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay) { 
-                Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
+                Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
             }
@@ -307,7 +305,7 @@ public class PlayerController : MonoBehaviour
         {
             int target = LookUp.PlayerLogicPosition(2);
             if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay) { 
-                Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
+                Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
             }
@@ -316,7 +314,7 @@ public class PlayerController : MonoBehaviour
         {
             int target = LookUp.PlayerLogicPosition(3);
             if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay){
-                Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
+                Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
             }

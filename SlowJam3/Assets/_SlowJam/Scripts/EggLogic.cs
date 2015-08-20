@@ -41,7 +41,7 @@ public class EggLogic : MonoBehaviour {
 	void OnTriggerEnter(Collider collider) {
 		if (state == _state.Falling || state == _state.Throwing) {
 			if (collider.gameObject.layer == LayerMask.NameToLayer ("Player")) {
-				Debug.Log ("Player should be holding the egg...");
+				Debug.Log (collider.gameObject.name + " should be holding the egg...");
 				PickUp(collider.gameObject.GetComponent<PlayerController>());
 			}
 		}
@@ -90,6 +90,7 @@ public class EggLogic : MonoBehaviour {
             //ThrowStriaght();
             ThrowAt(nearest.transform.position);
             heldBy.state = PlayerController._state.Empty;
+            heldBy = null;
         }
     }
 	public void ThrowToPlayer(Vector3 receivingPlayer) {
@@ -99,7 +100,9 @@ public class EggLogic : MonoBehaviour {
 			//Vector3 distance = receivingPlayer - this.transform.position;
 			ThrowAt(receivingPlayer);
 			//delta = Vector3.Normalize ((distance) + Vector3.up) * 5.0f;
+            heldBy.state = PlayerController._state.Empty;
 			heldBy = null;
+
 		}
 	}
     private void ThrowStriaght()
