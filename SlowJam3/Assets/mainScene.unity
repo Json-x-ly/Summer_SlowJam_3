@@ -1687,7 +1687,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b531a3f941bc0488672cadf9c0b42b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 3
   myNumber: -1
 --- !u!23 &870747681
 MeshRenderer:
@@ -2357,7 +2356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b531a3f941bc0488672cadf9c0b42b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 3
   myNumber: -1
 --- !u!54 &1140823141
 Rigidbody:
@@ -2478,7 +2476,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b531a3f941bc0488672cadf9c0b42b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 3
   myNumber: -1
 --- !u!23 &1181644790
 MeshRenderer:
@@ -2859,6 +2856,8 @@ GameObject:
   - 114: {fileID: 1451562089}
   - 114: {fileID: 1451562090}
   - 114: {fileID: 1451562082}
+  - 114: {fileID: 1451562091}
+  - 114: {fileID: 1451562092}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2969,8 +2968,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1451562081}
-  endCave: {fileID: 119528, guid: d25b47f8160bd3440ad4e8a18880f054, type: 2}
-  gameLength: 200
+  endCave: {fileID: 174216, guid: 60eb9f8d2ad52c24f9011ef3bc55a761, type: 2}
+  gameLength: 100
   speed: 30
 --- !u!114 &1451562090
 MonoBehaviour:
@@ -2983,6 +2982,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a1cf873cfc9444abbfc5e55aea463e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1451562091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1451562081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b73349e3633b7b9469ce839fab03df4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1451562092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1451562081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3af1750b462c0754f8bdedbcfac595d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  winThing: {fileID: 101844, guid: d6bc1ef394d6d9c478a193408c8e7aa0, type: 2}
 --- !u!1 &1471638658
 GameObject:
   m_ObjectHideFlags: 0
@@ -3775,7 +3797,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b531a3f941bc0488672cadf9c0b42b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 3
   myNumber: -1
 --- !u!23 &2049329497
 MeshRenderer:

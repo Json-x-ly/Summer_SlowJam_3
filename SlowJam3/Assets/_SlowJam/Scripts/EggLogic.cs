@@ -20,10 +20,7 @@ public class EggLogic : MonoBehaviour {
 		//Destroy (shadowBigObject.GetComponent<BoxCollider> ());
 
     }
-	void Start () {
-	
-	}
-	
+	void Start () {}
 	// Update is called once per frame
 	void Update () {
         switch (state)
@@ -58,7 +55,7 @@ public class EggLogic : MonoBehaviour {
         {
             heldBy = pc;
             state = _state.Held;
-            pc.state = PlayerController._state.Hold;
+			pc.state = PlayerState.HOLDING;
 			//transform.position = heldBy.eggNode.transform.position;
         }
     }
@@ -89,7 +86,7 @@ public class EggLogic : MonoBehaviour {
             }
             //ThrowStriaght();
             ThrowAt(nearest.transform.position);
-            heldBy.state = PlayerController._state.Empty;
+			heldBy.state = PlayerState.NOT_HOLDING;
         }
     }
 	public void ThrowToPlayer(Vector3 receivingPlayer) {

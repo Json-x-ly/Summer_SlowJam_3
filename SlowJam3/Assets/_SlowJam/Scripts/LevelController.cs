@@ -59,18 +59,8 @@ public class LevelController : MonoBehaviour {
 	}
 
 	void Update () {
-        if (_root.state == _root._state.Playing)
-        {
-            Vector3 pos = player.transform.position;
-            pos.z += speed * Time.deltaTime;
-            player.transform.position = pos;
-        }
-
-		if (currentPath.Count == 0) {//game's over
-            _root.state = _root._state.Win;
-
-		}
-
+		if (_root.state != GameState.PLAYING)
+			return;
 		GameObject firstSection = (GameObject) currentPath [0];
 		if(Camera.main.transform.position.z - 15 > firstSection.transform.position.z) {
 			currentPath.RemoveAt(0);

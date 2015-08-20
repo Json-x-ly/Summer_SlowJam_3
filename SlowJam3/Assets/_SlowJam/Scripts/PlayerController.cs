@@ -7,9 +7,9 @@ public class PlayerController : MonoBehaviour
     float moveSpeed = 4.0f;
 	Players myPlayer;
 	private const float eggPenalty = 0.6f;
-    public enum _state { Empty, Hold, QTE ,NotInPlay};
-    public _state state = _state.NotInPlay;
-    public static IList<PlayerController> players = new List<PlayerController>();
+	private PlayerState myState = PlayerState.NOT_IN_PLAY;
+	public static IList<PlayerController> players = new List<PlayerController>();
+	private IList<StateChangeListener> stateChangeListeners = new List<StateChangeListener>();
     private float catchExpireTime = float.MinValue;
     private PlayerEggNode myEggNode;
     public PlayerEggNode eggNode
@@ -27,6 +27,10 @@ public class PlayerController : MonoBehaviour
     {
         get {
             Vector3 pos = Vector3.zero;
+
+			if(playerCount == 0) //avoid NaN errors before players have ready'd up
+				return pos;
+
             for (int x = 0; x < playerCount; x++)
             {
                 pos += players[x].transform.position;
@@ -37,13 +41,27 @@ public class PlayerController : MonoBehaviour
     public float stepLength
     {
         get {
-            if (state == _state.Empty)
+			if (state == PlayerState.NOT_HOLDING)
                 return moveSpeed * Time.deltaTime;
             else
                 return moveSpeed * Time.deltaTime * eggPenalty;
         }
 
     }
+	public PlayerState state {
+		set {
+			foreach(StateChangeListener scl in stateChangeListeners) {
+				scl.playerStateChanged(myNumber, myState, value);
+			}
+			myState = value;
+		}
+		get {
+			return myState;
+		}
+	}
+	public void addStateChangeListener(StateChangeListener scl) {
+		stateChangeListeners.Add(scl);
+	}
 	string upKey;
 	string downKey;
 	string leftKey;
@@ -58,6 +76,7 @@ public class PlayerController : MonoBehaviour
 		gameObject.layer = LayerMask.NameToLayer ("Player"); 	
 
         myNumber = PlayerManager.InitPlayerRegistration(this);
+
         if (myNumber == -1)
         {
             Destroy(gameObject);
@@ -75,7 +94,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
 
-        Mesh mesh = GetComponent<MeshFilter>().mesh;
+        Mesh mesh = GetComponentInChildren<MeshFilter>().mesh;
         Vector2[] uvs = new Vector2[mesh.vertices.Length];
         Vector2 pos = new Vector2(0.5f, 0.5f);
         switch (myNumber)
@@ -101,24 +120,24 @@ public class PlayerController : MonoBehaviour
     }
     public void PrepForGame()
     {
-        state = _state.Empty;
+		state = PlayerState.NOT_HOLDING;
         players.Add(this);
         //TODO center this properly when can math.
         transform.position = new Vector3(-5+(1.0f/(PlayerManager.playerCount))*(playerCount)*10, 0.5f, 10);
     }
     public void UnloadPostGame()
     {
-        state = _state.NotInPlay;
+		state = PlayerState.NOT_IN_PLAY;
         players.Remove(this);
         PlayerManager.RemovedPlayerFromActive(myNumber);
-        if (playerCount == 0 && _root.state == _root._state.Playing)
+        if (playerCount == 0 && _root.state == GameState.PLAYING)
         {
-            _root.state = _root._state.Lose;
+			//_root.state = GameState.LOSE;
         }
         transform.position = new Vector3(0, 0, -9000);
     }
 	void Update () {
-        if (state == _state.NotInPlay) return;
+        if (state == PlayerState.NOT_IN_PLAY) return;
         /*if (Input.GetKeyDown("space"))
         {
             EggLogic.main.Throw();
@@ -273,7 +292,7 @@ public class PlayerController : MonoBehaviour
 	}
     void NewButtons()
     {
-        if (state == _state.Empty && TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button5))
+        if (state == PlayerState.NOT_HOLDING && TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button5))
         {
             if (Time.time < catchExpireTime)
             {
@@ -283,11 +302,11 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        if (state != _state.Hold) return;
+        if (state != PlayerState.HOLDING) return;
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button1))
         {
             int target = LookUp.PlayerLogicPosition(0);
-            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay) { 
+            if (PlayerManager.registerdPlayers[target].state != PlayerState.NOT_IN_PLAY) { 
                 Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
@@ -297,7 +316,7 @@ public class PlayerController : MonoBehaviour
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button2))
         {
             int target = LookUp.PlayerLogicPosition(1);
-            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay) { 
+			if (PlayerManager.registerdPlayers[target].state != PlayerState.NOT_IN_PLAY) { 
                 Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
@@ -306,7 +325,7 @@ public class PlayerController : MonoBehaviour
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button3))
         {
             int target = LookUp.PlayerLogicPosition(2);
-            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay) { 
+			if (PlayerManager.registerdPlayers[target].state != PlayerState.NOT_IN_PLAY) { 
                 Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
@@ -315,7 +334,7 @@ public class PlayerController : MonoBehaviour
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button4))
         {
             int target = LookUp.PlayerLogicPosition(3);
-            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay){
+			if (PlayerManager.registerdPlayers[target].state != PlayerState.NOT_IN_PLAY){
                 Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
@@ -357,7 +376,7 @@ public class PlayerController : MonoBehaviour
         //}
     }
 	private void DoThrow (int playerIndex) {
-		Debug.Log("Should be throwing the egg..");
+		Debug.Log("Should be throwing the egg...");
 		//int temp = LookUp.PlayerCabinetPosition(playerIndex);
 		Vector3 position = PlayerManager.registerdPlayers[LookUp.PlayerCabinetPosition(playerIndex)].transform.position;
 		if (myNumber == playerIndex)

@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: World
-  m_Shader: {fileID: 4800000, guid: 2f4ae02b3bac1a34989286d8cd163ecd, type: 3}
+  m_Name: u did it champ
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -19,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 2cf9e26c00d22714ea3911cee58e0fc7, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -40,14 +40,14 @@ Material:
         first:
           name: _ColorAtlas
         second:
-          m_Texture: {fileID: 2800000, guid: bf70f37ce4d13fb4d9303891d0b70376, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _ScreenTexture
         second:
-          m_Texture: {fileID: 2800000, guid: 3d9640d881b8a1f41b2586c6676913fa, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -119,11 +119,11 @@ Material:
       data:
         first:
           name: _Offset
-        second: -10
+        second: 0
       data:
         first:
           name: _MyTime
-        second: 45.8207283
+        second: 0
       data:
         first:
           name: _Parallax
@@ -160,6 +160,30 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _Stencil
+        second: 0
+      data:
+        first:
+          name: _StencilComp
+        second: 8
+      data:
+        first:
+          name: _StencilOp
+        second: 0
+      data:
+        first:
+          name: _StencilReadMask
+        second: 255
+      data:
+        first:
+          name: _StencilWriteMask
+        second: 255
+      data:
+        first:
+          name: _ColorMask
+        second: 15
     m_Colors:
       data:
         first:
@@ -172,4 +196,4 @@ Material:
       data:
         first:
           name: _SpecColor
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: .200000003, g: .200000003, b: .200000003, a: 1}

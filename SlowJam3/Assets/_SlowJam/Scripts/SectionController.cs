@@ -6,18 +6,9 @@ public class SectionController : MonoBehaviour {
 	public float difficulty;
 
 	private float length;
-	private bool isVisible = true;
 	private Plane[] frustumPlanes;
 
 	void Awake () {
-		Color c;
-		float min = difficulty - .1f;
-		float max = difficulty + .1f;
-		if (min < 0f)
-			min = 0f;
-		if (max > 1f)
-			max = 1f;
-        c = new Color(Random.Range(min, max), Random.Range(min, max), Random.Range(min, max));
         foreach (MeshRenderer mr in GetComponentsInChildren<MeshRenderer>())
         {
             mr.material = LogicVisualSpace.main.worldMat;
@@ -61,12 +52,13 @@ public class SectionController : MonoBehaviour {
 		*/
 	}
 
-	public bool IsVisible {
-		get {
-			return isVisible;
-		}
-		set {
-			isVisible = value;
+	void OnTriggerEnter(Collider other) { //only the end section has a collider
+		PlayerController pc = other.GetComponent<PlayerController> ();
+		if(pc == null)
+			return;
+		if (pc.state == PlayerState.HOLDING) {
+			Debug.Log ("the egg made it to the cave");
+			_root.state = GameState.WIN;
 		}
 	}
 
