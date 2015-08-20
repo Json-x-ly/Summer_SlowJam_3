@@ -112,6 +112,7 @@ GameObject:
   - 4: {fileID: 400012}
   - 198: {fileID: 19800012}
   - 199: {fileID: 19900012}
+  - 114: {fileID: 11443094}
   m_Layer: 0
   m_Name: Burning Ground
   m_TagString: Untagged
@@ -209,6 +210,17 @@ Transform:
   - {fileID: 400002}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11443094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f6ef0790b107ce4faf7b9bbbd4ed466, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &19800000
 ParticleSystem:
   m_ObjectHideFlags: 1
