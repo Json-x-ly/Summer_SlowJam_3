@@ -90,6 +90,7 @@ public class EggLogic : MonoBehaviour {
             //ThrowStriaght();
             ThrowAt(nearest.transform.position);
             heldBy.state = PlayerController._state.Empty;
+            heldBy = null;
         }
     }
 	public void ThrowToPlayer(Vector3 receivingPlayer) {
@@ -99,7 +100,9 @@ public class EggLogic : MonoBehaviour {
 			//Vector3 distance = receivingPlayer - this.transform.position;
 			ThrowAt(receivingPlayer);
 			//delta = Vector3.Normalize ((distance) + Vector3.up) * 5.0f;
+            heldBy.state = PlayerController._state.Empty;
 			heldBy = null;
+
 		}
 	}
     private void ThrowStriaght()
