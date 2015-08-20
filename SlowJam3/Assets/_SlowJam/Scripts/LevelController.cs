@@ -54,6 +54,11 @@ public class LevelController : MonoBehaviour {
 			pos.z += newObjectLength/2;
 			currentLength += newObjectLength;
 			newObject.transform.position = pos;
+			newObject.layer = LayerMask.NameToLayer ("Terrain");
+			foreach (Transform child in newObject.transform) 
+			{
+				child.gameObject.layer = LayerMask.NameToLayer ("Terrain");
+			}
 			currentPath.Add(newObject);
 		}
 	}

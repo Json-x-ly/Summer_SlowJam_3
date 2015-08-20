@@ -41,7 +41,7 @@ public class EggLogic : MonoBehaviour {
 	void OnTriggerEnter(Collider collider) {
 		if (state == _state.Falling || state == _state.Throwing) {
 			if (collider.gameObject.layer == LayerMask.NameToLayer ("Player")) {
-				Debug.Log ("Player should be holding the egg...");
+				Debug.Log (collider.gameObject.name + " should be holding the egg...");
 				PickUp(collider.gameObject.GetComponent<PlayerController>());
 			}
 		}
