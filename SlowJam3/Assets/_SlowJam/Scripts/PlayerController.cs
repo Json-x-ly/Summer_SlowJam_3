@@ -164,19 +164,19 @@ public class PlayerController : MonoBehaviour
     //}
 	Vector3 TinderBoxMove() {
 		Vector3 moveDir = Vector3.zero;
-		if (TinderBoxAPI.ControlState(myPlayer, TinderBox.Controls.Up))
+		if (TinderBoxAPI.ControlState(myNumber, TinderBox.Controls.Up))
 		{
 			moveDir += Vector3.forward;
 		}
-		if (TinderBoxAPI.ControlState(myPlayer, TinderBox.Controls.Down))
+		if (TinderBoxAPI.ControlState(myNumber, TinderBox.Controls.Down))
 		{
 			moveDir -= Vector3.forward;
 		}
-		if (TinderBoxAPI.ControlState(myPlayer, TinderBox.Controls.Left))
+		if (TinderBoxAPI.ControlState(myNumber, TinderBox.Controls.Left))
 		{
 			moveDir -= Vector3.right;
 		}
-		if (TinderBoxAPI.ControlState(myPlayer, TinderBox.Controls.Right))
+		if (TinderBoxAPI.ControlState(myNumber, TinderBox.Controls.Right))
 		{
 			moveDir += Vector3.right;
 		}
