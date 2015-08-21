@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using TinderBox;
 public class PlayerController : MonoBehaviour
 {
-    float moveSpeed = 10.0f;
+    float moveSpeed = 20.0f;
 	Players myPlayer;
 	private const float eggPenalty = 0.6f;
     public enum _state { Empty, Hold, QTE ,NotInPlay};
     public _state state = _state.NotInPlay;  
     public static IList<PlayerController> players = new List<PlayerController>();
     private float catchExpireTime = float.MinValue;
+    public Vector3 delta = Vector3.zero;
     public bool isInWater;
     public bool isInTar;
     public float tarSlow = 0.5f;
@@ -142,13 +143,18 @@ public class PlayerController : MonoBehaviour
 		NewButtons();
         StaminaUpdate();
         Vector3 moveDir = TinderBoxMove();
+        //delta += TinderBoxMove();
         if (moveDir.magnitude != 0)
         {
             moveDir.Normalize();
-            transform.position += moveDir * stepLength;
+            delta += moveDir * stepLength;
+            //transform.position += moveDir * stepLength;
             Quaternion faceDir = Quaternion.Euler(0, Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, faceDir, Time.deltaTime*10);
         }
+        transform.position += delta * Time.deltaTime;
+        delta -= delta * Time.deltaTime*3;
+
 	}
     void StaminaUpdate()
     {
@@ -210,10 +216,14 @@ public class PlayerController : MonoBehaviour
 		}
 		Debug.DrawRay(transform.position, moveDir*2,Color.red);
 		RaycastHit hit;
-		if (Physics.Raycast(new Ray(transform.position, moveDir), out hit, stepLength))
+		if (Physics.Raycast(new Ray(transform.position, delta), out hit, stepLength))
 		{
-			if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Terrain"))
-				moveDir = Vector3.zero;
+            if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Terrain"))
+            {
+                delta = Vector3.zero;
+                moveDir = Vector3.zero;
+            }
+                
 		}
 		return moveDir;
 	}
@@ -295,6 +305,13 @@ public class PlayerController : MonoBehaviour
         {
             isInWater = true;
         }
+        TailLogic tail = other.gameObject.GetComponent<TailLogic>();
+        
+        if (tail != null)
+        {
+            delta.z -= 50;
+        }
+        
     }
 
 	void OnTriggerExit(Collider other)
