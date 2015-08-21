@@ -1,0 +1,227 @@
+fileFormatVersion: 2
+guid: ffbd40352dd92fb42a5c30f88f16183f
+timeCreated: 1440132916
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Brontosaurus1
+    100004: headJNT
+    100006: L_ankleJNT
+    100008: L_ballJNT
+    100010: L_elbowJNT
+    100012: L_handJNT
+    100014: L_hipJNT
+    100016: L_kneeJNT
+    100018: L_shoulderJNT
+    100020: L_wristJNT
+    100022: meshGRP
+    100024: neckJNT
+    100026: R_ankleJNT
+    100028: R_ballJNT
+    100030: R_elbowJNT
+    100032: R_handJNT
+    100034: R_hipJNT
+    100036: R_kneeJNT
+    100038: R_shoulderJNT
+    100040: R_wristJNT
+    100042: rootJNT
+    100044: skeletonGRP
+    100046: spineJNT01
+    100048: spineJNT02
+    100050: spineJNT03
+    100052: spineJNT04
+    100054: tailJNT_01
+    100056: tailJNT_02
+    100058: tailJNT_03
+    100060: tailJNT_04
+    100062: tailJNT_05
+    400000: //RootNode
+    400002: Brontosaurus1
+    400004: headJNT
+    400006: L_ankleJNT
+    400008: L_ballJNT
+    400010: L_elbowJNT
+    400012: L_handJNT
+    400014: L_hipJNT
+    400016: L_kneeJNT
+    400018: L_shoulderJNT
+    400020: L_wristJNT
+    400022: meshGRP
+    400024: neckJNT
+    400026: R_ankleJNT
+    400028: R_ballJNT
+    400030: R_elbowJNT
+    400032: R_handJNT
+    400034: R_hipJNT
+    400036: R_kneeJNT
+    400038: R_shoulderJNT
+    400040: R_wristJNT
+    400042: rootJNT
+    400044: skeletonGRP
+    400046: spineJNT01
+    400048: spineJNT02
+    400050: spineJNT03
+    400052: spineJNT04
+    400054: tailJNT_01
+    400056: tailJNT_02
+    400058: tailJNT_03
+    400060: tailJNT_04
+    400062: tailJNT_05
+    4300000: Brontosaurus1
+    7400000: Eating Loop
+    9500000: //RootNode
+    13700000: Brontosaurus1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Eating Loop
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 124
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: meshGRP
+        weight: 1
+      - path: meshGRP/Brontosaurus1
+        weight: 1
+      - path: skeletonGRP
+        weight: 1
+      - path: skeletonGRP/rootJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/L_hipJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/L_hipJNT/L_kneeJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/L_hipJNT/L_kneeJNT/L_ankleJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/L_hipJNT/L_kneeJNT/L_ankleJNT/L_ballJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/R_hipJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/R_hipJNT/R_kneeJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/R_hipJNT/R_kneeJNT/R_ankleJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/R_hipJNT/R_kneeJNT/R_ankleJNT/R_ballJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/spineJNT01
+        weight: 1
+      - path: skeletonGRP/rootJNT/spineJNT01/spineJNT02
+        weight: 1
+      - path: skeletonGRP/rootJNT/spineJNT01/spineJNT02/L_shoulderJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/spineJNT01/spineJNT02/L_shoulderJNT/L_elbowJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/spineJNT01/spineJNT02/L_shoulderJNT/L_elbowJNT/L_wristJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/spineJNT01/spineJNT02/L_shoulderJNT/L_elbowJNT/L_wristJNT/L_handJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/spineJNT01/spineJNT02/R_shoulderJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/spineJNT01/spineJNT02/R_shoulderJNT/R_elbowJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/spineJNT01/spineJNT02/R_shoulderJNT/R_elbowJNT/R_wristJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/spineJNT01/spineJNT02/R_shoulderJNT/R_elbowJNT/R_wristJNT/R_handJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/spineJNT01/spineJNT02/spineJNT03
+        weight: 1
+      - path: skeletonGRP/rootJNT/spineJNT01/spineJNT02/spineJNT03/spineJNT04
+        weight: 1
+      - path: skeletonGRP/rootJNT/spineJNT01/spineJNT02/spineJNT03/spineJNT04/neckJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/spineJNT01/spineJNT02/spineJNT03/spineJNT04/neckJNT/headJNT
+        weight: 1
+      - path: skeletonGRP/rootJNT/tailJNT_01
+        weight: 1
+      - path: skeletonGRP/rootJNT/tailJNT_01/tailJNT_02
+        weight: 1
+      - path: skeletonGRP/rootJNT/tailJNT_01/tailJNT_02/tailJNT_03
+        weight: 1
+      - path: skeletonGRP/rootJNT/tailJNT_01/tailJNT_02/tailJNT_03/tailJNT_04
+        weight: 1
+      - path: skeletonGRP/rootJNT/tailJNT_01/tailJNT_02/tailJNT_03/tailJNT_04/tailJNT_05
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

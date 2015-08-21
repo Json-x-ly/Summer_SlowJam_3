@@ -28,7 +28,7 @@ public class GameEndManager : MonoBehaviour, StateChangeListener {
 				if(selection == 2)
 					_root.state = GameState.READY;
 				else if(selection == 1)
-					_root.state = GameState.PLAYING;
+					_root.state = GameState.READY;
 				despawnCards();
 			}
 			bool restart = true;
@@ -130,8 +130,8 @@ public class GameEndManager : MonoBehaviour, StateChangeListener {
 		Vector3 rcSize = new Vector3(3, 1, 1);
 		const float rcStepLength = 1f + 1f / 3f;
 		for (int x = 0; x < 4; x++) {
-			if(!PlayerManager.IsPlayerActive(x))
-				continue;
+			//if(!PlayerManager.IsPlayerActive(x))
+				//continue;
 			int cabPos = LookUp.PlayerCabinetPosition(x);
 			GameObject go = GameObject.CreatePrimitive(PrimitiveType.Quad);
 			go.name = "RestartPlayer " + x;
@@ -144,7 +144,7 @@ public class GameEndManager : MonoBehaviour, StateChangeListener {
 		}
 	}
 
-	private void despawnCards() {
+	public void despawnCards() {
 		endScreenActive = false;
 		selectionFinishTime = -1f;
 		selection = 0;

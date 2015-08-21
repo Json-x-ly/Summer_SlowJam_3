@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         get { return players.Count; }
     }
     public int myNumber = -1;
+	private Animator charAnimator;
     public static Vector3 playerCenter
     {
         get {
@@ -49,13 +50,13 @@ public class PlayerController : MonoBehaviour
     public float stepLength
     {
 		get {
-			if (isInWater && state == _state.Hold)
+			if (isInWater && myState == PlayerState.HOLDING)
 				return 0;
 			float speed = 1.0f;
 			if (isInTar)
 				speed *= tarSlow;
 			
-			if (state == _state.Hold)
+			if (myState == PlayerState.HOLDING)
 				speed*=eggPenalty;
 			
 			
@@ -105,33 +106,34 @@ public class PlayerController : MonoBehaviour
 
         //this.GetComponentInChildren<MeshRenderer>().material = Resources.Load("Solid" + LookUp.PlayerColorName(myNumber)) as Material;
         
-    }
+		charAnimator = GetComponentInChildren<Animator> ();
+	}
     void Start()
     {
-
-        Mesh mesh = GetComponentInChildren<MeshFilter>().mesh;
-        Vector2[] uvs = new Vector2[mesh.vertices.Length];
-        Vector2 pos = new Vector2(0.5f, 0.5f);
-        switch (myNumber)
-        {
-            case (0):
-                pos = new Vector2(0.2f, 0.8f);
-                break;
-            case (1):
-                pos = new Vector2(0.8f, 0.8f);
-                break;
-            case (2):
-                pos = new Vector2(0.8f, 0.2f);
-                break;
-            case (3):
-                pos = new Vector2(0.2f, 0.2f);
-                break;
-        }
-        for (int i = 0; i < uvs.Length; i++)
-        {
-            uvs[i] = pos;
-        }
-        mesh.uv = uvs;
+        MeshFilter[] meshes = GetComponentsInChildren<MeshFilter>();
+		foreach (MeshFilter filter in meshes) {
+			Mesh mesh = filter.mesh;
+			Vector2[] uvs = new Vector2[mesh.vertices.Length];
+			Vector2 pos = new Vector2 (0.5f, 0.5f);
+			switch (myNumber) {
+			case (0):
+				pos = new Vector2 (0.2f, 0.8f);
+				break;
+			case (1):
+				pos = new Vector2 (0.8f, 0.8f);
+				break;
+			case (2):
+				pos = new Vector2 (0.8f, 0.2f);
+				break;
+			case (3):
+				pos = new Vector2 (0.2f, 0.2f);
+				break;
+			}
+			for (int i = 0; i < uvs.Length; i++) {
+				uvs [i] = pos;
+			}
+			mesh.uv = uvs;
+		}
     }
     public void PrepForGame()
     {
@@ -165,14 +167,26 @@ public class PlayerController : MonoBehaviour
         if (moveDir.magnitude != 0)
         {
             moveDir.Normalize();
-            transform.position += moveDir * stepLength;
+            delta += moveDir * stepLength;
+            //transform.position += moveDir * stepLength;
             Quaternion faceDir = Quaternion.Euler(0, Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, faceDir, Time.deltaTime*10);
         }
+        transform.position += delta * Time.deltaTime;
+        delta -= delta * Time.deltaTime*5f;
+
+		if (delta.magnitude < 0.8f) {
+			charAnimator.SetFloat ("Speed", 0.8f);
+			charAnimator.SetBool("IsMoving", false);
+		}
+		else {
+			charAnimator.SetFloat ("Speed", (delta.magnitude * 0.3333333f));
+			charAnimator.SetBool("IsMoving", true);
+		}
 	}
 	void StaminaUpdate()
 	{
-		if (state == _state.Hold)
+		if (state == PlayerState.HOLDING)
 		{
 			stamina -= staminaDecay * Time.deltaTime;
 		}
@@ -202,7 +216,7 @@ public class PlayerController : MonoBehaviour
 		}
 		Debug.DrawRay(transform.position, moveDir*2,Color.red);
 		RaycastHit hit;
-		if (Physics.Raycast(new Ray(transform.position, moveDir), out hit, stepLength))
+		if (Physics.Raycast(new Ray(transform.position, delta), out hit, stepLength))
 		{
 			if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Terrain"))
 			{

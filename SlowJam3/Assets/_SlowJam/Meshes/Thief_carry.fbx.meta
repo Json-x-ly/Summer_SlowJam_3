@@ -1,0 +1,303 @@
+fileFormatVersion: 2
+guid: 6506f10dde6d4634ea7263e626291a2b
+timeCreated: 1440135182
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube3
+    100002: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube7
+    100004: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube8
+    100006: eggSnatcher_rigged_LOCKED:headJNT
+    100008: eggSnatcher_rigged_LOCKED:jawJNT
+    100010: eggSnatcher_rigged_LOCKED:L_ankleJNT
+    100012: eggSnatcher_rigged_LOCKED:L_ballJNT
+    100014: eggSnatcher_rigged_LOCKED:L_clavicleJNT
+    100016: eggSnatcher_rigged_LOCKED:L_elbowJNT
+    100018: eggSnatcher_rigged_LOCKED:L_eyeJNT
+    100020: eggSnatcher_rigged_LOCKED:L_hipJNT
+    100022: eggSnatcher_rigged_LOCKED:L_indexJNT_01
+    100024: eggSnatcher_rigged_LOCKED:L_indexJNT_02
+    100026: eggSnatcher_rigged_LOCKED:L_indexJNT_03
+    100028: eggSnatcher_rigged_LOCKED:L_kneeJNT
+    100030: eggSnatcher_rigged_LOCKED:L_pinkyJNT_01
+    100032: eggSnatcher_rigged_LOCKED:L_pinkyJNT_02
+    100034: eggSnatcher_rigged_LOCKED:L_pinkyJNT_03
+    100036: eggSnatcher_rigged_LOCKED:L_reverseKneeJNT
+    100038: eggSnatcher_rigged_LOCKED:L_shoulderJNT
+    100040: eggSnatcher_rigged_LOCKED:L_toeJNT
+    100042: eggSnatcher_rigged_LOCKED:L_wristJNT
+    100044: eggSnatcher_rigged_LOCKED:meshGRP
+    100046: eggSnatcher_rigged_LOCKED:neckJNT
+    100048: eggSnatcher_rigged_LOCKED:R_ankleJNT
+    100050: eggSnatcher_rigged_LOCKED:R_ballJNT
+    100052: eggSnatcher_rigged_LOCKED:R_clavicleJNT
+    100054: eggSnatcher_rigged_LOCKED:R_elbowJNT
+    100056: eggSnatcher_rigged_LOCKED:R_eyeJNT
+    100058: eggSnatcher_rigged_LOCKED:R_hipJNT
+    100060: eggSnatcher_rigged_LOCKED:R_indexJNT_01
+    100062: eggSnatcher_rigged_LOCKED:R_indexJNT_02
+    100064: eggSnatcher_rigged_LOCKED:R_indexJNT_03
+    100066: eggSnatcher_rigged_LOCKED:R_kneeJNT
+    100068: eggSnatcher_rigged_LOCKED:R_pinkyJNT_01
+    100070: eggSnatcher_rigged_LOCKED:R_pinkyJNT_02
+    100072: eggSnatcher_rigged_LOCKED:R_pinkyJNT_03
+    100074: eggSnatcher_rigged_LOCKED:R_reverseKneeJNT
+    100076: eggSnatcher_rigged_LOCKED:R_shoulderJNT
+    100078: eggSnatcher_rigged_LOCKED:R_toeJNT
+    100080: eggSnatcher_rigged_LOCKED:R_wristJNT
+    100082: eggSnatcher_rigged_LOCKED:rootJNT
+    100084: eggSnatcher_rigged_LOCKED:skeletonGRP
+    100086: eggSnatcher_rigged_LOCKED:spineJNT01
+    100088: eggSnatcher_rigged_LOCKED:spineJNT02
+    100090: eggSnatcher_rigged_LOCKED:spineJNT03
+    100092: eggSnatcher_rigged_LOCKED:tailJNT01
+    100094: eggSnatcher_rigged_LOCKED:tailJNT02
+    100096: eggSnatcher_rigged_LOCKED:tailJNT03
+    100098: //RootNode
+    400000: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube3
+    400002: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube7
+    400004: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube8
+    400006: eggSnatcher_rigged_LOCKED:headJNT
+    400008: eggSnatcher_rigged_LOCKED:jawJNT
+    400010: eggSnatcher_rigged_LOCKED:L_ankleJNT
+    400012: eggSnatcher_rigged_LOCKED:L_ballJNT
+    400014: eggSnatcher_rigged_LOCKED:L_clavicleJNT
+    400016: eggSnatcher_rigged_LOCKED:L_elbowJNT
+    400018: eggSnatcher_rigged_LOCKED:L_eyeJNT
+    400020: eggSnatcher_rigged_LOCKED:L_hipJNT
+    400022: eggSnatcher_rigged_LOCKED:L_indexJNT_01
+    400024: eggSnatcher_rigged_LOCKED:L_indexJNT_02
+    400026: eggSnatcher_rigged_LOCKED:L_indexJNT_03
+    400028: eggSnatcher_rigged_LOCKED:L_kneeJNT
+    400030: eggSnatcher_rigged_LOCKED:L_pinkyJNT_01
+    400032: eggSnatcher_rigged_LOCKED:L_pinkyJNT_02
+    400034: eggSnatcher_rigged_LOCKED:L_pinkyJNT_03
+    400036: eggSnatcher_rigged_LOCKED:L_reverseKneeJNT
+    400038: eggSnatcher_rigged_LOCKED:L_shoulderJNT
+    400040: eggSnatcher_rigged_LOCKED:L_toeJNT
+    400042: eggSnatcher_rigged_LOCKED:L_wristJNT
+    400044: eggSnatcher_rigged_LOCKED:meshGRP
+    400046: eggSnatcher_rigged_LOCKED:neckJNT
+    400048: eggSnatcher_rigged_LOCKED:R_ankleJNT
+    400050: eggSnatcher_rigged_LOCKED:R_ballJNT
+    400052: eggSnatcher_rigged_LOCKED:R_clavicleJNT
+    400054: eggSnatcher_rigged_LOCKED:R_elbowJNT
+    400056: eggSnatcher_rigged_LOCKED:R_eyeJNT
+    400058: eggSnatcher_rigged_LOCKED:R_hipJNT
+    400060: eggSnatcher_rigged_LOCKED:R_indexJNT_01
+    400062: eggSnatcher_rigged_LOCKED:R_indexJNT_02
+    400064: eggSnatcher_rigged_LOCKED:R_indexJNT_03
+    400066: eggSnatcher_rigged_LOCKED:R_kneeJNT
+    400068: eggSnatcher_rigged_LOCKED:R_pinkyJNT_01
+    400070: eggSnatcher_rigged_LOCKED:R_pinkyJNT_02
+    400072: eggSnatcher_rigged_LOCKED:R_pinkyJNT_03
+    400074: eggSnatcher_rigged_LOCKED:R_reverseKneeJNT
+    400076: eggSnatcher_rigged_LOCKED:R_shoulderJNT
+    400078: eggSnatcher_rigged_LOCKED:R_toeJNT
+    400080: eggSnatcher_rigged_LOCKED:R_wristJNT
+    400082: eggSnatcher_rigged_LOCKED:rootJNT
+    400084: eggSnatcher_rigged_LOCKED:skeletonGRP
+    400086: eggSnatcher_rigged_LOCKED:spineJNT01
+    400088: eggSnatcher_rigged_LOCKED:spineJNT02
+    400090: eggSnatcher_rigged_LOCKED:spineJNT03
+    400092: eggSnatcher_rigged_LOCKED:tailJNT01
+    400094: eggSnatcher_rigged_LOCKED:tailJNT02
+    400096: eggSnatcher_rigged_LOCKED:tailJNT03
+    400098: //RootNode
+    4300000: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube3
+    4300002: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube7
+    4300004: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube8
+    7400000: Carry
+    9500000: //RootNode
+    13700000: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube3
+    13700002: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube7
+    13700004: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube8
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Carry
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:meshGRP
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:meshGRP/eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube3
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:meshGRP/eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube7
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:meshGRP/eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube8
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:L_hipJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:L_hipJNT/eggSnatcher_rigged_LOCKED:L_kneeJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:L_hipJNT/eggSnatcher_rigged_LOCKED:L_kneeJNT/eggSnatcher_rigged_LOCKED:L_reverseKneeJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:L_hipJNT/eggSnatcher_rigged_LOCKED:L_kneeJNT/eggSnatcher_rigged_LOCKED:L_reverseKneeJNT/eggSnatcher_rigged_LOCKED:L_ankleJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:L_hipJNT/eggSnatcher_rigged_LOCKED:L_kneeJNT/eggSnatcher_rigged_LOCKED:L_reverseKneeJNT/eggSnatcher_rigged_LOCKED:L_ankleJNT/eggSnatcher_rigged_LOCKED:L_ballJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:L_hipJNT/eggSnatcher_rigged_LOCKED:L_kneeJNT/eggSnatcher_rigged_LOCKED:L_reverseKneeJNT/eggSnatcher_rigged_LOCKED:L_ankleJNT/eggSnatcher_rigged_LOCKED:L_ballJNT/eggSnatcher_rigged_LOCKED:L_toeJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:R_hipJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:R_hipJNT/eggSnatcher_rigged_LOCKED:R_kneeJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:R_hipJNT/eggSnatcher_rigged_LOCKED:R_kneeJNT/eggSnatcher_rigged_LOCKED:R_reverseKneeJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:R_hipJNT/eggSnatcher_rigged_LOCKED:R_kneeJNT/eggSnatcher_rigged_LOCKED:R_reverseKneeJNT/eggSnatcher_rigged_LOCKED:R_ankleJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:R_hipJNT/eggSnatcher_rigged_LOCKED:R_kneeJNT/eggSnatcher_rigged_LOCKED:R_reverseKneeJNT/eggSnatcher_rigged_LOCKED:R_ankleJNT/eggSnatcher_rigged_LOCKED:R_ballJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:R_hipJNT/eggSnatcher_rigged_LOCKED:R_kneeJNT/eggSnatcher_rigged_LOCKED:R_reverseKneeJNT/eggSnatcher_rigged_LOCKED:R_ankleJNT/eggSnatcher_rigged_LOCKED:R_ballJNT/eggSnatcher_rigged_LOCKED:R_toeJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:L_clavicleJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:L_clavicleJNT/eggSnatcher_rigged_LOCKED:L_shoulderJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:L_clavicleJNT/eggSnatcher_rigged_LOCKED:L_shoulderJNT/eggSnatcher_rigged_LOCKED:L_elbowJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:L_clavicleJNT/eggSnatcher_rigged_LOCKED:L_shoulderJNT/eggSnatcher_rigged_LOCKED:L_elbowJNT/eggSnatcher_rigged_LOCKED:L_wristJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:L_clavicleJNT/eggSnatcher_rigged_LOCKED:L_shoulderJNT/eggSnatcher_rigged_LOCKED:L_elbowJNT/eggSnatcher_rigged_LOCKED:L_wristJNT/eggSnatcher_rigged_LOCKED:L_indexJNT_01
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:L_clavicleJNT/eggSnatcher_rigged_LOCKED:L_shoulderJNT/eggSnatcher_rigged_LOCKED:L_elbowJNT/eggSnatcher_rigged_LOCKED:L_wristJNT/eggSnatcher_rigged_LOCKED:L_indexJNT_01/eggSnatcher_rigged_LOCKED:L_indexJNT_02
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:L_clavicleJNT/eggSnatcher_rigged_LOCKED:L_shoulderJNT/eggSnatcher_rigged_LOCKED:L_elbowJNT/eggSnatcher_rigged_LOCKED:L_wristJNT/eggSnatcher_rigged_LOCKED:L_indexJNT_01/eggSnatcher_rigged_LOCKED:L_indexJNT_02/eggSnatcher_rigged_LOCKED:L_indexJNT_03
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:L_clavicleJNT/eggSnatcher_rigged_LOCKED:L_shoulderJNT/eggSnatcher_rigged_LOCKED:L_elbowJNT/eggSnatcher_rigged_LOCKED:L_wristJNT/eggSnatcher_rigged_LOCKED:L_pinkyJNT_01
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:L_clavicleJNT/eggSnatcher_rigged_LOCKED:L_shoulderJNT/eggSnatcher_rigged_LOCKED:L_elbowJNT/eggSnatcher_rigged_LOCKED:L_wristJNT/eggSnatcher_rigged_LOCKED:L_pinkyJNT_01/eggSnatcher_rigged_LOCKED:L_pinkyJNT_02
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:L_clavicleJNT/eggSnatcher_rigged_LOCKED:L_shoulderJNT/eggSnatcher_rigged_LOCKED:L_elbowJNT/eggSnatcher_rigged_LOCKED:L_wristJNT/eggSnatcher_rigged_LOCKED:L_pinkyJNT_01/eggSnatcher_rigged_LOCKED:L_pinkyJNT_02/eggSnatcher_rigged_LOCKED:L_pinkyJNT_03
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:R_clavicleJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:R_clavicleJNT/eggSnatcher_rigged_LOCKED:R_shoulderJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:R_clavicleJNT/eggSnatcher_rigged_LOCKED:R_shoulderJNT/eggSnatcher_rigged_LOCKED:R_elbowJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:R_clavicleJNT/eggSnatcher_rigged_LOCKED:R_shoulderJNT/eggSnatcher_rigged_LOCKED:R_elbowJNT/eggSnatcher_rigged_LOCKED:R_wristJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:R_clavicleJNT/eggSnatcher_rigged_LOCKED:R_shoulderJNT/eggSnatcher_rigged_LOCKED:R_elbowJNT/eggSnatcher_rigged_LOCKED:R_wristJNT/eggSnatcher_rigged_LOCKED:R_indexJNT_01
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:R_clavicleJNT/eggSnatcher_rigged_LOCKED:R_shoulderJNT/eggSnatcher_rigged_LOCKED:R_elbowJNT/eggSnatcher_rigged_LOCKED:R_wristJNT/eggSnatcher_rigged_LOCKED:R_indexJNT_01/eggSnatcher_rigged_LOCKED:R_indexJNT_02
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:R_clavicleJNT/eggSnatcher_rigged_LOCKED:R_shoulderJNT/eggSnatcher_rigged_LOCKED:R_elbowJNT/eggSnatcher_rigged_LOCKED:R_wristJNT/eggSnatcher_rigged_LOCKED:R_indexJNT_01/eggSnatcher_rigged_LOCKED:R_indexJNT_02/eggSnatcher_rigged_LOCKED:R_indexJNT_03
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:R_clavicleJNT/eggSnatcher_rigged_LOCKED:R_shoulderJNT/eggSnatcher_rigged_LOCKED:R_elbowJNT/eggSnatcher_rigged_LOCKED:R_wristJNT/eggSnatcher_rigged_LOCKED:R_pinkyJNT_01
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:R_clavicleJNT/eggSnatcher_rigged_LOCKED:R_shoulderJNT/eggSnatcher_rigged_LOCKED:R_elbowJNT/eggSnatcher_rigged_LOCKED:R_wristJNT/eggSnatcher_rigged_LOCKED:R_pinkyJNT_01/eggSnatcher_rigged_LOCKED:R_pinkyJNT_02
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:R_clavicleJNT/eggSnatcher_rigged_LOCKED:R_shoulderJNT/eggSnatcher_rigged_LOCKED:R_elbowJNT/eggSnatcher_rigged_LOCKED:R_wristJNT/eggSnatcher_rigged_LOCKED:R_pinkyJNT_01/eggSnatcher_rigged_LOCKED:R_pinkyJNT_02/eggSnatcher_rigged_LOCKED:R_pinkyJNT_03
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:spineJNT03
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:spineJNT03/eggSnatcher_rigged_LOCKED:neckJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:spineJNT03/eggSnatcher_rigged_LOCKED:neckJNT/eggSnatcher_rigged_LOCKED:headJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:spineJNT03/eggSnatcher_rigged_LOCKED:neckJNT/eggSnatcher_rigged_LOCKED:headJNT/eggSnatcher_rigged_LOCKED:jawJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:spineJNT03/eggSnatcher_rigged_LOCKED:neckJNT/eggSnatcher_rigged_LOCKED:headJNT/eggSnatcher_rigged_LOCKED:L_eyeJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:spineJNT01/eggSnatcher_rigged_LOCKED:spineJNT02/eggSnatcher_rigged_LOCKED:spineJNT03/eggSnatcher_rigged_LOCKED:neckJNT/eggSnatcher_rigged_LOCKED:headJNT/eggSnatcher_rigged_LOCKED:R_eyeJNT
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:tailJNT01
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:tailJNT01/eggSnatcher_rigged_LOCKED:tailJNT02
+        weight: 1
+      - path: eggSnatcher_rigged_LOCKED:skeletonGRP/eggSnatcher_rigged_LOCKED:rootJNT/eggSnatcher_rigged_LOCKED:tailJNT01/eggSnatcher_rigged_LOCKED:tailJNT02/eggSnatcher_rigged_LOCKED:tailJNT03
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
