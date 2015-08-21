@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     public _state state = _state.NotInPlay;
     public static IList<PlayerController> players = new List<PlayerController>();
     private float catchExpireTime = float.MinValue;
+    private const float staminaDecay = 0.1f;
+    private const float staminaRegen = 0.1f;
+    private const float staminaThrow = 0.3f;
+    public float stamina = 1.0f;
     private PlayerEggNode myEggNode;
     public PlayerEggNode eggNode
     {
@@ -125,6 +129,7 @@ public class PlayerController : MonoBehaviour
 		//DetectButtons();
 		//Vector3 moveDir = Move();
 		NewButtons();
+        StaminaUpdate();
         Vector3 moveDir = TinderBoxMove();
         if (moveDir.magnitude != 0)
         {
@@ -134,6 +139,18 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, faceDir, Time.deltaTime*10);
         }
 	}
+    void StaminaUpdate()
+    {
+        if (state == _state.Hold)
+        {
+            stamina -= staminaDecay * Time.deltaTime;
+        }
+        else if (stamina < 1)
+        {
+            stamina += staminaRegen * Time.deltaTime;
+        }
+        stamina = Mathf.Clamp01(stamina);
+    }
     //Vector3 Move()
     //{
     //    Vector3 moveDir = Vector3.zero;
@@ -289,6 +306,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
+                stamina -= staminaThrow;
             }
 
         }
@@ -300,6 +318,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
+                stamina -= staminaThrow;
             }
         }
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button3))
@@ -310,6 +329,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
+                stamina -= staminaThrow;
             }
         }
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button4))
@@ -320,6 +340,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
+                stamina -= staminaThrow;
             }
         }
     }
