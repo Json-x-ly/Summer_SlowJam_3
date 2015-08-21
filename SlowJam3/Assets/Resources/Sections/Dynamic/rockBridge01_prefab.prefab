@@ -1072,6 +1072,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 414174}
   - 95: {fileID: 9517418}
+  - 114: {fileID: 11417264}
   m_Layer: 0
   m_Name: rockBridge01_prefab
   m_TagString: Untagged
@@ -3352,8 +3353,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 122804}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .0526126623, y: .545746267, z: -.46547547}
+  m_LocalRotation: {x: 0, y: -.707105994, z: 0, w: .707107604}
+  m_LocalPosition: {x: .397296906, y: .54574585, z: -.0155715942}
   m_LocalScale: {x: .00999999978, y: .00999999978, z: .00999999978}
   m_Children:
   - {fileID: 463346}
@@ -3543,8 +3544,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 196544}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -.707105994, z: 0, w: .707107604}
+  m_LocalPosition: {x: -.0681800842, y: 0, z: -.0681838989}
   m_LocalScale: {x: .00999999978, y: .00999999978, z: .00999999978}
   m_Children:
   - {fileID: 441974}
@@ -3676,8 +3677,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 116088}
-  m_LocalRotation: {x: -.113328658, y: 0, z: -0, w: .993557572}
-  m_LocalPosition: {x: -10.950758, y: -.846906006, z: -4.08568525}
+  m_LocalRotation: {x: -.0801355466, y: -.70255059, z: -.0801353753, w: .702552021}
+  m_LocalPosition: {x: 4.01747513, y: -.846906662, z: -11.0189514}
   m_LocalScale: {x: .00327937002, y: .00327937026, z: .00327937026}
   m_Children:
   - {fileID: 453476}
@@ -3895,8 +3896,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132276}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -.707105994, z: 0, w: .707107604}
+  m_LocalPosition: {x: -.0681800842, y: 0, z: -.0681838989}
   m_LocalScale: {x: .00999999978, y: .00999999978, z: .00999999978}
   m_Children: []
   m_Father: {fileID: 414174}
@@ -9691,13 +9692,29 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11417264
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 139620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35f7519c4717e7844ba6ae0cef22e43b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  difficulty: .150000006
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: difficulty
+      value: .150000006
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 139620}
