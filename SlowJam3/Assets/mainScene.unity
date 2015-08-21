@@ -2491,18 +2491,6 @@ Prefab:
       propertyPath: m_Name
       value: Tapdancing Dino (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 483578, guid: 00995cf626949bb41aaf255ae6d8e6e2, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: .193000004
-      objectReference: {fileID: 0}
-    - target: {fileID: 483578, guid: 00995cf626949bb41aaf255ae6d8e6e2, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: .254999995
-      objectReference: {fileID: 0}
-    - target: {fileID: 483578, guid: 00995cf626949bb41aaf255ae6d8e6e2, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: .00400000019
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 00995cf626949bb41aaf255ae6d8e6e2, type: 2}
   m_IsPrefabParent: 0
@@ -2879,6 +2867,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b73349e3633b7b9469ce839fab03df4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  offset: {x: 0, y: 0, z: 0}
+  speed: 0
 --- !u!114 &1451562092
 MonoBehaviour:
   m_ObjectHideFlags: 0
