@@ -1,0 +1,209 @@
+fileFormatVersion: 2
+guid: 9ea41aff5951c4b518a5518b088c2ac1
+timeCreated: 1440144623
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: group2
+    100002: pCylinder23
+    100004: pCylinder29
+    100006: pCylinder32
+    100008: pCylinder33
+    100010: pCylinder34
+    100012: pCylinder35
+    100014: pCylinder36
+    100016: pCylinder37
+    100018: pCylinder38
+    100020: pCylinder39
+    100022: pPlane1
+    100024: rockPhysics:pCylinder16
+    100026: rockPhysics:pCylinder22
+    100028: rockPhysics:pCylinder23
+    100030: rockPhysics:pCylinder24
+    100032: rockPhysics:pCylinder25
+    100034: rockPhysics:pCylinder26
+    100036: rockPhysics:pCylinder27
+    100038: rockPhysics:pCylinder28
+    100040: rockPhysics:pCylinder29
+    100042: rockPhysics:pCylinder30
+    100044: rockPhysics:pCylinder31
+    100046: rockPhysics:pCylinder32
+    100048: rockPhysics:pCylinder33
+    100050: rockPhysics:pCylinder7
+    100052: SCALE_REFERENCE:TileTemplate
+    100054: tri:pPlane1
+    100056: //RootNode
+    400000: group2
+    400002: pCylinder23
+    400004: pCylinder29
+    400006: pCylinder32
+    400008: pCylinder33
+    400010: pCylinder34
+    400012: pCylinder35
+    400014: pCylinder36
+    400016: pCylinder37
+    400018: pCylinder38
+    400020: pCylinder39
+    400022: pPlane1
+    400024: rockPhysics:pCylinder16
+    400026: rockPhysics:pCylinder22
+    400028: rockPhysics:pCylinder23
+    400030: rockPhysics:pCylinder24
+    400032: rockPhysics:pCylinder25
+    400034: rockPhysics:pCylinder26
+    400036: rockPhysics:pCylinder27
+    400038: rockPhysics:pCylinder28
+    400040: rockPhysics:pCylinder29
+    400042: rockPhysics:pCylinder30
+    400044: rockPhysics:pCylinder31
+    400046: rockPhysics:pCylinder32
+    400048: rockPhysics:pCylinder33
+    400050: rockPhysics:pCylinder7
+    400052: SCALE_REFERENCE:TileTemplate
+    400054: tri:pPlane1
+    400056: //RootNode
+    2300000: pCylinder23
+    2300002: pCylinder29
+    2300004: pCylinder32
+    2300006: pCylinder33
+    2300008: pCylinder34
+    2300010: pCylinder35
+    2300012: pCylinder36
+    2300014: pCylinder37
+    2300016: pCylinder38
+    2300018: pCylinder39
+    2300020: pPlane1
+    2300022: rockPhysics:pCylinder16
+    2300024: rockPhysics:pCylinder22
+    2300026: rockPhysics:pCylinder23
+    2300028: rockPhysics:pCylinder24
+    2300030: rockPhysics:pCylinder25
+    2300032: rockPhysics:pCylinder26
+    2300034: rockPhysics:pCylinder27
+    2300036: rockPhysics:pCylinder28
+    2300038: rockPhysics:pCylinder29
+    2300040: rockPhysics:pCylinder30
+    2300042: rockPhysics:pCylinder31
+    2300044: rockPhysics:pCylinder32
+    2300046: rockPhysics:pCylinder33
+    2300048: rockPhysics:pCylinder7
+    2300050: SCALE_REFERENCE:TileTemplate
+    2300052: tri:pPlane1
+    3300000: pCylinder23
+    3300002: pCylinder29
+    3300004: pCylinder32
+    3300006: pCylinder33
+    3300008: pCylinder34
+    3300010: pCylinder35
+    3300012: pCylinder36
+    3300014: pCylinder37
+    3300016: pCylinder38
+    3300018: pCylinder39
+    3300020: pPlane1
+    3300022: rockPhysics:pCylinder16
+    3300024: rockPhysics:pCylinder22
+    3300026: rockPhysics:pCylinder23
+    3300028: rockPhysics:pCylinder24
+    3300030: rockPhysics:pCylinder25
+    3300032: rockPhysics:pCylinder26
+    3300034: rockPhysics:pCylinder27
+    3300036: rockPhysics:pCylinder28
+    3300038: rockPhysics:pCylinder29
+    3300040: rockPhysics:pCylinder30
+    3300042: rockPhysics:pCylinder31
+    3300044: rockPhysics:pCylinder32
+    3300046: rockPhysics:pCylinder33
+    3300048: rockPhysics:pCylinder7
+    3300050: SCALE_REFERENCE:TileTemplate
+    3300052: tri:pPlane1
+    4300000: SCALE_REFERENCE:TileTemplate
+    4300002: tri:pPlane1
+    4300004: pPlane1
+    4300006: rockPhysics:pCylinder7
+    4300008: rockPhysics:pCylinder16
+    4300010: rockPhysics:pCylinder22
+    4300012: rockPhysics:pCylinder23
+    4300014: rockPhysics:pCylinder24
+    4300016: rockPhysics:pCylinder25
+    4300018: rockPhysics:pCylinder26
+    4300020: rockPhysics:pCylinder27
+    4300022: rockPhysics:pCylinder28
+    4300024: rockPhysics:pCylinder29
+    4300026: rockPhysics:pCylinder30
+    4300028: rockPhysics:pCylinder31
+    4300030: rockPhysics:pCylinder32
+    4300032: rockPhysics:pCylinder33
+    4300034: pCylinder33
+    4300036: pCylinder34
+    4300038: pCylinder35
+    4300040: pCylinder23
+    4300042: pCylinder29
+    4300044: pCylinder32
+    4300046: pCylinder36
+    4300048: pCylinder37
+    4300050: pCylinder39
+    4300052: pCylinder38
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
