@@ -583,15 +583,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 479152, guid: a57d028d8cb0d47c189bd8f4fb9d92eb, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.45800018
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 479152, guid: a57d028d8cb0d47c189bd8f4fb9d92eb, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .180999994
+      value: 1.48599994
       objectReference: {fileID: 0}
     - target: {fileID: 479152, guid: a57d028d8cb0d47c189bd8f4fb9d92eb, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.54799998
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 479152, guid: a57d028d8cb0d47c189bd8f4fb9d92eb, type: 2}
       propertyPath: m_LocalRotation.x
@@ -612,6 +612,10 @@ Prefab:
     - target: {fileID: 479152, guid: a57d028d8cb0d47c189bd8f4fb9d92eb, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 19824010, guid: a57d028d8cb0d47c189bd8f4fb9d92eb, type: 2}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a57d028d8cb0d47c189bd8f4fb9d92eb, type: 2}

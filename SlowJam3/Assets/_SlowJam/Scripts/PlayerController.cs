@@ -4,13 +4,21 @@ using System.Collections.Generic;
 using TinderBox;
 public class PlayerController : MonoBehaviour
 {
-    float moveSpeed = 4.0f;
+    float moveSpeed = 10.0f;
 	Players myPlayer;
 	private const float eggPenalty = 0.6f;
     public enum _state { Empty, Hold, QTE ,NotInPlay};
-    public _state state = _state.NotInPlay;
+    public _state state = _state.NotInPlay;  
     public static IList<PlayerController> players = new List<PlayerController>();
     private float catchExpireTime = float.MinValue;
+    public bool isInWater;
+    public bool isInTar;
+    public float tarSlow = 0.5f;
+    private const float staminaDecay = 0.1f;
+    private const float staminaRegen = 0.1f;
+    private const float staminaThrow = 0.3f;
+    [Range(0,1)]
+    public float stamina = 1.0f;
     private PlayerEggNode myEggNode;
     public PlayerEggNode eggNode
     {
@@ -36,10 +44,17 @@ public class PlayerController : MonoBehaviour
     public float stepLength
     {
         get {
-            if (state == _state.Empty)
-                return moveSpeed * Time.deltaTime;
-            else
-                return moveSpeed * Time.deltaTime * eggPenalty;
+            if (isInWater && state == _state.Hold)
+                return 0;
+            float speed = 1.0f;
+            if (isInTar)
+                speed *= tarSlow;
+
+            if (state == _state.Hold)
+                speed*=eggPenalty;
+            
+
+            return moveSpeed*Time.deltaTime*speed;
         }
     }
 	string upKey;
@@ -125,6 +140,7 @@ public class PlayerController : MonoBehaviour
 		//DetectButtons();
 		//Vector3 moveDir = Move();
 		NewButtons();
+        StaminaUpdate();
         Vector3 moveDir = TinderBoxMove();
         if (moveDir.magnitude != 0)
         {
@@ -134,6 +150,18 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, faceDir, Time.deltaTime*10);
         }
 	}
+    void StaminaUpdate()
+    {
+        if (state == _state.Hold)
+        {
+            stamina -= staminaDecay * Time.deltaTime;
+        }
+        else if (stamina < 1)
+        {
+            stamina += staminaRegen * Time.deltaTime;
+        }
+        stamina = Mathf.Clamp01(stamina);
+    }
     //Vector3 Move()
     //{
     //    Vector3 moveDir = Vector3.zero;
@@ -258,6 +286,15 @@ public class PlayerController : MonoBehaviour
 			QTE.PlayerEnter(myPlayer);
 			Debug.Log("QTE Trigger entered");
 		}
+        TarLogic tar = other.gameObject.GetComponent<TarLogic>();
+        if(tar!=null){
+            isInTar = true;
+        }
+        WaterLogic water = other.gameObject.GetComponent<WaterLogic>();
+        if (water != null)
+        {
+            isInWater = true;
+        }
     }
 
 	void OnTriggerExit(Collider other)
@@ -267,7 +304,17 @@ public class PlayerController : MonoBehaviour
 		{
 			QTE.PlayerExit(myPlayer);
 			Debug.Log("QTE Trigger exited");
-		}
+        }
+        TarLogic tar = other.gameObject.GetComponent<TarLogic>();
+        if (tar != null)
+        {
+            isInTar = false;
+        }
+        WaterLogic water = other.gameObject.GetComponent<WaterLogic>();
+        if (water != null)
+        {
+            isInWater = true;
+        }
 	}
     void NewButtons()
     {
@@ -285,38 +332,45 @@ public class PlayerController : MonoBehaviour
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button1))
         {
             int target = LookUp.PlayerLogicPosition(0);
-            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay) { 
+            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay&&target!=myNumber) { 
                 Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
+                stamina -= staminaThrow;
             }
 
         }
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button2))
         {
             int target = LookUp.PlayerLogicPosition(1);
-            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay) { 
+            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay && target != myNumber)
+            { 
                 Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
+                stamina -= staminaThrow;
             }
         }
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button3))
         {
             int target = LookUp.PlayerLogicPosition(2);
-            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay) { 
+            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay && target != myNumber)
+            { 
                 Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
+                stamina -= staminaThrow;
             }
         }
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button4))
         {
             int target = LookUp.PlayerLogicPosition(3);
-            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay){
+            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay && target != myNumber)
+            {
                 Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
+                stamina -= staminaThrow;
             }
         }
     }
