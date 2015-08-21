@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(LogicVisualSpace))]
 [RequireComponent(typeof(KillZ))]
@@ -9,48 +10,57 @@ public class _root : MonoBehaviour {
     static GameObject go;
     private static Vector3 spawnPos;
     private static bool delayReady=false;
-    public enum _state { SplashScreen, Ready, Playing, Lose ,Win};
-    private static _state __state = _state.SplashScreen;
-    public static _state state
+	private static bool delayPlay = false;
+	private static EggLogic eggLogic;
+	
+	private static IList<StateChangeListener> stateChangeListeners = new List<StateChangeListener>();
+	private static GameState myState = GameState.SPLASH;
+    public static GameState state
     {
         get
         {
-            return __state;
+            return myState;
         }
         set
         {
-            if (value == __state) return;
-            StateChange(__state, value);
-            __state = value;
+            if (value == myState) return;
+            StateChange(myState, value);
+           	myState = value;
         }
 
     }
-    private static void StateChange(_state old, _state now)
+	private static void StateChange(GameState old, GameState now)
     {
         Debug.Log("State has changed from " + old.ToString() + " to " + now.ToString());
+		foreach(StateChangeListener scl in stateChangeListeners) {
+			scl.gameStateChanged(old, now);
+		}
         switch (now)
         {
-            case(_state.Ready):
+            case(GameState.READY):
                 LevelController.main.resetLevel();
                 SpawnReadyCards();
                 if (go.GetComponent<ReadyManager>()==null)
                     go.AddComponent<ReadyManager>();
                 go.transform.position = spawnPos;
                 break;
-            case(_state.Playing):
+            case(GameState.PLAYING):
                 PlayerManager.PrepPlayers();
                 break;
-            case (_state.Lose):
-                TinderBox.TinderBoxAPI.GameOver();
-                delayReady = true;
-                break;
-            case (_state.Win):
-                delayReady = true;
-                break;
+			case(GameState.RESTART):
+				PlayerManager.CleanUpAllPlayers();
+				eggLogic.Reset();
+				delayPlay = true;
+				break;
+			case(GameState.QUIT):
+				PlayerManager.CleanUpAllPlayers();
+				eggLogic.Reset();
+				delayReady = true;
+				break;
         }
         switch (old)
         {
-            case(_state.Ready):
+            case(GameState.READY):
                 ReadyLogic[] scripts = FindObjectsOfType<ReadyLogic>();
                 foreach (ReadyLogic script in scripts)
                 {
@@ -58,15 +68,16 @@ public class _root : MonoBehaviour {
                 }
                 Destroy(go.GetComponent<ReadyManager>());
                 break;
-            case (_state.Playing):
-                PlayerManager.CleanUpAllPlayers();
-                break;
         }
     }
+	public static void addStateChangeListener(StateChangeListener scl) {
+		stateChangeListeners.Add(scl);
+	}
     void Awake()
     {
         go = this.gameObject;
         spawnPos = transform.position;
+		eggLogic = GameObject.Find("Egg").GetComponent<EggLogic>();
         MeshFilter[] meshes = GameObject.FindObjectsOfType(typeof(MeshFilter))as MeshFilter[];
         Debug.Log("Meshes found: " + meshes.Length);
         foreach (MeshFilter mesh in meshes)
@@ -76,31 +87,33 @@ public class _root : MonoBehaviour {
             {
                 uvs[i] = new Vector2(0.5f,0.5f);
             }
-            mesh.mesh.uv = uvs;
+           // mesh.mesh.uv = uvs;
         }
-        
-        TinderBox.TinderBoxAPI.IsReady();
 	}
     void Start()
     {
 
-        state = _state.Ready;
+        state = GameState.READY;
     }
     void Update()
     {
         if (Input.GetKeyDown("return"))
         {
-            state = _state.Playing;
+            state = GameState.PLAYING;
         }
         if (toggle)
         {
             toggle = false;
-            state = _state.Playing;
+            state = GameState.PLAYING;
         }
+		if (delayPlay) {
+			delayPlay = false;
+			state = GameState.PLAYING;
+		}
         if (delayReady)
         {
             delayReady = false;
-            state = _state.Ready;
+            state = GameState.READY;
         }
     }
     static readonly Vector3 rcStartPos = new Vector3(-5, 5, 1);
