@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 420518}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:R_eyeJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23,7 +23,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 462650}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:R_ankleJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 424910}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:headJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 497454}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:rootJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -69,7 +69,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 461786}
   - 137: {fileID: 13737798}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 410526}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:R_wristJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 494380}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:R_pinkyJNT_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 474556}
   - 114: {fileID: 11419766}
-  m_Layer: 0
+  - 65: {fileID: 6530608}
+  - 54: {fileID: 5471214}
+  m_Layer: 9
   m_Name: Tapdancing Dino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +132,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 412740}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:R_kneeJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +147,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 467446}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:L_indexJNT_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +162,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 491428}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:spineJNT01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +177,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 475722}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:L_pinkyJNT_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +192,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 424050}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:L_kneeJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -205,7 +207,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 406972}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:neckJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +222,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 419038}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:R_toeJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +237,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 423072}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:R_indexJNT_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +252,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 486982}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:L_pinkyJNT_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +267,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 470836}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:spineJNT03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +282,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 461510}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:tailJNT02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +297,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 433922}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:R_indexJNT_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -310,8 +312,24 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 419440}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:jawJNT
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &149006
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 483578}
+  - 114: {fileID: 11489890}
+  m_Layer: 9
+  m_Name: EggNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,7 +343,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 438582}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:L_indexJNT_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +358,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 430338}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:R_indexJNT_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,7 +373,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 412218}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:R_shoulderJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +388,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 449792}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:L_clavicleJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -385,7 +403,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 424462}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:spineJNT02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +418,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 491274}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:L_ballJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +433,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 436106}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:tailJNT03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -430,7 +448,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 404724}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:meshGRP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +463,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 479434}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:skeletonGRP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,7 +478,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 417642}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:L_hipJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -475,7 +493,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 453658}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:L_elbowJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,7 +508,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 420652}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:L_reverseKneeJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,7 +523,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 450188}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:R_pinkyJNT_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -520,7 +538,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 421406}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:L_toeJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,7 +554,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 445002}
   - 137: {fileID: 13762574}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -551,7 +569,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 413074}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:L_indexJNT_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -566,7 +584,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 437414}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:R_clavicleJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -581,7 +599,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 485102}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:R_reverseKneeJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,7 +614,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 435146}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:R_ballJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,7 +629,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 446392}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:L_wristJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +644,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 401168}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:R_hipJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +659,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 404602}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:L_pinkyJNT_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -656,7 +674,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 486782}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:L_eyeJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -671,7 +689,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 422284}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:L_shoulderJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +704,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 412010}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:R_pinkyJNT_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -701,7 +719,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 438094}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:L_ankleJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -717,7 +735,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 462022}
   - 95: {fileID: 9580162}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: thief
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -732,7 +750,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 408292}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:tailJNT01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -747,7 +765,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 456102}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:R_elbowJNT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -763,7 +781,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 409884}
   - 137: {fileID: 13784162}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1298,6 +1316,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 406972}
+  - {fileID: 483578}
   m_Father: {fileID: 424462}
   m_RootOrder: 2
 --- !u!4 &474556
@@ -1307,7 +1326,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.72000003, y: 0, z: -18.6499996}
+  m_LocalPosition: {x: 1.32000005, y: 0, z: -18.6499996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 462022}
@@ -1338,6 +1357,18 @@ Transform:
   m_Children:
   - {fileID: 497454}
   m_Father: {fileID: 462022}
+  m_RootOrder: 1
+--- !u!4 &483578
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149006}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 470836}
   m_RootOrder: 1
 --- !u!4 &485102
 Transform:
@@ -1432,6 +1463,33 @@ Transform:
   - {fileID: 408292}
   m_Father: {fileID: 479434}
   m_RootOrder: 0
+--- !u!54 &5471214
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124636}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &6530608
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124636}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .939999998, y: 1, z: 2.21000004}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &9580162
 Animator:
   serializedVersion: 3
@@ -1466,6 +1524,17 @@ MonoBehaviour:
   tarSlow: .5
   stamina: 1
   myNumber: -1
+--- !u!114 &11489890
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00400db7a4544604696b40b9afdfaeb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &13737798
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

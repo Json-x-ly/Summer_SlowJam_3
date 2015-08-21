@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: World
-  m_Shader: {fileID: 4800000, guid: 2f4ae02b3bac1a34989286d8cd163ecd, type: 3}
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -152,7 +152,7 @@ Material:
       data:
         first:
           name: _MyTime
-        second: 55.3758965
+        second: 14.3255043
     m_Colors:
       data:
         first:

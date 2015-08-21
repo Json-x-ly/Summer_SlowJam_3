@@ -26,7 +26,7 @@ public class EggLogic : MonoBehaviour {
         switch (state)
         {
             case(_state.Held):
-                transform.position = heldBy.transform.position + Vector3.up;
+                transform.position = heldBy.eggNode.transform.position;
                 break;
             case(_state.Throwing):
 			case(_state.Falling):

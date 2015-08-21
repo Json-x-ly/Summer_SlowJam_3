@@ -107,12 +107,13 @@ public class PlayerController : MonoBehaviour
         //this.GetComponentInChildren<MeshRenderer>().material = Resources.Load("Solid" + LookUp.PlayerColorName(myNumber)) as Material;
         
 		charAnimator = GetComponentInChildren<Animator> ();
+		eggNode = GetComponentInChildren<PlayerEggNode> ();
 	}
     void Start()
     {
-        MeshFilter[] meshes = GetComponentsInChildren<MeshFilter>();
-		foreach (MeshFilter filter in meshes) {
-			Mesh mesh = filter.mesh;
+		SkinnedMeshRenderer[] meshes = GetComponentsInChildren<SkinnedMeshRenderer>();
+		foreach (SkinnedMeshRenderer filter in meshes) {
+			Mesh mesh = filter.sharedMesh;
 			Vector2[] uvs = new Vector2[mesh.vertices.Length];
 			Vector2 pos = new Vector2 (0.5f, 0.5f);
 			switch (myNumber) {
