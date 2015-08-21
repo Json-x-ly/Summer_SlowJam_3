@@ -51,6 +51,8 @@
      <Compile Include="Assets\_SlowJam\Scripts\AnchorToVisualSpace.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\CameraController.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\EggLogic.cs" />
+     <Compile Include="Assets\_SlowJam\Scripts\GameEndManager.cs" />
+     <Compile Include="Assets\_SlowJam\Scripts\GameState.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\KillZ.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\LevelController.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\LogicVisualSpace.cs" />
@@ -58,14 +60,24 @@
      <Compile Include="Assets\_SlowJam\Scripts\PlayerController.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\PlayerEggNode.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\PlayerManager.cs" />
+     <Compile Include="Assets\_SlowJam\Scripts\PlayerState.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\ProgressBar.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\QTEScript.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\ReadyLogic.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\ReadyManager.cs" />
+     <Compile Include="Assets\_SlowJam\Scripts\RestartLogic.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\SectionController.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\SpriteAlternateScript.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\StaminaBar.cs" />
+     <Compile Include="Assets\_SlowJam\Scripts\StateChangeListener.cs" />
+     <Compile Include="Assets\_SlowJam\Scripts\TailLogic.cs" />
+     <Compile Include="Assets\_SlowJam\Scripts\TarLogic.cs" />
+     <Compile Include="Assets\_SlowJam\Scripts\WaterLogic.cs" />
      <Compile Include="Assets\_SlowJam\Scripts\_root.cs" />
+     <None Include="Assets\_SlowJam\Shaders\ToonShading\ToonBasic.shader" />
+     <None Include="Assets\_SlowJam\Shaders\ToonShading\ToonBasicOutline.shader" />
+     <None Include="Assets\_SlowJam\Shaders\ToonShading\ToonLitOutline.shader" />
+     <None Include="Assets\_SlowJam\Shaders\ToonShading\ToonLit.shader" />
      <None Include="Assets\_SlowJam\Shaders\WorldShader.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>F:/Program Files/Unity5.1.2f1/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
