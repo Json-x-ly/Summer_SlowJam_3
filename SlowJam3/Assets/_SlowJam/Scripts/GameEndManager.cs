@@ -110,7 +110,11 @@ public class GameEndManager : MonoBehaviour, StateChangeListener {
 	}
 
 	public void showLoseScreen() {
-
+		endScreenActive = true;
+		star = Instantiate(loseThing);
+		star.layer = LayerMask.NameToLayer("UI");
+		
+		spawnCards();
 	}
 
 	public void showWinScreen() {
