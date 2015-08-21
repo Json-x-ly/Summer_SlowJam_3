@@ -49,13 +49,13 @@ public class PlayerController : MonoBehaviour
     public float stepLength
     {
 		get {
-			if (isInWater && state == _state.Hold)
+			if (isInWater && myState == PlayerState.HOLDING)
 				return 0;
 			float speed = 1.0f;
 			if (isInTar)
 				speed *= tarSlow;
 			
-			if (state == _state.Hold)
+			if (myState == PlayerState.HOLDING)
 				speed*=eggPenalty;
 			
 			
@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
 	}
 	void StaminaUpdate()
 	{
-		if (state == _state.Hold)
+		if (state == PlayerState.HOLDING)
 		{
 			stamina -= staminaDecay * Time.deltaTime;
 		}
