@@ -7,11 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: World
-<<<<<<< HEAD
-  m_Shader: {fileID: 4800000, guid: 054a31a99d11e49d110086ba44295342, type: 3}
-=======
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
->>>>>>> master
+  m_Shader: {fileID: 4800000, guid: 2f4ae02b3bac1a34989286d8cd163ecd, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -23,7 +19,7 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: bf70f37ce4d13fb4d9303891d0b70376, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -86,33 +82,12 @@ Material:
         first:
           name: _ColorAtlas
         second:
-          m_Texture: {fileID: 2800000, guid: bf70f37ce4d13fb4d9303891d0b70376, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _ScreenTexture
-        second:
-          m_Texture: {fileID: 2800000, guid: 3d9640d881b8a1f41b2586c6676913fa, type: 3}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _SpecGlossMap
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _Ramp
-        second:
-          m_Texture: {fileID: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: 0, y: 0}
-      data:
-        first:
-          name: _ToonShade
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -136,17 +111,6 @@ Material:
         second: 10
       data:
         first:
-<<<<<<< HEAD
-=======
-          name: _Offset
-        second: 0
-      data:
-        first:
-          name: _MyTime
-        second: 91.3700333
-      data:
-        first:
->>>>>>> master
           name: _Parallax
         second: .0199999996
       data:
@@ -184,15 +148,11 @@ Material:
       data:
         first:
           name: _Offset
-        second: -24.4201126
+        second: 0
       data:
         first:
           name: _MyTime
-        second: 312.755859
-      data:
-        first:
-          name: _Outline
-        second: .00200000009
+        second: 55.3758965
     m_Colors:
       data:
         first:
@@ -206,7 +166,3 @@ Material:
         first:
           name: _SpecColor
         second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _OutlineColor
-        second: {r: 0, g: 0, b: 0, a: 1}
