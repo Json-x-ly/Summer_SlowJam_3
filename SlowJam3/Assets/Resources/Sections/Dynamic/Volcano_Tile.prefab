@@ -2518,7 +2518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f7519c4717e7844ba6ae0cef22e43b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficulty: .100000001
+  difficulty: .0500000007
 --- !u!114 &11489990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -11825,7 +11825,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: difficulty
-      value: .100000001
+      value: .0500000007
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.y
