@@ -52,6 +52,10 @@ public class _root : MonoBehaviour {
 				eggLogic.Reset();
 				delayPlay = true;
 				break;
+            case(GameState.LOSE):
+            case(GameState.WIN):
+                TinderBox.TinderBoxAPI.GameOver();
+                break;
 			case(GameState.QUIT):
 				PlayerManager.CleanUpAllPlayers();
 				eggLogic.Reset();
@@ -67,6 +71,12 @@ public class _root : MonoBehaviour {
                     script.RemoveReadyCard();
                 }
                 Destroy(go.GetComponent<ReadyManager>());
+                break;
+            case(GameState.PLAYING):
+                PlayerManager.CleanUpAllPlayers();
+                break;
+            case (GameState.LOSE):
+                go.GetComponent<GameEndManager>().despawnCards();
                 break;
         }
     }
@@ -92,7 +102,7 @@ public class _root : MonoBehaviour {
 	}
     void Start()
     {
-
+        TinderBox.TinderBoxAPI.IsReady();
         state = GameState.READY;
     }
     void Update()
