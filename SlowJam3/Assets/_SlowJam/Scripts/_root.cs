@@ -10,6 +10,8 @@ public class _root : MonoBehaviour {
     static GameObject go;
     private static Vector3 spawnPos;
     private static bool delayReady=false;
+	private static bool delayPlay = false;
+	private static EggLogic eggLogic;
 	
 	private static IList<StateChangeListener> stateChangeListeners = new List<StateChangeListener>();
 	private static GameState myState = GameState.SPLASH;
@@ -45,14 +47,16 @@ public class _root : MonoBehaviour {
             case(GameState.PLAYING):
                 PlayerManager.PrepPlayers();
                 break;
-			/*
-            case (GameState.LOSE):
-                delayReady = true;
-                break;
-            case (GameState.WIN):
-                delayReady = true;
-                break;
-                */
+			case(GameState.RESTART):
+				PlayerManager.CleanUpAllPlayers();
+				eggLogic.Reset();
+				delayPlay = true;
+				break;
+			case(GameState.QUIT):
+				PlayerManager.CleanUpAllPlayers();
+				eggLogic.Reset();
+				delayReady = true;
+				break;
         }
         switch (old)
         {
@@ -64,11 +68,6 @@ public class _root : MonoBehaviour {
                 }
                 Destroy(go.GetComponent<ReadyManager>());
                 break;
-			/*
-            case (GameState.PLAYING):
-                PlayerManager.CleanUpAllPlayers();
-                break;
-                */
         }
     }
 	public static void addStateChangeListener(StateChangeListener scl) {
@@ -78,6 +77,7 @@ public class _root : MonoBehaviour {
     {
         go = this.gameObject;
         spawnPos = transform.position;
+		eggLogic = GameObject.Find("Egg").GetComponent<EggLogic>();
         MeshFilter[] meshes = GameObject.FindObjectsOfType(typeof(MeshFilter))as MeshFilter[];
         Debug.Log("Meshes found: " + meshes.Length);
         foreach (MeshFilter mesh in meshes)
@@ -87,7 +87,7 @@ public class _root : MonoBehaviour {
             {
                 uvs[i] = new Vector2(0.5f,0.5f);
             }
-            mesh.mesh.uv = uvs;
+           // mesh.mesh.uv = uvs;
         }
 	}
     void Start()
@@ -106,6 +106,10 @@ public class _root : MonoBehaviour {
             toggle = false;
             state = GameState.PLAYING;
         }
+		if (delayPlay) {
+			delayPlay = false;
+			state = GameState.PLAYING;
+		}
         if (delayReady)
         {
             delayReady = false;

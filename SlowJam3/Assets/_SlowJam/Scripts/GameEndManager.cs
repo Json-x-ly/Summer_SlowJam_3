@@ -2,11 +2,17 @@
 using System.Collections;
 
 public class GameEndManager : MonoBehaviour, StateChangeListener {
+	public GameObject winThing;
+	public GameObject loseThing;
+
 	private bool[] playersDead = { false, false, false, false };
 	private RestartLogic[] restartLogics = new RestartLogic[4];
+	private GUIStyle guiStyle = new GUIStyle();
+	private GameObject doge;
+	private GameObject star;
 	private int selection = 0;
-	public GameObject winThing;
 	private bool endScreenActive = false;
+	private float selectionFinishTime = -1f;
 
 	void Start () {
 		foreach(PlayerController pc in PlayerManager.registerdPlayers) {
@@ -18,8 +24,16 @@ public class GameEndManager : MonoBehaviour, StateChangeListener {
 
 	void Update () {
 		if (endScreenActive) {
+			if(selectionFinishTime != -1f && selectionFinishTime < Time.fixedTime) {
+				if(selection == 2)
+					_root.state = GameState.READY;
+				else if(selection == 1)
+					_root.state = GameState.PLAYING;
+				despawnCards();
+			}
 			bool restart = true;
 			bool quit = false;
+			bool nothing = true;
 			for(int i = 0; i < 4; i++) {
 				if(!PlayerManager.IsPlayerActive(i))
 					continue;
@@ -29,12 +43,43 @@ public class GameEndManager : MonoBehaviour, StateChangeListener {
 					quit = true;
 			}
 			if(restart) {
-				_root.state = GameState.PLAYING;
-				despawnCards();
+				selection = 1;
+				if(selectionFinishTime == -1f)
+					selectionFinishTime = Time.fixedTime + 10;
+				//_root.state = GameState.PLAYING;
+				//despawnCards();
 			} else if(quit) {
-				_root.state = GameState.READY;
-				despawnCards();
+				selection = 2;
+				if(selectionFinishTime == -1f)
+					selectionFinishTime = Time.fixedTime + 10;
+				//_root.state = GameState.READY;
+				//despawnCards();
 			}
+		}
+	}
+
+	void OnGUI() {
+		if (endScreenActive) {
+			guiStyle.alignment = TextAnchor.UpperCenter;
+			guiStyle.fontSize = 42;
+			string text = "Select an option";
+			if(selectionFinishTime != -1f)
+				text += " (" + (int) (selectionFinishTime - Time.fixedTime) + ")";
+			GUI.Label (new Rect (Screen.width / 2, 10, 0, 0), text, guiStyle);
+			guiStyle.fontSize = 28;
+
+			if(selection == 1)
+				guiStyle.normal.textColor = Color.green;
+			else
+				guiStyle.normal.textColor = Color.black;
+			GUI.Label (new Rect (250, 20, 0, 0), "Restart", guiStyle);
+
+			if(selection == 2)
+				guiStyle.normal.textColor = Color.green;
+			else
+				guiStyle.normal.textColor = Color.black;
+			GUI.Label (new Rect (Screen.width - 250, 20, 0, 0), "Quit", guiStyle);
+			guiStyle.normal.textColor = Color.black;
 		}
 	}
 
@@ -70,7 +115,7 @@ public class GameEndManager : MonoBehaviour, StateChangeListener {
 
 	public void showWinScreen() {
 		endScreenActive = true;
-		GameObject doge = Instantiate(winThing);
+		doge = Instantiate(winThing);
 		doge.layer = LayerMask.NameToLayer("UI");
 
 		spawnCards();
@@ -97,8 +142,15 @@ public class GameEndManager : MonoBehaviour, StateChangeListener {
 
 	private void despawnCards() {
 		endScreenActive = false;
+		selectionFinishTime = -1f;
+		selection = 0;
 		foreach (RestartLogic rl in restartLogics) {
-			Destroy(rl.gameObject);
+			if(rl != null)
+				Destroy(rl.gameObject);
 		}
+		if(doge != null)
+			Destroy(doge);
+		if(star != null)
+			Destroy(star);
 	}
 }

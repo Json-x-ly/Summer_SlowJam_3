@@ -5,6 +5,8 @@ public enum GameState {
 	READY,
 	PLAYING,
 	LOSE,
-	WIN
+	WIN,
+	RESTART,
+	QUIT
 }
 

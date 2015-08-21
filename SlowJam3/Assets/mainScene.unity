@@ -2877,6 +2877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toggle: 0
+  egg: {fileID: 1754776994}
 --- !u!81 &1451562083
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3005,6 +3006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winThing: {fileID: 101844, guid: d6bc1ef394d6d9c478a193408c8e7aa0, type: 2}
+  loseThing: {fileID: 158840, guid: 2f9ebc74e91ec594d8bef189e5a82e91, type: 2}
 --- !u!1 &1471638658
 GameObject:
   m_ObjectHideFlags: 0
