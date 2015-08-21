@@ -105,7 +105,7 @@ public class EggLogic : MonoBehaviour {
     }
     private void ThrowAt(Vector3 dest)
     {
-        delta = Vector3.Normalize((dest - heldBy.transform.position) + Vector3.up) * 5;
+        delta = Vector3.Normalize((dest - heldBy.transform.position) + Vector3.up*2) * Vector3.Distance(transform.position,dest);
     }
 	private void DrawFallingShadow() {
 		RaycastHit hitinfo;
