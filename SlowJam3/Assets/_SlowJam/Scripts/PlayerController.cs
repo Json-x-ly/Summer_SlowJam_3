@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TinderBox;
 public class PlayerController : MonoBehaviour
 {
-    float moveSpeed = 4.0f;
+    float moveSpeed = 10.0f;
 	Players myPlayer;
 	private const float eggPenalty = 0.6f;
     public enum _state { Empty, Hold, QTE ,NotInPlay};
@@ -285,7 +285,7 @@ public class PlayerController : MonoBehaviour
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button1))
         {
             int target = LookUp.PlayerLogicPosition(0);
-            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay) { 
+            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay&&target!=myNumber) { 
                 Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
@@ -295,7 +295,8 @@ public class PlayerController : MonoBehaviour
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button2))
         {
             int target = LookUp.PlayerLogicPosition(1);
-            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay) { 
+            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay && target != myNumber)
+            { 
                 Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
@@ -304,7 +305,8 @@ public class PlayerController : MonoBehaviour
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button3))
         {
             int target = LookUp.PlayerLogicPosition(2);
-            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay) { 
+            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay && target != myNumber)
+            { 
                 Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
@@ -313,7 +315,8 @@ public class PlayerController : MonoBehaviour
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button4))
         {
             int target = LookUp.PlayerLogicPosition(3);
-            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay){
+            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay && target != myNumber)
+            {
                 Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
