@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         get { return players.Count; }
     }
     public int myNumber = -1;
+	private Animator charAnimator;
     public static Vector3 playerCenter
     {
         get {
@@ -105,33 +106,34 @@ public class PlayerController : MonoBehaviour
 
         //this.GetComponentInChildren<MeshRenderer>().material = Resources.Load("Solid" + LookUp.PlayerColorName(myNumber)) as Material;
         
-    }
+		charAnimator = GetComponentInChildren<Animator> ();
+	}
     void Start()
     {
-
-        Mesh mesh = GetComponentInChildren<MeshFilter>().mesh;
-        Vector2[] uvs = new Vector2[mesh.vertices.Length];
-        Vector2 pos = new Vector2(0.5f, 0.5f);
-        switch (myNumber)
-        {
-            case (0):
-                pos = new Vector2(0.2f, 0.8f);
-                break;
-            case (1):
-                pos = new Vector2(0.8f, 0.8f);
-                break;
-            case (2):
-                pos = new Vector2(0.8f, 0.2f);
-                break;
-            case (3):
-                pos = new Vector2(0.2f, 0.2f);
-                break;
-        }
-        for (int i = 0; i < uvs.Length; i++)
-        {
-            uvs[i] = pos;
-        }
-        mesh.uv = uvs;
+        MeshFilter[] meshes = GetComponentsInChildren<MeshFilter>();
+		foreach (MeshFilter filter in meshes) {
+			Mesh mesh = filter.mesh;
+			Vector2[] uvs = new Vector2[mesh.vertices.Length];
+			Vector2 pos = new Vector2 (0.5f, 0.5f);
+			switch (myNumber) {
+			case (0):
+				pos = new Vector2 (0.2f, 0.8f);
+				break;
+			case (1):
+				pos = new Vector2 (0.8f, 0.8f);
+				break;
+			case (2):
+				pos = new Vector2 (0.8f, 0.2f);
+				break;
+			case (3):
+				pos = new Vector2 (0.2f, 0.2f);
+				break;
+			}
+			for (int i = 0; i < uvs.Length; i++) {
+				uvs [i] = pos;
+			}
+			mesh.uv = uvs;
+		}
     }
     public void PrepForGame()
     {
@@ -172,6 +174,15 @@ public class PlayerController : MonoBehaviour
         }
         transform.position += delta * Time.deltaTime;
         delta -= delta * Time.deltaTime*5f;
+
+		if (delta.magnitude < 0.8f) {
+			charAnimator.SetFloat ("Speed", 0.8f);
+			charAnimator.SetBool("IsMoving", false);
+		}
+		else {
+			charAnimator.SetFloat ("Speed", (delta.magnitude * 0.3333333f));
+			charAnimator.SetBool("IsMoving", true);
+		}
 	}
 	void StaminaUpdate()
 	{
