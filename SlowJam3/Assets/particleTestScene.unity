@@ -1243,8 +1243,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 468970, guid: 7f38fadf01eca4343982ed81bba0f1d4, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2345540, guid: 7f38fadf01eca4343982ed81bba0f1d4, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0623258ec2b592244a89e4129d5a5fb9, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f38fadf01eca4343982ed81bba0f1d4, type: 2}
   m_IsPrefabParent: 0
