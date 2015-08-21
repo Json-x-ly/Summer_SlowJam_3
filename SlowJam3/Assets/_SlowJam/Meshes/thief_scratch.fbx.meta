@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 878a67580dcd42e41b999a2cd952a602
-timeCreated: 1440184671
+guid: fdd8cbdcd84898341b6912261a65a042
+timeCreated: 1440184689
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -108,7 +108,7 @@ ModelImporter:
     4300000: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube3
     4300002: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube7
     4300004: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube8
-    7400000: EggIdle
+    7400000: Scratch
     9500000: //RootNode
     13700000: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube3
     13700002: eggSnatcher_rigged_LOCKED:Egg_Snatcher:pCube7
@@ -134,10 +134,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: EggIdle
+      name: Scratch
       takeName: Take 001
       firstFrame: 1
-      lastFrame: 48
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

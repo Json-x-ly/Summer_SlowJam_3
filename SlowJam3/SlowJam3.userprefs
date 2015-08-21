@@ -1,12 +1,18 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_SlowJam/Scripts/SectionController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\_SlowJam\Scripts\PlayerController.cs">
     <Files>
-      <File FileName="Assets/_SlowJam/Scripts/SectionController.cs" Line="28" Column="19" />
-      <File FileName="Assets/_SlowJam/Scripts/LevelController.cs" Line="99" Column="48" />
-      <File FileName="Assets/_SlowJam/Scripts/LogicVisualSpace.cs" Line="8" Column="30" />
-      <File FileName="Assets/_SlowJam/Scripts/AnchorToVisualSpace.cs" Line="1" Column="1" />
-      <File FileName="Assets/_SlowJam/Scripts/CameraController.cs" Line="14" Column="53" />
+      <File FileName="Assets\_SlowJam\Scripts\GameEndManager.cs" Line="15" Column="42" />
+      <File FileName="Assets\_SlowJam\Scripts\RestartLogic.cs" Line="1" Column="1" />
+      <File FileName="Assets\_SlowJam\Shaders\WorldShader.shader" Line="1" Column="1" />
+      <File FileName="Assets\_SlowJam\Scripts\ReadyLogic.cs" Line="1" Column="1" />
+      <File FileName="Assets\_SlowJam\Scripts\SectionController.cs" Line="1" Column="1" />
+      <File FileName="Assets\_SlowJam\Scripts\KillZ.cs" Line="1" Column="1" />
+      <File FileName="Assets\_SlowJam\Scripts\LevelController.cs" Line="1" Column="1" />
+      <File FileName="Assets\_SlowJam\Scripts\_root.cs" Line="1" Column="1" />
+      <File FileName="Assets\_SlowJam\Scripts\ReadyManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\_SlowJam\Scripts\PlayerManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\_SlowJam\Scripts\PlayerController.cs" Line="183" Column="67" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
