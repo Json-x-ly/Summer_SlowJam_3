@@ -165,10 +165,13 @@ public class PlayerController : MonoBehaviour
         if (moveDir.magnitude != 0)
         {
             moveDir.Normalize();
-            transform.position += moveDir * stepLength;
+            delta += moveDir * stepLength;
+            //transform.position += moveDir * stepLength;
             Quaternion faceDir = Quaternion.Euler(0, Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, faceDir, Time.deltaTime*10);
         }
+        transform.position += delta * Time.deltaTime;
+        delta -= delta * Time.deltaTime*5f;
 	}
 	void StaminaUpdate()
 	{
@@ -202,7 +205,7 @@ public class PlayerController : MonoBehaviour
 		}
 		Debug.DrawRay(transform.position, moveDir*2,Color.red);
 		RaycastHit hit;
-		if (Physics.Raycast(new Ray(transform.position, moveDir), out hit, stepLength))
+		if (Physics.Raycast(new Ray(transform.position, delta), out hit, stepLength))
 		{
 			if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Terrain"))
 			{
