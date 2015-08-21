@@ -32,7 +32,7 @@ public class ReadyManager : MonoBehaviour {
         }
         if (startAtTime < Time.time && startAtTime > Time.time- 10)
         {
-            _root.state = _root._state.Playing;
+			_root.state = GameState.PLAYING;
         }
 
 	}

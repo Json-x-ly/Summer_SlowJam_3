@@ -19,7 +19,7 @@ public class KillZ : MonoBehaviour {
         }
         if (EggLogic.main.transform.position.z < transform.position.z)
         {
-            _root.state = _root._state.Lose;
+			_root.state = GameState.LOSE;
             EggLogic.main.Reset();
         }
 	}
