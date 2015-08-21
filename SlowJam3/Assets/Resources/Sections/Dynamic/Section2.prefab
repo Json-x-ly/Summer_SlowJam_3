@@ -2117,7 +2117,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 494358}
-  - 64: {fileID: 6440804}
   - 114: {fileID: 11408184}
   m_Layer: 0
   m_Name: Section2
@@ -9704,18 +9703,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 105968}
   m_Mesh: {fileID: 4300242, guid: 060d4b261ad4ab04c8830ede7ab924f4, type: 3}
---- !u!64 &6440804
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 175516}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_Mesh: {fileID: 0}
 --- !u!95 &9543986
 Animator:
   serializedVersion: 3

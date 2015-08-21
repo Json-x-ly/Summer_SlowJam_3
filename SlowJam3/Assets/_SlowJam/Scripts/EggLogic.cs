@@ -20,10 +20,7 @@ public class EggLogic : MonoBehaviour {
 		//Destroy (shadowBigObject.GetComponent<BoxCollider> ());
 
     }
-	void Start () {
-	
-	}
-	
+	void Start () {}
 	// Update is called once per frame
 	void Update () {
         switch (state)
@@ -41,7 +38,7 @@ public class EggLogic : MonoBehaviour {
 	void OnTriggerEnter(Collider collider) {
 		if (state == _state.Falling || state == _state.Throwing) {
 			if (collider.gameObject.layer == LayerMask.NameToLayer ("Player")) {
-				Debug.Log (collider.gameObject.name + " should be holding the egg...");
+				Debug.Log ("Player should be holding the egg...");
 				PickUp(collider.gameObject.GetComponent<PlayerController>());
 			}
 		}
@@ -58,7 +55,7 @@ public class EggLogic : MonoBehaviour {
         {
             heldBy = pc;
             state = _state.Held;
-            pc.state = PlayerController._state.Hold;
+			pc.state = PlayerState.HOLDING;
 			//transform.position = heldBy.eggNode.transform.position;
         }
     }
@@ -89,8 +86,7 @@ public class EggLogic : MonoBehaviour {
             }
             //ThrowStriaght();
             ThrowAt(nearest.transform.position);
-            heldBy.state = PlayerController._state.Empty;
-            heldBy = null;
+			heldBy.state = PlayerState.NOT_HOLDING;
         }
     }
 	public void ThrowToPlayer(Vector3 receivingPlayer) {
@@ -100,9 +96,7 @@ public class EggLogic : MonoBehaviour {
 			//Vector3 distance = receivingPlayer - this.transform.position;
 			ThrowAt(receivingPlayer);
 			//delta = Vector3.Normalize ((distance) + Vector3.up) * 5.0f;
-            heldBy.state = PlayerController._state.Empty;
 			heldBy = null;
-
 		}
 	}
     private void ThrowStriaght()
@@ -111,7 +105,7 @@ public class EggLogic : MonoBehaviour {
     }
     private void ThrowAt(Vector3 dest)
     {
-        delta = Vector3.Normalize((dest - heldBy.transform.position) + Vector3.up*2) * Vector3.Distance(transform.position,dest);
+        delta = Vector3.Normalize((dest - heldBy.transform.position) + Vector3.up) * 5;
     }
 	private void DrawFallingShadow() {
 		RaycastHit hitinfo;

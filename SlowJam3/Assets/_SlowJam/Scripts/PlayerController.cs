@@ -4,21 +4,22 @@ using System.Collections.Generic;
 using TinderBox;
 public class PlayerController : MonoBehaviour
 {
-    float moveSpeed = 10.0f;
+	float moveSpeed = 20.0f;
 	Players myPlayer;
 	private const float eggPenalty = 0.6f;
-    public enum _state { Empty, Hold, QTE ,NotInPlay};
-    public _state state = _state.NotInPlay;  
-    public static IList<PlayerController> players = new List<PlayerController>();
+	private PlayerState myState = PlayerState.NOT_IN_PLAY;
+	public static IList<PlayerController> players = new List<PlayerController>();
+	private IList<StateChangeListener> stateChangeListeners = new List<StateChangeListener>();
     private float catchExpireTime = float.MinValue;
-    public bool isInWater;
-    public bool isInTar;
-    public float tarSlow = 0.5f;
-    private const float staminaDecay = 0.1f;
-    private const float staminaRegen = 0.1f;
-    private const float staminaThrow = 0.3f;
-    [Range(0,1)]
-    public float stamina = 1.0f;
+	public Vector3 delta = Vector3.zero;
+	public bool isInWater;
+	public bool isInTar;
+	public float tarSlow = 0.5f;
+	private const float staminaDecay = 0.1f;
+	private const float staminaRegen = 0.1f;
+	private const float staminaThrow = 0.3f;
+	[Range(0,1)]
+	public float stamina = 1.0f;
     private PlayerEggNode myEggNode;
     public PlayerEggNode eggNode
     {
@@ -34,6 +35,10 @@ public class PlayerController : MonoBehaviour
     {
         get {
             Vector3 pos = Vector3.zero;
+
+			if(playerCount == 0) //avoid NaN errors before players have ready'd up
+				return pos;
+
             for (int x = 0; x < playerCount; x++)
             {
                 pos += players[x].transform.position;
@@ -43,20 +48,35 @@ public class PlayerController : MonoBehaviour
     }
     public float stepLength
     {
-        get {
-            if (isInWater && state == _state.Hold)
-                return 0;
-            float speed = 1.0f;
-            if (isInTar)
-                speed *= tarSlow;
+		get {
+			if (isInWater && myState == PlayerState.HOLDING)
+				return 0;
+			float speed = 1.0f;
+			if (isInTar)
+				speed *= tarSlow;
+			
+			if (myState == PlayerState.HOLDING)
+				speed*=eggPenalty;
+			
+			
+			return moveSpeed*Time.deltaTime*speed;
+		}
 
-            if (state == _state.Hold)
-                speed*=eggPenalty;
-            
-
-            return moveSpeed*Time.deltaTime*speed;
-        }
     }
+	public PlayerState state {
+		set {
+			foreach(StateChangeListener scl in stateChangeListeners) {
+				scl.playerStateChanged(myNumber, myState, value);
+			}
+			myState = value;
+		}
+		get {
+			return myState;
+		}
+	}
+	public void addStateChangeListener(StateChangeListener scl) {
+		stateChangeListeners.Add(scl);
+	}
 	string upKey;
 	string downKey;
 	string leftKey;
@@ -71,6 +91,7 @@ public class PlayerController : MonoBehaviour
 		gameObject.layer = LayerMask.NameToLayer ("Player"); 	
 
         myNumber = PlayerManager.InitPlayerRegistration(this);
+
         if (myNumber == -1)
         {
             Destroy(gameObject);
@@ -88,7 +109,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
 
-        Mesh mesh = GetComponent<MeshFilter>().mesh;
+        Mesh mesh = GetComponentInChildren<MeshFilter>().mesh;
         Vector2[] uvs = new Vector2[mesh.vertices.Length];
         Vector2 pos = new Vector2(0.5f, 0.5f);
         switch (myNumber)
@@ -114,24 +135,24 @@ public class PlayerController : MonoBehaviour
     }
     public void PrepForGame()
     {
-        state = _state.Empty;
+		state = PlayerState.NOT_HOLDING;
         players.Add(this);
         //TODO center this properly when can math.
         transform.position = new Vector3(-5+(1.0f/(PlayerManager.playerCount))*(playerCount)*10, 0.5f, 10);
     }
     public void UnloadPostGame()
     {
-        state = _state.NotInPlay;
+		state = PlayerState.NOT_IN_PLAY;
         players.Remove(this);
         PlayerManager.RemovedPlayerFromActive(myNumber);
-        if (playerCount == 0 && _root.state == _root._state.Playing)
+        if (playerCount == 0 && _root.state == GameState.PLAYING)
         {
-            _root.state = _root._state.Lose;
+			_root.state = GameState.LOSE;
         }
         transform.position = new Vector3(0, 0, -9000);
     }
 	void Update () {
-        if (state == _state.NotInPlay) return;
+        if (state == PlayerState.NOT_IN_PLAY) return;
         /*if (Input.GetKeyDown("space"))
         {
             EggLogic.main.Throw();
@@ -140,56 +161,30 @@ public class PlayerController : MonoBehaviour
 		//DetectButtons();
 		//Vector3 moveDir = Move();
 		NewButtons();
-        StaminaUpdate();
         Vector3 moveDir = TinderBoxMove();
         if (moveDir.magnitude != 0)
         {
             moveDir.Normalize();
-            transform.position += moveDir * stepLength;
+            delta += moveDir * stepLength;
+            //transform.position += moveDir * stepLength;
             Quaternion faceDir = Quaternion.Euler(0, Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, faceDir, Time.deltaTime*10);
         }
+        transform.position += delta * Time.deltaTime;
+        delta -= delta * Time.deltaTime*5f;
 	}
-    void StaminaUpdate()
-    {
-        if (state == _state.Hold)
-        {
-            stamina -= staminaDecay * Time.deltaTime;
-        }
-        else if (stamina < 1)
-        {
-            stamina += staminaRegen * Time.deltaTime;
-        }
-        stamina = Mathf.Clamp01(stamina);
-    }
-    //Vector3 Move()
-    //{
-    //    Vector3 moveDir = Vector3.zero;
-    //    if (Input.GetKey(upKey))
-    //    {
-    //        moveDir += Vector3.forward;
-    //    }
-    //    if (Input.GetKey(downKey))
-    //    {
-    //        moveDir -= Vector3.forward;
-    //    }
-    //    if (Input.GetKey(leftKey))
-    //    {
-    //        moveDir -= Vector3.right;
-    //    }
-    //    if (Input.GetKey(rightKey))
-    //    {
-    //        moveDir += Vector3.right;
-    //    }
-    //    Debug.DrawRay(transform.position, moveDir*2,Color.red);
-    //    RaycastHit hit;
-    //    if (Physics.Raycast(new Ray(transform.position, moveDir), out hit, stepLength))
-    //    {
-	//		if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Terrain"))
-    //        	moveDir = Vector3.zero;
-    //    }
-    //    return moveDir;
-    //}
+	void StaminaUpdate()
+	{
+		if (state == PlayerState.HOLDING)
+		{
+			stamina -= staminaDecay * Time.deltaTime;
+		}
+		else if (stamina < 1)
+		{
+			stamina += staminaRegen * Time.deltaTime;
+		}
+		stamina = Mathf.Clamp01(stamina);
+	}
 	Vector3 TinderBoxMove() {
 		Vector3 moveDir = Vector3.zero;
 		if (TinderBoxAPI.ControlState(myNumber, TinderBox.Controls.Up))
@@ -210,10 +205,13 @@ public class PlayerController : MonoBehaviour
 		}
 		Debug.DrawRay(transform.position, moveDir*2,Color.red);
 		RaycastHit hit;
-		if (Physics.Raycast(new Ray(transform.position, moveDir), out hit, stepLength))
+		if (Physics.Raycast(new Ray(transform.position, delta), out hit, stepLength))
 		{
 			if(hit.transform.gameObject.layer == LayerMask.NameToLayer("Terrain"))
+			{
+				delta = Vector3.zero;
 				moveDir = Vector3.zero;
+			}
 		}
 		return moveDir;
 	}
@@ -270,32 +268,39 @@ public class PlayerController : MonoBehaviour
 		Debug.Log ("Player " + myPlayer + ": " + upKey + " " + downKey + " " + leftKey + " " + rightKey + " " + button1 + " " + button2 + " " + button3 + " " + button4 + " " + button5 + "!!");
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        /*Debug.Log("Player hit trigger");
+	void OnTriggerEnter(Collider other)
+	{
+		/*Debug.Log("Player hit trigger");
         EggLogic egg = other.gameObject.GetComponent<EggLogic>();
         if (egg != null) 
         { 
             egg.PickUp(this);
             catchExpireTime = Time.time + 0.3f;
         }*/
-
+		
 		QTEScript QTE = other.gameObject.GetComponent<QTEScript>();
 		if (QTE != null)
 		{
 			QTE.PlayerEnter(myPlayer);
 			Debug.Log("QTE Trigger entered");
 		}
-        TarLogic tar = other.gameObject.GetComponent<TarLogic>();
-        if(tar!=null){
-            isInTar = true;
-        }
-        WaterLogic water = other.gameObject.GetComponent<WaterLogic>();
-        if (water != null)
-        {
-            isInWater = true;
-        }
-    }
+		TarLogic tar = other.gameObject.GetComponent<TarLogic>();
+		if(tar!=null){
+			isInTar = true;
+		}
+		WaterLogic water = other.gameObject.GetComponent<WaterLogic>();
+		if (water != null)
+		{
+			isInWater = true;
+		}
+		TailLogic tail = other.gameObject.GetComponent<TailLogic>();
+		
+		if (tail != null)
+		{
+			delta.z -= 50;
+		}
+		
+	}
 
 	void OnTriggerExit(Collider other)
 	{
@@ -304,21 +309,21 @@ public class PlayerController : MonoBehaviour
 		{
 			QTE.PlayerExit(myPlayer);
 			Debug.Log("QTE Trigger exited");
-        }
-        TarLogic tar = other.gameObject.GetComponent<TarLogic>();
-        if (tar != null)
-        {
-            isInTar = false;
-        }
-        WaterLogic water = other.gameObject.GetComponent<WaterLogic>();
-        if (water != null)
-        {
-            isInWater = true;
-        }
+		}
+		TarLogic tar = other.gameObject.GetComponent<TarLogic>();
+		if (tar != null)
+		{
+			isInTar = false;
+		}
+		WaterLogic water = other.gameObject.GetComponent<WaterLogic>();
+		if (water != null)
+		{
+			isInWater = true;
+		}
 	}
     void NewButtons()
     {
-        if (state == _state.Empty && TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button5))
+        if (state == PlayerState.NOT_HOLDING && TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button5))
         {
             if (Time.time < catchExpireTime)
             {
@@ -328,49 +333,46 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        if (state != _state.Hold) return;
+        if (state != PlayerState.HOLDING) return;
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button1))
         {
             int target = LookUp.PlayerLogicPosition(0);
-            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay&&target!=myNumber) { 
-                Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
+			if (PlayerManager.registerdPlayers[target].state != PlayerState.NOT_IN_PLAY && target != myNumber) { 
+                Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
-                stamina -= staminaThrow;
+				stamina -= staminaThrow;
             }
 
         }
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button2))
         {
             int target = LookUp.PlayerLogicPosition(1);
-            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay && target != myNumber)
-            { 
-                Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
+			if (PlayerManager.registerdPlayers[target].state != PlayerState.NOT_IN_PLAY && target != myNumber) { 
+                Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
-                stamina -= staminaThrow;
+				stamina -= staminaThrow;
             }
         }
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button3))
         {
             int target = LookUp.PlayerLogicPosition(2);
-            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay && target != myNumber)
-            { 
-                Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
+			if (PlayerManager.registerdPlayers[target].state != PlayerState.NOT_IN_PLAY && target != myNumber) { 
+                Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
-                stamina -= staminaThrow;
+				stamina -= staminaThrow;
             }
         }
         if (TinderBoxAPI.ControlDown(myNumber, TinderBox.Controls.Button4))
         {
             int target = LookUp.PlayerLogicPosition(3);
-            if (PlayerManager.registerdPlayers[target].state != PlayerController._state.NotInPlay && target != myNumber)
-            {
-                Debug.Log(LookUp.PlayerColorName(myNumber) + " threw the ball to " + LookUp.PlayerColorName(target));
+			if (PlayerManager.registerdPlayers[target].state != PlayerState.NOT_IN_PLAY && target != myNumber){
+                Debug.Log(LookUp.PlayerColorName(myNumber) + " trew the ball to " + LookUp.PlayerColorName(target));
                 Vector3 pos = PlayerManager.registerdPlayers[target].transform.position;
                 EggLogic.main.ThrowToPlayer(pos);
-                stamina -= staminaThrow;
+				stamina -= staminaThrow;
             }
         }
     }
@@ -409,7 +411,7 @@ public class PlayerController : MonoBehaviour
         //}
     }
 	private void DoThrow (int playerIndex) {
-		Debug.Log("Should be throwing the egg..");
+		Debug.Log("Should be throwing the egg...");
 		//int temp = LookUp.PlayerCabinetPosition(playerIndex);
 		Vector3 position = PlayerManager.registerdPlayers[LookUp.PlayerCabinetPosition(playerIndex)].transform.position;
 		if (myNumber == playerIndex)
