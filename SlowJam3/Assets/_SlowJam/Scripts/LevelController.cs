@@ -18,6 +18,9 @@ public class LevelController : MonoBehaviour {
 	private int sectionsSinceDynamic = 0; //how many  sections have been spawned that weren't dynamic
 
 	public void resetLevel() {
+		foreach (GameObject path in currentPath) {
+			Destroy(path);
+		}
 		currentPath.Clear();
 		levelDone = false;
 		currentLength = 0;
@@ -41,7 +44,7 @@ public class LevelController : MonoBehaviour {
 	}
 
 	private void spawnInitialSections() {
-		for (int i = 0; i < 15; i++) {
+		for (int i = 0; i < 30; i++) {
 			GameObject section = GetSectionForDifficulty(CalculateDifficulty(currentLength));
 			Vector3 pos = Vector3.zero;
 			if(i > 0) {
