@@ -9790,7 +9790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f7519c4717e7844ba6ae0cef22e43b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficulty: .150000006
+  difficulty: .699999988
 --- !u!136 &13616824
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -9826,7 +9826,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: difficulty
-      value: .150000006
+      value: .699999988
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TinderBox;
 public class PlayerController : MonoBehaviour
 {
-	float moveSpeed = 20.0f;
+	public float moveSpeed = 20.0f;
 	Players myPlayer;
 	private const float eggPenalty = 0.6f;
 	private PlayerState myState = PlayerState.NOT_IN_PLAY;
