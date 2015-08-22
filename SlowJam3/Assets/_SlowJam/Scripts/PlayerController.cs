@@ -294,7 +294,7 @@ public class PlayerController : MonoBehaviour
 		QTEScript QTE = other.gameObject.GetComponent<QTEScript>();
 		if (QTE != null)
 		{
-			QTE.PlayerEnter(myPlayer);
+			QTE.PlayerEnter(myNumber);
 			Debug.Log("QTE Trigger entered");
 		}
 		TarLogic tar = other.gameObject.GetComponent<TarLogic>();
@@ -320,7 +320,7 @@ public class PlayerController : MonoBehaviour
 		QTEScript QTE = other.gameObject.GetComponent<QTEScript>();
 		if (QTE != null)
 		{
-			QTE.PlayerExit(myPlayer);
+			QTE.PlayerExit(myNumber);
 			Debug.Log("QTE Trigger exited");
 		}
 		TarLogic tar = other.gameObject.GetComponent<TarLogic>();
