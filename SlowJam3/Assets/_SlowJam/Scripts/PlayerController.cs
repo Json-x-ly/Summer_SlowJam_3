@@ -184,6 +184,7 @@ public class PlayerController : MonoBehaviour
 			charAnimator.SetFloat ("Speed", (delta.magnitude * 0.3333333f));
 			charAnimator.SetBool("IsMoving", true);
 		}
+		charAnimator.SetBool("HasEgg", state == PlayerState.HOLDING);
 	}
 	void StaminaUpdate()
 	{
