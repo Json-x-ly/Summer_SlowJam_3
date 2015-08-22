@@ -42,12 +42,12 @@ public  class QTEScript : MonoBehaviour
 	}
 
 	public QTE QTEType;
-	private List<Players> playerList;
+	private List<int> playerList;
 
 
 	void Start()
 	{
-		playerList = new List<Players>();
+		playerList = new List<int>();
 		buttonRenderer = GetComponentInChildren<SpriteRenderer> ();
 		if (buttonRenderer == null) 
 		{
@@ -67,7 +67,7 @@ public  class QTEScript : MonoBehaviour
 		if (!isActive)
 			return;
 
-		foreach (Players ID in playerList) 
+		foreach (int ID in playerList) 
 		{
 			bool input = TinderBoxAPI.ControlDown(ID, buttonQTE);
 			if(input)
@@ -85,10 +85,10 @@ public  class QTEScript : MonoBehaviour
 		}
 	}
 
-	public void PlayerEnter (Players playerID) 
+	public void PlayerEnter (int playerID) 
 	{
 		if (playerList.Count > 0) {
-			foreach (Players ID in playerList) {
+			foreach (int ID in playerList) {
 				if (ID.CompareTo (playerID) != 0)
 					continue;
 				return;
@@ -99,7 +99,7 @@ public  class QTEScript : MonoBehaviour
 		buttonRenderer.gameObject.SetActive(true);
 	}
 
-	public void PlayerExit (Players playerID)
+	public void PlayerExit (int playerID)
 	{
 		playerList.Remove(playerID);
 		if (playerList.Count == 0)
