@@ -29,7 +29,7 @@ public class GameEndManager : MonoBehaviour, StateChangeListener {
 					_root.state = GameState.READY;
 				else if(selection == 1)
 					_root.state = GameState.READY;
-				despawnCards();
+				//despawnCards();
 			}
 			bool restart = true;
 			bool quit = false;
@@ -111,6 +111,9 @@ public class GameEndManager : MonoBehaviour, StateChangeListener {
 
 	public void showLoseScreen() {
 		endScreenActive = true;
+        if (star != null)
+            Destroy(star);
+
 		star = Instantiate(loseThing);
 		star.layer = LayerMask.NameToLayer("UI");
 		
@@ -119,6 +122,8 @@ public class GameEndManager : MonoBehaviour, StateChangeListener {
 
 	public void showWinScreen() {
 		endScreenActive = true;
+        if (doge != null)
+            Destroy(doge);
 		doge = Instantiate(winThing);
 		doge.layer = LayerMask.NameToLayer("UI");
 
@@ -126,10 +131,13 @@ public class GameEndManager : MonoBehaviour, StateChangeListener {
 	}
 	
 	private void spawnCards() {
+        Debug.Log("Spawning cards!");
 		Vector3 rcStartPos = new Vector3(0f, 9f, 1f);
 		Vector3 rcSize = new Vector3(3, 1, 1);
 		const float rcStepLength = 1f + 1f / 3f;
 		for (int x = 0; x < 4; x++) {
+            if(restartLogics[x]!=null)
+                Destroy(restartLogics[x].gameObject);
 			//if(!PlayerManager.IsPlayerActive(x))
 				//continue;
 			int cabPos = LookUp.PlayerCabinetPosition(x);
@@ -145,6 +153,7 @@ public class GameEndManager : MonoBehaviour, StateChangeListener {
 	}
 
 	public void despawnCards() {
+        Debug.Log("Despawning cards!");
 		endScreenActive = false;
 		selectionFinishTime = -1f;
 		selection = 0;
