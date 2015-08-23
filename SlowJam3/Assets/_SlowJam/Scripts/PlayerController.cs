@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
 	private const float staminaThrow = 0.3f;
 	[Range(0,1)]
 	public float stamina = 1.0f;
+    public float maxDeltaMagnitude = 3.6f;
+    ParticleSystem dustTrail;
     private PlayerEggNode myEggNode;
     public PlayerEggNode eggNode
     {
@@ -89,8 +91,9 @@ public class PlayerController : MonoBehaviour
 	string button5;
     void Awake()
     {
-		gameObject.layer = LayerMask.NameToLayer ("Player"); 	
-
+		
+        gameObject.layer = LayerMask.NameToLayer ("Player");
+        dustTrail = GetComponentInChildren<ParticleSystem>();
         myNumber = PlayerManager.InitPlayerRegistration(this);
 
         if (myNumber == -1)
@@ -156,13 +159,8 @@ public class PlayerController : MonoBehaviour
     }
 	void Update () {
         if (state == PlayerState.NOT_IN_PLAY) return;
-        /*if (Input.GetKeyDown("space"))
-        {
-            EggLogic.main.Throw();
-        }*/
-        Debug.DrawLine(transform.position, playerCenter);
-		//DetectButtons();
-		//Vector3 moveDir = Move();
+        dustTrail.startSpeed = delta.magnitude / maxDeltaMagnitude;
+        dustTrail.startSize = delta.magnitude / maxDeltaMagnitude;
 		NewButtons();
         Vector3 moveDir = TinderBoxMove();
         if (moveDir.magnitude != 0)
@@ -216,7 +214,7 @@ public class PlayerController : MonoBehaviour
 		{
 			moveDir += Vector3.right;
 		}
-		Debug.DrawRay(transform.position, moveDir*2,Color.red);
+		//Debug.DrawRay(transform.position, moveDir*2,Color.red);
 		RaycastHit hit;
 		if (Physics.Raycast(new Ray(transform.position, delta), out hit, stepLength))
 		{
